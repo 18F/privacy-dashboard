@@ -6,6 +6,7 @@ $(document).ready( function () {
             { "searchable": false, "width": "10%" },
             { "searchable": true, "width": "10%" },
             { "searchable": false, "width": "35%" },
-            { "searchable": false, "width": "35%" }
+            { "searchable": false, "width": "35%" },
+            null
         ] });
 } );
