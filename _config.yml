@@ -41,6 +41,9 @@ primary_navigation:
     url: /
   - name: Plain language
     url: /plain-language
+  - name: PII Detail
+    url: /pii-detail
+
 
 # secondary_navigation:
 #   - name: Secondary link

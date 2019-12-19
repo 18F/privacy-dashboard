@@ -3,6 +3,27 @@
 @import "uswds";
 
 // Add your SASS/CSS here
+.red {
+  background-color: #d63e04;
+  white-space: nowrap;
+}
+.orange {
+  background-color: #e5a000;
+  white-space: nowrap;
+}
+.yellow {
+  background-color: #fee685;
+  white-space: nowrap;
+}
+.green {
+  background-color: #00a91c;
+  white-space: nowrap;
+}
+.blue {
+  background-color: #00bde3;
+  white-space: nowrap;
+}
+
 
 // default mode hide banner
 .usa-banner__content {
