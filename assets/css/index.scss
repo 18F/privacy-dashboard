@@ -24,6 +24,11 @@
   white-space: nowrap;
 }
 
+.usa-header--extended .usa-navbar, .grid-container {
+  max-width: 100%;
+  width: 100%;
+}
+
 
 // default mode hide banner
 .usa-banner__content {
