@@ -20,7 +20,7 @@ manage in the long term.
         <table id="myTable" class="usa-table usa-table--borderless">
                 <thead>
                 <!-- First column is html title to use -->
-                {% for column in site.data.systems[0] %}
+                {% for column in site.data.plain-language[0] %}
                     {% if forloop.index == 1 %}
                         <th>System</th>
                         {% continue %}
@@ -32,7 +32,7 @@ manage in the long term.
                 {% endfor %}
                 </thead>
                 <tbody>
-                {% for row in site.data.systems %}
+                {% for row in site.data.plain-language %}
                     <tr>
                     {% for cell in row %}
                         {% if forloop.index == 2 or forloop.index == 3 %}

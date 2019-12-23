@@ -3,7 +3,6 @@ console.log("Hi from Federalist");
 
 $(document).ready( function () {
     $('#myTable').DataTable({
-        searchHighlight: true,
         paging: false
      });
 });
