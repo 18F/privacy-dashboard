@@ -41,6 +41,8 @@ primary_navigation:
     url: /
   - name: PII Detail
     url: /pii-detail
+  - name: New new
+    url: /new-new
 
 
 # secondary_navigation:
