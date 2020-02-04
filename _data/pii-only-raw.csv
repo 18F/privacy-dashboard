@@ -1,0 +1,351 @@
+System Name,PII
+Ancillary Financial Application (AFA) system ,"TIN, person’s name, SSN, home address, home phone, and e-mail address."
+Beta.SAM.gov,"In the Entity Management functional area, SAM contains records that capture information users voluntarily provide about their entity as part of the process to register to do business with the Federal Government, including the entity legal business name, entity email address, entity telephone number, entity Taxpayer Identification Number (TIN), and entity address. In the case of a sole proprietor, tax laws allow them to use their Social Security Number (SSN) as their TIN if they do not have a separate Employer Identification Number (EIN). The TIN (whether it be an EIN or an SSN) is not publicly available data. In the exclusion portion of the Performance Information functional area, SAM contains records entered by Federal agency suspension and debarment officials, some of which may be records on individuals."
+"Carlson Wagonlit Government Travel, Inc., d.b.a. CWTSatoTravel","To use E2 Solutions, a traveler must enter unique identifying information such as user id and password. A user profile is established for each traveler which contains personal information, including organization address, telephone number, travel preferences, frequent flyer and rental car club account numbers, passport information, emergency contract name, alternative address and telephone number, personal credit card number (official travel charge care account at a minimum), date of birth, gender, redress number, known traveler number, and other information as required by the agency’s Travel Authorization and Voucher System , Travel Management Center (TMC), and transportation providers for making reservations and issuing tickets. Information gathered includes Traveler Profile data, Name, SSN (if applicable by agency requirements), UserID, home address, home and office email, home and office telephone numbers, current passport and/or visa number(s), credit card numbers and related information; bank account information needed for electronic funds transfer; frequent traveler account information; travel claim information; destinations; date of birth; gender; redress number; known traveler number; and individual charges and balances. In addition, other passport information (i.e. issuing country, expiration date), and emergency contact information are included. Additional information may be entered at the traveler’s discretion for enhanced service, such as air, hotel, and car rental preferences, and frequent traveler or club membership numbers. When travel arrangements are made, the following information is entered: travel dates and times, departure and arrival cities and airports or terminals, selected airline flight or train tickets Privacy Impact Assessment CWTSatoTravel, E2 Solutions Page 6 Version 01/11//2018 reserved, hotel reservations, and car rentals reserved. Any special requests or accommodations required are also entered. Federal agency accounting systems will interface with the E2 Solutions component for proper recording of obligations when travel authorizations are approved, and for recording expenses when voucher payments are made. (Data will be passed between systems. The agency accounting systems will not have direct access to E2 Solutions databases.) The Travel Management Center (TMC) will have access to the profile and reservation data input by the traveler. This access is necessary for the TMC to complete reservation and ticketing actions (e.g. in order to email the traveler her itinerary). The TMC does not have access to E2 Solutions.. The on-line booking engine directs reservations to the TMC for fulfillment, i.e., ticketing for transportation and confirmation of hotel and/or car reservations. The reservation systems, or Global Distribution Systems (GDS), provide the link between the on-line booking engine and the TMC. GDSX, the interface between the GDS and E2 Solutions provides updates to the traveler’s reservations if modifications are made. This is an interface which data securely traverses between E2 Solutions and the GDS to maintain the integrity of the travelers’ reservations."
+Challenge.gov,"At a minimum, users submitting challenge solutions are required to provide an e-mail address, username and password, by their own designation. In addition, users may voluntarily elect to provide the following data elements to create a profile, though none are required for participation: ● First and last name ● Phone number ● City, state and country ● Website (e.g., school, company, Twitter or LinkedIN pages) ● Photo or image ● Biographical sketch of no more than 1,000 words ● Additional skills and interests from a preset selection ● Additional skills and images in a free form text box"
+Child Care Subsidy,"The CCS application collects the following personal information that are stored on documents in the Document Management subsystem and as database fields in the Eligibility and Invoice Processing subsystem: ● Parent (the Member/Employee): SSN, Name, Work Address, Work phone, Work email, Home Address, Home phone, and Home e-mail. 11 Version 2.4: November 28, 2018 ● Spouse or Partner: Name, Address, Phone, Email, Employer Name, Spouse/Partner’s School Name ● Child(ren) enrolled: Name and Date of Birth ● Power of Attorney or Guardian (if different than Parent / Spouse): Name, Address, Phone, Email ● Childcare Providers: Provider: Name, Address, Taxpayer Identification Number, Phone, Email ● Historical documentation before July 2016 was collected and is stored in ImageNow (e.g. parents’ tax returns) - this is outside of the Salesforce app and is not connected. There are no active deletes happening currently. ● Legal Documents with attributes including but not limited to name (e.g. Marriage License, Name Change, POA), to whom it applies (e.g. Parent, Child, Guardian), effective date and expiration date where applicable. The Child Care Subsidy Program administrators determine the eligibility of the Member /Employee based on the data submitted. The Child Care Subsidy program does not receive information from another system."
+ConcurGov,SAP Concur Travel (Travel) – reference GSA Master Contract Section C Attachment 14 Yes Traveler Information ConcurGov system access; booking travel/trips In place in accordance with the ETS2 contract Travel Authorization and Voucher (TAVS) (Expense) – reference GSA Master Contract Section C Attachment 14 Yes Traveler expense Information Travel expense payment and reimbursement In place in accordance with the ETS2 contract
+Controlled Document Tracker (CDT),"System information includes correspondences and documents and, in addition to work contact information, may also include the following specific types of private data: ● Personal full name; ● Personal physical address; ● Personal phone number; ● Personal email address; 9 Version 2.1: July 02, 2018 ● Employer information and address, for example, for Federal employees or contractors regarding facility or employment concerns; ● Dun & Bradstreet and/or Tax ID numbers; and ● Names and email addresses (personal or work) may be stored in searchable data fields, but other data would be contained in documents attached to system records"
+Design research,"Administrative data may contain PII. Administrative data is data collected and used during the recruiting and administration of a design research study. Administrative data includes: ● Respondent data is data such as voluntarily submitted name, contact information (for example, telephone number or email address), reason for visiting the digital product or service, profession, and goals for use. When necessary, this may also include demographic information such as age range, education level, language, occupation, etc. ● Respondent metadata is metadata collected at time of response, such as timestamp, operating system, and user-agent (“browser”). ● Administration trace data is data used to facilitate the administration of design research. For example, GSA agents may record having contacted a respondent for an interview or having received a participant’s signature on an informed consent form."
+Electronic Document Managing Software Platform (EDMS),"Resumes include name, personal e-mail address, home address, home phone number, and other personal information. Suitability adjudication letters include name and adjudication decision. Employee records include names and may also include gender, race, birth date, age, home e-mail address, home address, home phone number, Social Security Number, employment history, and similar personal information."
+Employee Relocation Resource Center,"Full Name ● physical address; ● Phone number; ● Email address; 11 Version 2.4: November 28, 2018 ● Agency Name ● Vendor ● GSA Program - Types of Services needed/requested ● Documents with Case Information Documents related to case can be anything that is needed to resolve their queries such as agencies may send a formal letter of appeal from a transferring employee, challenging the appraised value. Oftentimes the appeals are very personal regarding the employee's living situation or financial situation. The information collected by GSA with regards to Agency employees / contractor is bare minimum and is required for GSA to assist the Agency employees in providing requested services. All privacy controls are in place in accordance with GSA’s Privacy Policies and Procedures."
+Enterprise Application Services (EAS),Not included.  Notes in comment box.
+Enterprise Infrastructure Operations (EIO) System,"Name • Contact Information (e.g., telephone number/email address) • Other Information (including mobile device number)"
+Enterprise Mobile Devices,"Users may store PII data mobile devices that are supported by the EMD. Such information may include, but is not limited to, names, email addresses, phone numbers, mailing addresses, photos, credit card information for the purpose of in-app purchases and other financial information. Smartphones and tablets can store any user input including name, address, phone number, credit card information etc. it is up to the user to be cautious with their Government Furnished Equipment (GFE) and use it as intended."
+Everbridge Mass Notification,Names are collected in Everbridge and individuals opt-in to provide any emergency contact information that they would like to keep on file.
+Exterro e-Discovery Software,"The application collects OGC personnel electronic records, emails and attachments which may contain correspondence from outside vendors and/or contractors associated with the pending administrative dispute/manner or litigation. This could include, but is not limited to: name, date of birth, mailing address, telephone number, social security number, e-mail address, zip code, facsimile number, mother’s maiden name, medical record number, bank account number, health plan beneficiary number, any other account numbers, certificate/license number, vehicle identifier including license plate, marriage record, civil or criminal history information, medical records, device identifiers and serial numbers, education record, biometric identifiers, photographic facial image, or any other unique identifying number or characteristic."
+FAR Data Collection Pilot,"a. The system will capture weekly certified payroll data for contractors that are required to submit their payroll’s under the Davis Bacon Act. b. The system will maintain the names of the contractors, their company information, email and their wages. The system will also store the name and email address of contracting officers.      b. Contractor: Last Name, First Name, Position in Company, Phone,
+Email,
+Contractor Employee: Last Name, First Name, ID #, Work
+classification, Hours Worked by day/date, Total hours, Rate
+Fringes (cash), Fringes (employer-paid), Federal projects Gross
+earnings.
+Contracting Officer: Name, position, phone, email"
+Federal Procurement Data System- New Generation (-NG),"Contractor Taxpayer Identification Number (TIN), Social Security Number (SSN), plus Contractor Names and Addresses (for individuals contracting with the government as a business), Place of Performance, Product or service provided and Socioeconomic Information about the Contractor are maintained as are information for government and public account holders."
+Fleet Management System (FMS),"The following PII information is transmitted for both the driver of the 3rd party vehicle and the owner (if different from the driver): -- Driver's First Name, Middle Initial, Last Name -- Home Address (Street Number, City, State, Zip) -- Home Phone Number -- Name of Insurance Company -- Address of Insurance Company (Street Number, City, State, Zip) -- Insurance Company Point of Contact -- Insurance Company Phone Number -- Insurance Policy Number of Driver or Owner"
+GRB - Government Retirement Benefits,"PII Collected shown below. All PII collected is for the purpose of applying for retirement at GSA. o Employee First, Middle Initial, Last Name o Employee SSN ● SSNs are generally the common element linking information among agencies, OPM, Shared Service Providers (human resources, payroll, and training), and benefit providers, some of which are legally required to use SSN.1 o Employee date of birth (DoB) o Employee Address o Employee Phone o Employee Email The PII collected can be seen by GSA HR Specialists and HR Managers who review employee retirement cases."
+GSA Credential and Identity Management System (GCIMS),"The system contains information needed for issuing and maintaining HSPD-12 credentials with the MSO and also access privilege information. Records may include:  Employee/contractor/other worker full name  Social Security Number (SSN)  Date of birth  Place of birth  Height  Weight  Hair color  Eye color  Sex  Citizenship  Non-US citizens only: o Port of entry city and state o Date of entry o Less than 3-year US resident (yes or no)  Occupation  Summary report of investigation  Investigation results and date  File attachments containing PII  Security Specialist Notes  Investigation History Data  Level of security clearance  Date of issuance of security clearance 13 Version 2.1: July 02, 2018  Facial Image (recorded at enrollment station during MSO registration)  Fingerprints (recorded at enrollment station during MSO registration)  Organization/office of assignment  Region  Telephone number  ID card issuance and expiration dates  ID card number  Emergency responder designation  Home address and work location  Emergency contact information  Physical and logical access  Contractors only: o Contract company (also referred as vendor) o Vendor Point of Contact (POC) o Whether contract company is the prime or a subcontractor o Name of prime if company is subcontractor o Task order number, delivery order, or contract base number o Contract start and end date o Contract option years (yes or no) o Names of previous companies on GSA contracts Full 9-digit SSNs are collected because it is required by OPM FSC to perform its background investigation activities within credit bureau and criminal database searches and uniquely identifies individuals in their system of record."
+GSA Enterprise Physical Access Control System (E-PACS),"Currently the system collects a full name, email and a contact phone number in addition to the public x509 certificates and the JPEG from the PIV is stored in the system. Only public elements from the PIV are stored in the system. The information is collected from GSA employees, Contractors, tenants, interns, and anyone with a HSPD-12 PIV compliant card meeting the requirements of FIPS-201 that require regular access to GSA facilities. The information is stored and maintained by GSA and is not shared externally. When an individual enrolls, the PACS Service software extracts the data from the PIV Credential, it checks the certificate path and the revocation status. It adds the cardholder and credential information to the E-PACS. The PACS Service checks stored X.509 certificate status via the Federal Bridge. It then updates the E-PACS with new records from GSA Authoritative sources and status updates from the Federal Bridge or GSA sources. The E-PACS is the central data repository for cardholders, credential, and access privilege records. The revocation status that is received is used to determine the validity of the user and suspend the credential if necessary. E-PACS utilizes the “least privilege” method, limiting administrative access and further limiting access to only the data needed for a person to perform his or her job within the system."
+GSA Implementation of Google (G) Suite,"The PII stored and shared using G Suite comes from a varied source of extracts and sources. Its primary purpose for being in G Suite is either for storage, sharing or collaboration. As the applications are not designed to specifically collect any specific information, it is up to users posting to ensure they only post such information as stated in SORN CIO-3 (http://www.gpo.gov/fdsys/pkg/FR-2013-06-11/pdf/2013-13813.pdf)."
+GSA Online University (OLU) and External Learning Management System (ELMS),"OLU – User Principle Name, Name, Email address and training records ELMS – Name, Email address and training records"
+GSA Real Estate Exchange,"G-REX may include documents of offeror-submitted material that potentially contains PII in the form of a TIN or an SSN. G-REX also maintains the offeror/lessor business addresses and telephone number, which might be the offeror/lessor home address and telephone number."
+GSA Security Tracking and Adjudication Record System (GSTARS),"Collects and maintains the following personally identifiable information which may be developed during the security investigation, including but is not limited to: Full Name • Social Security No. • Citizenship Status • fingerprint results • email address • Date of Birth • Place of Birth • Gender • Organizational and Employee affiliations Medical History • Criminal History • Mother’s Maiden Name • Employment History • Credit History • Phone Numbers • Position Title • Position Sensitivity • Eligibility Level Clearance / Eligibility Date / 3 Adjudication Date • Clearance Type: Secret, Top Secret, SCI • Reports of Foreign Travel • Reports of foreign contacts • Security Incident Reporting • Background Investigative Reports • Nondisclosure Agreements • and Requests for access to Sensitive Compartmented Information (SCI)."
+GSA Smart Pay - US Bank,"cardholders name 
+business address 
+telephone numbers 
+full name 
+home or business address
+date of birth,
+if a cardholder agrees to creditworthiness checks, their SSN 
+"
+GSA SmartPay® - Citibank,"Name  Contact Information (e.g., address, telephone number, email address)  Social Security Number (SSN)  Permanent Account Number (PAN)  Information about individuals provided by third parties (e.g. employer, credit reports, background investigation) 9 Version 2.2: August 29, 2018 Data is retrieved by Card or Account number, employee ID (if provided by the agency), and the name. All PII collected is required for the business logic processing, such as, online application, customer email notification, and statement delivery. All critical PII is masked on the screen. The system reinforces entitlement to protect unauthorized access, and any violation is reported."
+GSAJOBS,PII Collected shown below. All PII collected is for the purpose of applying for employment at GSA from all job applicants. ● Name ● Email Address ● Home Address ● Social Security Number (SSN) (Only last four digits are visible) ● Date of Birth ● Home address and telephone number ● Resume / Employment history ● Race and National Origin data (optional**) The PII collected can be seen by GSA HR specialists and managers who have requested applicants for open positions.
+Hire EZ,"All applicants seeking employment with the Presidential Innovation Fellows (PIF). The PII collected is shown below. All PII collected is for the purpose of applying for employment at GSA / PIF from all job applicants. ● Name ● Email Address ● Home Address ● Telephone Number ● Resume / Employment history ● Veteran and Citizenship Status ● User and Online Information (e.g., LinkedIn)"
+Human Resources IT Transition to Transformation (HR Links),"HR Links collects Federal employee data such as Name, Social Security Number (SSN), Employee Number, Date of Birth/Age, Home address and telephone number, Race and National Origin data, Gender, Handicap Code, Birth Date, Marital Status, Reprimands and Warnings, Education History, and Benefits. This Personally Identifiable Information (PII) is generally the most sensitive information included in the system. Other information includes payroll, accounting, pay and leave entitlement records, payroll deduction and withholding, and time and attendance records.
+
+There are four tiers of users, as categorized by PII access. “Tier one” users are employees that can access their own personal data only, for example personal contact information, benefit election information and time and attendance records. Examples of “tier two” users are an employee’s supervisor who has access to information including that employee’s home address, personal contact information, and time and attendance records but specifically excluding Social Security Number (SSN) and date of birth (DOB). “Tier three” users are comprised of a subset of GSA OHRM staff users who may have a need to access employees’ SSNs or DOBs, as well as the information available at tiers one and two. “Tier four” users are a different subset of GSA OHRM staff who may need access to voluntarily reported employee data including race and national origin to evaluate how GSA is meeting its policies and practices on hiring and retaining minorities, women, and disabled persons, analyzing their status in the workforce; and for establishing workforce diversity goals and timetables.
+
+HR Links receives information about GSA employees from the systems listed below:
+Payroll, Accounting and Reporting (PAR) system –PAR is GSA’s payroll processing system and the link between the GSA’s HR and accounting systems. HR Links sends updated personnel data to the payroll system along with the time and attendance information required to perform payroll actions. GSA’s payroll system provides HR Links with the resulting payroll information after each payroll processing cycle. GSA employee PII shared from PAR to HR Links and from HR Links to PAR includes the employee’s name, date of birth, and social security number. However, HR Links and PAR do not exchange employee home addresses, or phone numbers.
+
+GSA Credential and Identity Management System (GCIMS) - GCIMS contains credential and background investigation information for all GSA employees and contractors. HR Links has a bidirectional connection to GCIMS and shares PII including SSN as part of the background investigation process.
+
+GSA JOBS - GSA JOBS contains information on GSA positions. HR Links has a bidirectional connection to GSA JOBS to track which positions are open or being filled.
+
+HR Links transmits information to the systems listed below via secure file transfer protocol (SFTP) which provides the ability to push data to external sources through batch file transfer.
+
+The Department of Health and Human Services (HHS) Federal Occupational Health (FOH) – HHS’ FOH provides a benefit to all federal agencies for work-life balance activities for Federal employees (https://www.worklife4you.com/index.html) . This FOH-managed program requires that each Federal agency provide a list of current employees to the WorkLife4You vendor. HR Links provides a full list of GSA employees to FOH on a monthly basis including name, e-mail address, birth date, gender, and home address to allow FOH to offer benefits.
+
+OPM’s Electronic Official Personnel Folder (eOPF) – HR Links transmits GSA employees’ personnel records (e.g. promotions, raises, etc.) to OPM’s Enterprise Human Resources Integration (EHRI) initiative to improve the Federal Government’s human capital management. eOPF is each employee’s electronic Official Personnel File. eOPF requires the employee’s name and SSN to validate records.
+
+Benefits (EEX) – EEX allows a variety of discretionary personnel and payroll transactions (e.g., changes to Financial Allotments, Health Benefits, Thrift Savings Plan, Direct Deposit, Federal and State Taxes, and Home Address) to be performed. This service requires PII, including SSN to validate records.
+
+Enterprise Human Resources Integration (eHRI) – EHRI is responsible for maintaining the integrity of the electronic Official Personnel Folder (eOPF), which protects information rights, benefits, and entitlements of federal employees. Through on-demand Web-based access to personnel folders, EHRI eOPF enables 24/7 concurrent access to personnel information by Human Resources (HR) staff, and employees. It also allows the electronic transfer of the eOPF from one agency to another when the employee moves from one organization to another. The suite of EHRI analytical tools and a comprehensive Data Warehouse provides on demand, custom reports to plan and forecast the personnel needs of the Federal Government. This service requires PII, including SSN to validate records."
+ImageNow,"The following personal information is required for the administration of the Child Subsidy program:
+
+● employee by name or other unique identifier
+● gender,
+● birth date,
+● age,
+● marital status,
+● spouse and
+● dependents,
+● home e-mail address,
+● home address,
+● home phone number,
+● cell phone number,
+● work phone number,
+● health records,
+● Social Security Number (SSN), (only captured in the image, not in the database)
+● Employer Identification Number,
+● payroll deductions,
+● banking information,
+● personal credit card information,
+
+The SSN is used for tax identification purposes in the Child Subsidy program and relates to the payroll processing. This is stored in the PAR system database, and only in ImageNow as part of an image.
+
+For invoice capture, items such as a person’s name, banking information, credit card information, and a SSN are captured only when a vendor is a sole-proprietorship using their personal information for business purposes. The SSN may be included in the image, but is not captured in the database. 
+When invoices are related to a company that is not a sole proprietorship, these entries relate to business points of contact, business addresses, and business banking information, none of which is subject to the Privacy Act, because corporations and organizations do not have any Privacy Act rights. In both cases, the data is captured or searching the invoices and relating the data to data in Accounts Payable and Accounts Receivable modules in Pegasys.
+
+
+
+
+
+
+
+"
+Login.gov,"PII Categories        IAL1/AAL2        IAL2/AAL2        Purpose
+Email Address        Yes        Yes        Establish account
+Master Universally Unique Identifier (UUID) or MBUN        Yes        Yes        Assigned for account identification
+Agency UUID        Yes        Yes        Assigned for account identification
+Phone Number for multi- factor authentication (MFA)        Yes        Yes        Enable multi-factor authentication
+PIV/CAC subject        Yes        Yes        Enable multi-factor authentication
+Full Name        No        Yes        Identity resolution
+Address        No        Yes        Identity verification
+Date of Birth        No        Yes        Identity resolution
+Social Security Number        No        Yes        Identity resolution
+State-issued ID Number and Type        No        Yes        Identity verification
+Contact Phone Number        Only if same        Yes        Verify state-issued ID address"
+NBC Studley,"The NBC Studley system will include the following types of PII:
+
+● Contact Information
+● Business Information
+● Financial Information
+● Social Security Numbers
+
+The Studley broker agents collects information to form leasing packages for the GSA acting as agents of GSA. Within those packages there are the following data requirements which if the lessor would need to provide when enacting a lease with GSA through the Studley brokers. The following information is required if business information is not available:
+Lessor Name, Lessor Address, Lessor Phone Number, Lessor Email Address (business or personal as applicable), Lessor Tax ID (if not a business this is their SSN), Financial Account Information (bank account information)."
+OCR Complaint Management System,"Name ● Sexual orientation ● Prior equal employment opportunity (EEO) activity ● Age, including date of birth ● Disability, including identifying physical or mental impairments ● Grade/step/series/salary information ● Job title ● Home address ● Phone numbers ● Email addresses ● Race ● Color ● Religion ● National origin ● Gender, including transgender status ● Other identifying information deemed relevant to the investigation"
+Payroll Accounting and Reporting (PAR),"The system holds payroll records, and includes information received by operating officials as well as personnel and finance officials administering their program areas, including information regarding nonsupport of dependent children. The system also contains data needed to perform detailed accounting distributions and provide for tasks such as mailing checks and bonds and preparing and mailing tax returns and reports. Collection of SSNs is required by the Department of Treasury and IRS policy, rules and/or regulations"
+Real Estate Taxes Portal (RET),"The application collects tax documentation and data from External GSA Lessors who hold a GSA lease. Data that is collected is associated with each document upload/submission (tax year, block and lot number, tax bill frequency, tax period start and end date, municipality). Information contained in submitted tax documents varies by municipality and by ownership entity; documents could contain Names, Addresses, Tax ID Numbers (which may be SSN for small business owners), Business or Home Addresses of Property Owners, Phone Numbers and other personally identifiable information.
+All accounts must register first; lessors must provide an email address, name and region."
+ROCIS,"The ROCIS database stores user contact information and user roles. User accounts include: Name, Agency, Title, Work Telephone, Work TDD, Work Fax, Work Email and Work Address, username (system generated), user number (system generated), and password. 
+
+The Paperwork Reduction Act allows for the public to comment on Information Collections during the first 30 days of OIRA's review. Until now, the public has been provided with an email address at OIRA to which they can submit comments. We will now allow the public to submit comments to OIRA from Reginfo.gov. Commenters may provide name, email address and affiliation as part of their comment submission. Information provided may be used by OIRA to follow-up with commenter if needed. If provided, the commenter's name will be displayed on Reginfo.gov along with the comment when OIRA completes their review.
+
+EO 12866 requires that OIRA meet with outside parties at their request. In order to facilitate this, users are able to request meetings with OIRA. When requesting a meeting with OIRA, names, email addresses and phone numbers are required. OIRA is required to provide information to the public after the meetings have occurred. This information includes the names of meeting participants and how they attended the meeting, i.e. teleconference, etc."
+Sales Automation System,"The following information is collected by each sub-application.
+Sales Automation System (SASy) – Collects following information from Individual and Company bidders/users who are awarded a sales contract
+- First and Last Name
+- Home address
+- Email address
+- Telephone number
+- Social Security Number or Tax Identification Number
+- Credit card number
+GSAAuctions - Collects following information from Individual and Company bidders/users. Individual and Company users self-register in the application.
+- First and Last Name
+- Home address
+- Email address
+- Telephone number
+- Date of birth
+- Social Security Number or Tax Identification Number
+- Credit card number
+- IP Address
+ePay – Captured following information during payment process
+- First and Last Name
+- Home address
+- Email address
+- Telephone number
+- Credit card number
+MySales – Collects following information
+- First and Last Name
+- Home address
+- Email address
+- Telephone number
+ReverseAuctions – Maintains following information. One set of Vendor users self-register in the application.
+Privacy Impact Assessment
+SASY Page 11
+05/08/2018
+- First and Last Name
+- Business / Home address
+- Email address
+- Telephone number
+International bidders registering on GSAAuctions and failed bidders attempting registration on GSAAuctions are asked to provide 2 forms of identification for identity verification to registration@gsa.gov. The Office of Personal Property Central Office staff verify the documents sent by bidders. Once the documents are verified the central office uses the GSAAuctions Application – Administrator interface to override international and failed users so as to complete registration. Once the users are registered, the central office staff deletes the emails containing identity documents. Some bidders mail personal identity documents to Office of Personal Property. The documents are shredded after verification.
+GSAAuctions uses past bidding history data based on product categories to identify target users to send marketing email for upcoming sales. The bidders are selected by random (50% sampling) where marketing emails are sent on a daily basis. Any bidding history to date has not been purged.
+The GSAAuctions sub-application uses Experian products (PreciseId for Individual user and BizID for Company users) to get a decision (Accept or Refer). The application uses this decision to make a decision on approving users as registered bidders. For Experian service PreciseId, GSAAuctions sends Individual SSN, name, address and optionally credit card number to get a decision. For Experian service BizId, GSAAuctions sends Company TIN, company name and address to get a decision. The results of the “Accept or Refer” decision are saved in GSAAuctions.
+ReverseAuctions – Open Market vendors self-register in the application. Sam.gov is used to verify if a vendor is in active status."
+System for Award Management (SAM),"In the Entity Management functional area, SAM contains records that capture information users voluntarily provide about their entity as part of the process to register to do business with the Federal Government, including the entity legal business name, entity email address, entity telephone number, entity Taxpayer Identification Number (TIN), and entity address.
+
+In the case of a sole proprietor, tax laws allow them to use their Social Security Number (SSN) as their TIN if they do not have a separate Employer Identification Number (EIN). The TIN (whether it be an EIN or an SSN) is not publicly available data. In the exclusion portion of the Performance Information functional area, SAM contains records entered by Federal agency suspension and debarment officials, some of which may be records on individuals."
+The Museum System (TMS),"For some, but not all, individuals the following information is collected:
+
+Name
+Date of birth
+Place of birth
+Current address – street address, city, state, zip code Email address
+Website address
+Home telephone number
+Office/studio telephone number
+Fax number
+Contact information for gallery or other artist’s representative U.S. Citizenship or permanent residence status confirmation"
+Touchpoints,"Currently, Touchpoints has three form instrument “templates” - combinations of input fields designed for common customer experience evaluation purposes.
+
+● A-11 form template: no PII is requested
+● Recruiter form template: First Name, phone (optional), email address (optional)
+● Open text feedback form template: a single multi-line text input, (no PII is
+requested or required)"
+TTS Applicant Tracker,"Eligibility Requirements: “All United States citizens and nationals (residents of American Samoa and Swains Islands) are eligible to apply.” Do you meet the eligibility requirements? (Y/N)
+
+Preferred Name, Email, Best Phone Number, City, State, ZIP Code, Ability to work full- time (Y/N), Preferred Work location (Picklist), 
+
+Where did you learn about this opportunity (Picklist), Up to 3 URL links to resume, portfolios or other online presence, Resume (Text Box), Why do you want to join this organization (Text Box), 
+
+Tell us why you’re interested in the role you’re applying for (Text Box).
+
+“Are you a Veteran of the U.S. Armed Forces or are you eligible for derived preference?” (Picklist below)
+● No, I do not claim Veterans' Preference.
+● 0-point Sole Survivorship Preference (SSP).
+● 5-point preference based on active duty in the U.S. Armed Forces (TP).
+● 10-point preference based on a compensable service connected disability of at
+least 10% but less than 30% (CP).
+● 10-point preference based on a compensable service connected disability of 30%
+or more (CPS).
+● 10-point preference for non-compensable disability or Purple Heart (XP).
+● 10-point preference based on widow/widower or mother of a deceased veteran,
+or spouse or mother of a disabled veteran (XP)."
+TTS Data.gov,Data.gov collects names and email addresses of those users who choose to input that information. The input of names and email addresses from users is optional.
+USAccess,"The personal information collected in the enrollment process consists of data elements necessary to verify the identity of individuals and to perform background investigations concerning applicants. The data elements retained by the USACCESS IDMS for the PIV Card applicants include: name, date of birth, SSN, organizational and employee affiliations, fingerprints, digital color photograph, work e-mail address, and phone number(s), as well as additional verification and demographic information. Other types of data contained in the system may include: military status; foreign national status, federal emergency response official status; law enforcement official status; results of background check; and PIV Card issuance location."
+GSA's Customer Engagement Organization.,"This system contains information needed for the functionality of specific minor applications that are developed for GSA's implementation of the Customer Engagement Organization on the salesforce.com platform. This system contains the following information:
+Full name.
+Personal physical home address.
+Personal home or mobile phone.
+Personal email addresses.
+U.S. citizenship status.
+U.S. armed forces veteran status.
+Current employer.
+Optional links to social networking profiles.
+Resume/CV.
+Social Security Number.
+Grade.
+Work phone Number.
+Total Income.
+Number of dependent children.
+Number of children on whose behalf the parent is applying for a subsidy.
+Information on child care providers used, including name, address, provider license number and State where issued, tuition cost, and provider tax identification number.
+Copies of IRS Forms 1040 and 1040A for verification purposes."
+Employee-related files.,"The system records contain the individual's name; social security 
+number; birth date; home and emergency addresses and telephone numbers; 
+personnel actions; professional registration; qualifications; training; 
+employment history; awards; counseling; reprimands; grievances; 
+appeals; leave; pay attendance; work assignments; performance ratings; 
+injuries; permit and pass applications; unpaid debt complaints, 
+including nonpayment of child support; travel; outside employment; 
+congressional employee relief bills; and telephone call details. The 
+system does not include official personnel files covered by OPM/GOVT-1."
+E-PACS,"Photo, Full Cardholder Unique Identifier (CHUID), Public Key Infrastructure (PKI) Certificateâ(X509), Card Authentication Key (CAK) Certificate, Full Name, Person Classification, Badge Expiration Date, Card State, User Principal Name (UPN), Federal Agency Smart Card Number (FASC-N), and Globally Unique Identifier (GUID)."
+Investigation Case Files.,"Investigative files containing personal information, including name, date, and place of birth, experience, and investigative material that is used as a basis for taking civil, criminal, and administrative actions."
+Internal Evaluation Case Files.,"Investigative files containing information such as name, date and place of birth, experience, and investigative material that is used as a basis for taking civil, criminal, and administrative actions."
+Office of Inspector General Counsel Files,"The system contains information routinely and necessarily obtained by the OIG Counsel's Office in the conduct of its official responsibility to represent and advise the GSA OIG. Records in this system pertain to a broad variety of matters handled by the OIG Office of Counsel, including but not limited to civil, criminal, and administrative actions, personnel matters, correspondence, special projects, and Freedom of Information Act and Privacy Act requests. Records may include but are not limited to: Name, social security number, addresses, phone numbers, e-mail address, birth date, financial information, medical records, or employment records. The system may also contain other records such as: Case history files, copies of applicable laws, working papers of attorneys, testimony of witnesses, correspondence, accident reports, pleadings, affidavits, litigation reports, financial data and other records. This system notice covers records not covered by other appropriate system of records notices."
+Child Care Subsidy.,"Application forms for child care subsidy containing personal information, including employee (parent) name, Social Security Number, grade, home and work numbers, addresses, telephone numbers, total income, number of dependent children, and number of children on whose behalf the parent is applying for a subsidy; information on child care providers used, including name, address, provider license number and State where issued, tuition cost, and provider tax identification number; and copies of IRS Forms 1040 and 1040A for verification purposes."
+GSA Credential and Identity Management System (GCIMS).,"The system contains information needed for issuing and maintaining HSPD-12 credentials and also access privilege information. Records may include:
+â¢ Employee/contractor/other worker full name
+â¢ Social Security Number (SSN)
+â¢ Date of birth
+â¢ Place of birth
+â¢ Height
+â¢ Weight
+â¢ Hair color
+â¢ Eye color
+â¢ Sex
+â¢ Citizenship
+
+â¢ Non-US citizens only:
+â Port of entry city and state
+â Date of entry
+â Less than 3-year US resident (yes or no)
+â¢ Occupation
+â¢ Summary report of investigation
+â¢ Investigation results and date
+â¢ File attachments containing PII
+â¢ Security Specialist Notes
+â¢ Investigation History Data
+â¢ Level of security clearance
+â¢ Date of issuance of security clearance
+â¢ Facial Image
+â¢ Fingerprints
+â¢ Organization/office of assignment
+â¢ Region
+â¢ Company name
+â¢ Telephone number
+â¢ ID card issuance and expiration dates
+â¢ ID card number
+â¢ Emergency responder designation
+â¢ Home address and work location
+â¢ Emergency contact information
+â¢ Physical and logical access
+â¢ Contractors only:
+â  Contract company (also referred as vendor)
+â Vendor Point of Contact (POC)
+â Whether contract company is the prime or a subcontractor
+â Name of prime if company is subcontractor
+â Task order number, delivery order, or contract base number
+â Contract start and end date
+â Contract option years (yes or no)
+â Names of previous companies on GSA contracts"
+Enterprise Server Services (ESS),"This system contains information needed to utilize two factor authentication to access Google Apps for Government. Records may include, but not necessarily be limited to:
+â¢ Employee/contractor/other worker's full name
+â¢ Organization/office of assignment
+â¢ Company/agency name
+â¢ Work Address
+â¢ GSA Assigned work telephone number
+â¢ Personal home or mobile phone
+â¢ Personal e-mail addresses"
+"GSA's Enterprise Organization of Google Applications, Moderate Impact Software as a Service Cloud (SaaS) Minor Applications & GSA's EEO Org of Salesforce.com. This system is a compilation of GSA's Cloud based minor applications implemented across various vendors as well as GSA applications, all of which are part of the Enterprise Cloud Services (ECS) system.","This system contains information needed for the functionality of specific minor applications that are developed for either GSA's implementation of Google Apps or Salesforce.com. This system contains the following information:
+Public individuals defined under Categories of Individuals above/employee/contractor/other worker's full name.
+Organization/office of assignment.
+Company/agency name.
+Work address.
+Work telephone number.
+Social Security Number.
+Personal physical home address.
+Personal home or mobile phone.
+Personal email addresses.
+Individual work related records."
+Personal Property Sales Program.,"The system contains information needed to identify potential and actual bidders and awardees, and transaction information involving personal property sales. System records include:
+a. Personal information provided by bidders and buyers, including, but not limited to, names, phone numbers, addresses, Social Security Numbers, birth dates and credit card numbers or other banking information; and
+b. Contract information on Federal personal property sales, including whether payment was received, the form of the payment, notices of default, and contract claim information."
+Employee Drug Abuse/Alcoholism Files.,
+Occupational Health and Injury Files.,
+Labor-Management Relations Files.,
+Grievance Records.,The system contains grievances filed by agency employees under part 771 of OPM regulations. It also includes files of internal grievance and arbitration systems that are established through negotiations with recognized labor unions.
+Personnel Security files.,"Personnel security files contain information such as name, former names, date and place of birth, home address, phone numbers, height, weight, hair color, eye color, sex, passport information, military information, civil court information, employment history, residential history, Social Security Number, occupation, experience, and investigative material, education and degrees earned, names of associates and references and their contact information, citizenship, names of relatives, citizenship of relatives, names of relatives who work for the federal government, criminal history, mental health history, drug use, financial information, fingerprints, summary report of investigation, results of suitability decisions, level of security clearance, date of issuance of security clearance, requests for appeals, witness statements, investiga tor's notes, tax return information, credit reports, security violations, circumstances of violation, and agency action taken. 
+
+
+Forms: SF-85, SF-85P, SF-86, SF-87, GSA Form 3665, OF306, FD258, GSA  Form 1380, GSA Form 3648."
+Federal Procurement Data SystemâNext Generation (FPDS-NG).,"The system collects, processes, and maintains official statistical data on Federal contracting, including: 
+a. Information on individual federal contractors that may include name, DUNS (Data Universal Numbering System) number, and Social Security Number as the Taxpayer Identification Number (TIN). 
+b. Contracts that are unclassified but may be considered sensitive due to insight they may provide into federal government activities in conjunction with data from other federal contracts."
+FedBizOpps (FBO).,"The system maintains an inventory of Federal solicitations and related documents, and vendor contact information. System information includes: 
+a. Organizational, contact, and access control information on Federal contracting officials authorized to access and use the FedBizOpps system services for the management, administration, and posting of Federal solicitation information and related documents. 
+b. Contact information in the form of an e-mail address, provided voluntarily by vendors and other individuals who wish to use FedBizOpps to be kept informed of Federal procurements and/or specific solicitations of interest. Vendors also may choose to be included on the Interested Vendors Listing (IVL) to further eCommerce opportunities. A vendor may provide any or all of the data in the Interested Vendor Listing, which consists of Company Name, Address, Phone Number(s), E-mail address(es), Name of Point of Contact, and Business Type."
+Federal Acquisition Institute (FAI) Online University.,"The system maintains a record of an individual and his/her course progress while attending online courses. Required information consists of name and e-mail. Additional information is voluntarily provided and may include: a. Contact data (home or business address including city, state, zip code, and country; and home or business telephone and fax number). b. Work-related information, including affiliated organization, business telephone, business fax number, and manager's e-mail. c. Training records, including course type selection, course progress, and course start/completion dates."
+USA.gov,"Records may include, but are not limited to: (1) Biographical data such as name, address, email, phone number, birth date, and basic demographic information such as whether or not the individual is married, a veteran, a small business owner, a parent or a student; (2) information stored by third-party applications that have been authorized by the user to access their account using one or more of USA.gov's programmatic interfaces, such as notifications, tasks, or events; (3) a history of third-party applications interactions with a user's account so the user can monitor how their account is being accessed by third-parties. Use of the system, and contribution of personal information, is completely voluntary."
+Records of Defunct Agencies.,"Payroll and financial records, including but not limited to, time and attendance cards, payment vouchers, employee health benefit records, requests for deductions, tax forms, including W-2 forms, overtime requests, leave data, retirement records, and vendor register and payment tapes."
+Office of General Counsel Case Tracking and eDiscovery System,"The system contains information needed for administering and properly managing and resolving the cases in the Office of General Counsel and responding to FOIA requests. Records in this system pertain to a broad variety of administrative matters, claims and litigation under the jurisdiction of the Office of General Counsel including, but not limited to, torts, contract disputes, and employment matters. Records may include but are not limited to: Name, social security number, home address, home phone number, email address, birth date, financial information, medical records, or employment records."
+eLease.,"The system maintains information required throughout the lifecycle of a PBS building lease including information about leases, offerors, and lessors. In addition to business contact and identification information (address, telephone number, and Taxpayer Identification Number (TIN)), the system includes personal information on individuals who use personal contact and identification information (home address, telephone, e-mail, and fax numbers, and Social Security Number) for business purposes as sole proprietors."
+Electronic Acquisition System (EAS).,"The system maintains information required throughout the lifecycle of a PBS contract action including information about contracts, proposals and bids, and vendors. The Central Contractor Registry, a federal government computer system maintained by the Department of Defense, is the sole source for vendor information in EAS. All information received from CCR is originally submitted by the vendor to CCR. In addition to business contact and identification information (address, telephone number, and Taxpayer Identification Number (TIN)), the system includes personal information on individuals who use personal contact and identification information (home address, telephone, e-mail, and fax numbers, and Social Security Number) for business purposes as sole proprietors."
+GSA/PBS-7 (The Museum System - TMS),"The system contains information needed for managing the Art in Architecture and Fine Arts programs, which includes access to information on artists represented in the fine arts collection and artists in the National Registry. Records may include but are not limited to: (1) biographical data such as name, birth date, and educational level; and (2) contact information such as telephone number, street address and email address."
+GSA/PBS- 8 (Electronic Document Management System - EDMS),"The system contains information related to unsolicited resumes from the public, suitability adjudication letters, training and warrant documents for GSA PBS employees, and other administrative employee documents such as telecommute agreements."
+Disbursement and Accounts Payable Files.,"The system provides for reporting each account's status. Records may include but are not limited to name, address, telephone number, vendor identification number, banking information and Social Security number."
+Travel System,"The system provides control over the expenditure of funds for travel, relocation, and related expenses. Therefore, provisions are made to authorize travel and relocation, provide and account for advances, and to pay for travel and relocation costs. The system contains records that may include, but are not limited to, name, Social Security Number, date of birth, gender, passport number, redress number, known traveler number, residence address, dependentsâ names and ages, duty stations, itinerary and credit data in the form of credit scores (examples of credit scores are FICO, an acronym for Fair Isaac Corporation, a Beacon score, etc.) or commercial and agency investigative reports showing debtorsâ assets, liabilities, income, expenses, bankruptcy petitions, history of wage garnishments, repossessed property, tax liens, legal judgments on debts owed, and financial delinquencies."
+Employee Credit Reports.,"Information that may be stored includes but is not limited to, name and address, age, number of dependents, name of employer, nature of business, position held/time held, full or part-time employment, net worth and what it consists of, annual earned income, other income, reputation, credit record, financial records, and personal history. The records are used in GSA to investigate employees who default on employment-related contracts."
+Credit Data on Individual Debtors.,"The records may contain information from commercial and agency investigative reports showing debtors' assets, liabilities, income, and expenses; identifying information, such as names and taxpayer identification numbers (TINs) (i.e., Social Security Numbers or employer identification numbers); debtor contact information, such as work and home address, and work and home telephone numbers; and name of employer and employer address. The records for claims against nongovernmental individuals (i.e., claims arising from vehicle accidents) may contain information on privately owned vehicles (POVs), including, but not limited to: (a) The owner, year, make, model, tag number and State of the vehicle; and (b) the driver's or owner's insurance company information, including name, address, telephone number and policy number. Debts include unpaid taxes, loans, assessments, fines, fees, penalties, overpayments, advances, extensions of credit from sales of goods or services, third-party claims, and other amounts of money or property owed to, or collected by, GSA, any other Federal entity or a State, including past-due support that is being enforced by a State. The records also may contain information about: (a) The debt, such as the original amount of the debt, the debt account number, the date of debt origination, the amount of delinquency or default, date of delinquency or default, the basis for the debt, the amounts accrued for interest, penalties, and administrative costs; and the payments on the account; (b) actions taken to collect or resolve the debt, such as demand letters or invoices sent, documents or information required for referral of accounts to collection agencies, to other Federal entities, or for litigation, and notes taken regarding telephone or other communications related to the collection or resolution of the debt; and (c) the referring or collecting governmental entity that is collecting or is owed the debt, such as the name, telephone number, and address of the governmental entity contact."
+Payroll Accounting and Reporting (PAR) System.,"PAR provides complete functionality for an employee's entire service life from initial hire through final payment and submission of retirement records to the Office of Personnel Management (OPM). The system holds payroll records, and includes information received by operating officials as well as personnel and finance officials administering their program areas, including information regarding nonsupport of dependent children. The system also contains data needed to perform detailed accounting distributions, provide for tasks such as mailing checks and bonds, and preparing and mailing tax returns and reports. The record system may contain:
+a. Employee's name, Social Security Number, date of birth, sex, work schedule, and type of appointment.
+b. Service computation date for assigning leave, occupational series, position, grade, step, salary, award amounts, and accounting distribution.
+c. Time, attendance, and leave; Federal, State, and local tax; allotments; savings bonds; and other pay allowances and deductions.
+d. Tables of data for editing, reporting, and processing personnel and pay actions, which include nature-of-action code, organization table, and salary table.
+e. Information regarding court-ordered payments to support dependent children, including amounts in arrears."
+Purchase Card Program.,"The system provides control over expenditure of funds through the use of Federal Government purchase cards. System records include: 
+a. Personal information on charge card users, including names, home or business telephone numbers and addresses, Social Security Numbers, date of birth, employment information, or commercial and agency investigative reports showing debtors' asset, liabilities, income, expenses, bankruptcy petitions, history of wage garnishments, repossessed property, tax liens, legal judgments on debts owed, and financial delinquencies; and 
+b. Account processing and management information, including charge card transactions, contractor monthly reports showing charges to individual account numbers, account balances, and other data needed to authorize, account for, and pay authorized purchase card expenses."
+ImageNow.,
+Disbursement and Accounts Payable Files.,"The system provides for reporting each account's status. Records may include but are not limited to name, address, telephone number, vendor identification number, and Social Security number."
+Transportation Benefits Records.,"Record categories may include name, home address, Social Security Number, work organization and location, work zip code, work phone number, service computation date, mode of transportation, and commuting costs."
+Login.gov,
+Travel Charge Card Program.,"Records include name, home address, Social Security Number, date of birth, employment information, telephone numbers, citizenship/residency, information needed for identification verification, travel authorizations and vouchers, charge card applications, charge card receipts, terms and conditions for use of charge cards, and monthly reports from contractor(s) showing charges to individual account numbers, balances, and other types of account analyses."
+Contracted Travel Services Program.,"System records may include a traveler's profile containing: Full name of individual which matches the name on the form of ID used for travel; Social Security Number; employee identification number; home and office telephones; home address; home and office e-mail addresses; emergency contact name and telephone number; agency name, address, and telephone number; air travel preference; rental car identification number and car preference; hotel preference; current passport and/or visa number(s); credit card numbers and related information; bank account information needed for electronic funds transfer; frequent traveler account information (e.g., frequent flyer account numbers); date of birth; gender; redress number (number DHA assigns to passenger to promote resolution with previous watch list alerts); known traveler number (passenger number DHS utilizes to facilitate passenger clearance); trip information (e.g., destinations, reservation information); travel authorization information; travel claim information; monthly reports from travel agent(s) showing charges to individuals, balances, and other types of account analyses; and other official travel related information."
+GSA SmartPay Purchase Charge Card Program.,
+HSPD-12 USAccess.,"Enrollment records maintained in the PIV IDMS on individuals applying for the PIV program and a PIV credential through the GSA HSPD-12 managed service include the following data fields: Full name; Social Security Number; Applicant ID number, date of birth; current address; digital color photograph; fingerprints; biometric template (two fingerprints); organization/office of assignment; employee affiliation; work email address; work telephone number(s); office address; copies of identity source documents; employee status; military status; foreign national status; federal emergency response official status; law enforcement official status; results of background check; Government agency code; and PIV card issuance location. Records in the PIV IDMS needed for credential management for enrolled individuals in the PIV program include: PIV card serial number; digital certificate(s) serial number; PIV card issuance and expiration dates; PIV card PIN; Cardholder Unique Identifier (CHUID); and card management keys. Agencies may also choose to collect the following data at PIV enrollment which would also be maintained in the PIV IDMS: Physical characteristics (e.g., height, weight, and eye and hair color). Individuals enrolled in the PIV managed service will be issued a PIV card. The PIV card contains the following mandatory visual personally identifiable information: Name, photograph, employee affiliation, organizational affiliation, PIV card expiration date, agency card serial number, and color-coding for employee affiliation. Agencies may choose to have the following optional personally identifiable information printed on the card: Cardholder physical characteristics (height, weight, and eye and hair color). The card also contains an integrated circuit chip which is encoded with the following mandatory data elements which comprise the standard data model for PIV logical credentials: PIV card PIN, cardholder unique identifier (CHUID), PIV authentication digital certificate, and two fingerprint biometric templates. The PIV data model may be optionally extended by agencies to include the following logical credentials: Digital certificate for digital signature, digital certificate for key management, card authentication keys, and card management system keys. All PIV logical credentials can only be read by machine."
+System for Award Management (SAM).,"Since SAM combined several Governmentwide systems, it has multiple functional areas. In the Entity Management functional area, SAM contains records that capture information users voluntarily provide about their entity as part of the process to register to do business with the Federal Government, including the entity legal business name, entity email address, entity telephone number, entity Taxpayer Identification Number (TIN), and entity address. In the case of a sole proprietor, tax laws allow them to use their Social Security Number (SSN) as their TIN if they do not have a separate Employer Identification Number (EIN). The TIN (whether it be an EIN or an SSN) is not publicly available data. In the exclusion portion of the Performance Information functional area, SAM contains records entered by Federal agency suspension and debarment officials, some of which may be records on individuals. Exclusion records on individuals contain certain information that will never be displayed publicly, e.g. street address information, as well as the SSN or TIN. Agencies disclose the SSN of an individual to verify the identity of an individual, only if permitted under the Privacy Act of 1974 and, if appropriate, the Computer Matching and Privacy Protection Act of 1988, as codified in 5 U.S.C. 552(a)."
+Federal Acquisition Regulation (FAR) Data Collection System.,"Categories of records include the name of the person entering, and as applicable, certifying, information on behalf of the prime or subcontractor, their position within the company, phone number, and email address. Categories of records related to employees of prime and subcontractors include, but are not limited to: Name, unique identifier assigned by the prime or subcontractor, work classification (per the Department of Labor's job classifications), regular and overtime hours worked by day/date, total hours worked, fringe benefits, whether paid as hourly rate in cash amounts or as an employer-paid benefit, and federal projects gross earnings. Some prime or subcontractors may be obligated to provide contractor employee information about themselves if they are self-employed. Categories of records related to acquisition personnel include name, position, work phone number, email address and other similar records related to their official responsibilities."
