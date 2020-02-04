@@ -4,7 +4,8 @@ console.log("Hi from Federalist");
 $(document).ready( function () {
     $('#myTable').DataTable({
         paging: false,
-        scrollX: true
+        scrollX: true,
+        searchHighlight: true
      });
 });
 

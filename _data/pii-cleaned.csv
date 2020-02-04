@@ -1,0 +1,52 @@
+System Name,PII
+Ancillary Financial Application (AFA) system ,"
+<ul>
+  <li>TIN</li>
+  <li>person’s name</li>
+  <li>SSN</li>
+  <li>home address</li>
+  <li>home phone</li>
+  <li>e-mail address</li>
+</ul>"
+Beta.SAM.gov,"
+<ul>
+  <li>legal business name</li>
+  <li> email address</li>
+  <li> telephone number</li>
+  <li> Taxpayer Identification Number (TIN)</li>
+  <li> address</li>
+  <li> Social Security Number (SSN)</li>
+</ul>"
+"Carlson Wagonlit Government Travel","
+<ul>
+<li>organization address</li>
+<li> telephone number</li>
+<li> travel preferences</li>
+<li> frequent flyer and rental car club account numbers</li>
+<li> passport information</li>
+<li> emergency contract name</li>
+<li> alternative address and telephone number</li>
+<li> personal credit card number </li>
+<li> date of birth</li>
+<li> gender</li>
+<li> redress number</li>
+<li> known traveler number</li>
+<li> Name</li>
+<li> SSN</li>
+<li> UserID</li>
+<li> home address</li>
+<li> home and office email</li>
+<li> home and office telephone numbers</li>
+<li> current passport and/or visa number(s)</li>
+<li> credit card numbers and related information</li>
+<li>bank account information needed for electronic funds transfer</li>
+<li>frequent traveler account information</li>
+<li>travel claim information</li>
+<li>destinations</li>
+<li>date of birth</li>
+<li>gender</li>
+<li>redress number</li>
+<li>known traveler number</li>
+<li> other passport information (i.e. issuing country, expiration date)</li>
+<li>emergency contact information</li>
+</ul>"

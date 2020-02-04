@@ -45,6 +45,10 @@ primary_navigation:
     url: /new-new
   - name: PII Only Raw
     url: /pii-only-raw
+  - name: PII Cleaned
+    url: /pii-cleaned
+  - name: PII Risk
+    url: /pii-risk
 
 
 # secondary_navigation:
