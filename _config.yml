@@ -51,6 +51,8 @@ primary_navigation:
     url: /pii-risk
   - name: API
     url: /api
+  - name: High Risk
+    url: /high-risk
 
 
 # secondary_navigation:

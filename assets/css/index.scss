@@ -3,26 +3,39 @@
 @import "uswds";
 
 // Add your SASS/CSS here
+
+.usa-tag {
+  background-color: #EFEDEB;
+  color: black;
+}
+
 .red {
   background-color: #d63e04;
   white-space: nowrap;
+  color: white;
 }
 .orange {
   background-color: #e5a000;
   white-space: nowrap;
+  color: white;
 }
 .yellow {
   background-color: #fee685;
   white-space: nowrap;
+  color: white;
 }
 .green {
   background-color: #00a91c;
   white-space: nowrap;
+  color: white;
 }
 .blue {
   background-color: #00bde3;
   white-space: nowrap;
+  color: white;
 }
+
+
 
 .grid-container {
   max-width: 100%;
