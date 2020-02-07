@@ -33,7 +33,7 @@ manage in the long term.
                     {% for cell in row %}
                     <!-- MAD HACKY -->
                         {% if forloop.index == 2 %}
-                            <td><a href='row[3][1]'>{{ cell[1] }}</a></td>
+                            <td><a href='{{row['Url']}}'>{{row['System Name']}}</a></td>
                             {% continue %}
                         {% endif %}
                         {% if forloop.index == 3 %}
