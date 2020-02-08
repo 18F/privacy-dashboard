@@ -1,0 +1,74 @@
+---
+permalink: /search-first/
+layout: wide
+title: Home
+---
+<script src="https://cdn.jsdelivr.net/npm/minisearch@2.1.1/dist/minisearch.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+    const documents = [
+        {{ site.data.all-raw-data | jsonify }}
+    ]
+    console.log(documents)
+
+    let miniSearch = new MiniSearch({
+        fields: ['PII'], // fields to index for full-text search
+        storeFields: ['System Name', 'Url'] // fields to return with search results
+    })
+
+// // Index all documents
+miniSearch.addAll(documents[0])
+// console.log(miniSearch.toJSON())
+// // // Search with default options
+// let results = miniSearch.search('Social Security Number')
+// console.log(results)
+
+window.onload = function(){
+    const searchInput = $("#search-input");
+    $("#search-input").keypress(function(e){
+        if (searchInput.val().length > 2) {
+            let suggestions = miniSearch.autoSuggest(searchInput.val());
+            console.log(suggestions);
+        }
+        
+    })
+
+    $("form").submit( function(e){
+        e.preventDefault();
+        let results = miniSearch.search($("#search-input").val());
+        console.log(results);
+
+
+
+        for (let i = 0; i < results.length; i++) {
+            var sysName = results[i]["System Name"];
+            var url = results[i]['Url'];
+            $("#results").append(`<li><a href="${url}">${sysName}</a></li>`)
+        }
+    })
+}
+
+
+
+
+
+
+</script>
+
+<section class="grid-container usa-section usa-prose">
+    <form id="search-form" class="usa-search usa-search--big">
+        <div role="search">
+          <label class="usa-sr-only" for="search-field-big">Search</label>
+          <input id="search-input" class="usa-input" id="search-field-big" type="search" name="search">
+          <button id="search" class="usa-button" type="submit">
+            <span class="usa-search__submit-text">Search</span>
+          </button>
+        </div>
+      </form>
+
+      <ul id="results">
+      </ul>
+</section>
