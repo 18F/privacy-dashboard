@@ -3,43 +3,35 @@ permalink: /all-raw-data/
 layout: wide
 title: Home
 ---
-
-{% comment %} 
-Welcome to official Federalist Jekyll template for the U.S Web Design System 2.0
-
-You'll notice that this page only makes reference to two other html files: hero.html and highlights.html
-
-To the edit the home page, you can edit those files directly, create new ones or add content directly to
-this page. 
-
-We recommend splitting apart your site's components into their own smaller section so that its easier to 
-manage in the long term.
-{% endcomment %}
 <section class="grid-container usa-section usa-prose">
   
         <table id="myTable" class="usa-table usa-table--borderless">
                 <thead>
                 <!-- First column is html title to use -->
-                {% for column in site.data.all-raw-data[0] %}
-                    {% if column[0] == "Url" %}
+                {% for cell in site.data.all-raw-data[0] %}
+                    {% if cell[0] == "id" %}
                         {% continue %}
+                    {% elsif cell[0] == "Url" %}
+                        {% continue %}
+                    {% else %}
+                        <th>{{ cell[0] }}</th>
                     {% endif %}
-                    <th>{{ column[0] }}</th>
                 {% endfor %}
                 </thead>
                 <tbody>
                 {% for row in site.data.all-raw-data %}
                     <tr>
                     {% for cell in row %}
-                    <!-- MAD HACKY -->
-                        {% if forloop.index == 2 %}
-                            <td><a href='{{row['Url']}}'>{{row['System Name']}}</a></td>
+                        {% if cell[0] == "id" %}
                             {% continue %}
-                        {% endif %}
-                        {% if forloop.index == 3 %}
+                        {% elsif cell[0] == "System Name" %}
+                            <td><a href="{{ row['Url'] }}">{{ cell[1] }}</a></td>
                             {% continue %}
+                        {% elsif cell[0] == "Url" %}
+                            {% continue %}
+                        {% else %}
+                            <td>{{ cell[1] }}</td>
                         {% endif %}
-                        <td>{{ cell[1] }}</td>
                     {% endfor %}
                     </tr>
                 {% endfor %}
