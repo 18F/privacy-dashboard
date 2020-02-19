@@ -18,7 +18,7 @@
 # Be sure to edit the values below
 ##########################################################################################
 
-title: Searching PII at GSA
+title: PII Inventory
 email: contact@example.gov
 description: >- # this means to ignore newlines until "baseurl:"
   Agency Name (EAC) Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -37,24 +37,8 @@ dap_agency: GSA
 
 # Site Navigation
 primary_navigation:
-  - name: Dashboard
-    url: /
-  - name: PII Detail
-    url: /pii-detail
-  - name: All Raw Data
-    url: /all-raw-data
-  - name: PII Only Raw
-    url: /pii-only-raw
-  - name: PII Cleaned
-    url: /pii-cleaned
-  - name: PII Risk
-    url: /pii-risk
-  - name: API
-    url: /api
-  - name: High Risk
-    url: /high-risk
-  - name: Search First
-    url: /search-first
+  - name: Old Prototypes
+    url: /old-prototypes
 
 
 # secondary_navigation:
