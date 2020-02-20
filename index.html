@@ -34,27 +34,48 @@ $(document).ready( function () {
 }
 </style>
 
-<section class="grid-container usa-section usa-prose">
-  <div id="cards">
-    <input class="search" placeholder="Search" />
-    <div class="list">
-    {% assign rows = site.data.pii-inventory | sort: "System Name" %}
-    {% for row in rows %}
-      <div class="card outline-2px padding-2 margin-2">
-        <span class="system font-heading-xl">{{ row['System Name'] }}</span>
-        
-        <ul class="pii">
-          {% assign pii = row['PII'] | split: "," %}
-          {% for i in pii %}
-            <li>{{i}}</li>
-          {% endfor %}
-        </ul>
-        <a href="{{ row['URL'] }}" target="_blank">Link</a>
+<div class="usa-section">
+<div class="grid-container">
+<div class="grid-row grid-gap">
 
+  <div class="usa-layout-docs__sidenav desktop:grid-col-3">
+    <nav aria-label="Secondary navigation">
+        <span>Title element</span>
+        <ul class="usa-sidenav">
+            <li class="usa-sidenav__item">
+                <a href="">Parent link</a>
+            </li>
+        </ul>
+    </nav>    
+</div> <!--sidenav-->
+
+<main class="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs" id="main-content">
+    <div class="desktop:grid-col-9 usa-prose usa-layout-docs" id="cards">
+      <input class="search" placeholder="Search" />
+      
+      <div class="list">
+      {% assign rows = site.data.pii-inventory | sort: "System Name" %}
+      {% for row in rows %}
+        <div class="card outline-2px padding-2 margin-2">
+          <span class="system font-heading-xl">{{ row['System Name'] }}</span>
+          
+          <ul class="pii">
+            {% assign pii = row['PII'] | split: "," %}
+            {% for i in pii %}
+              <li>{{i}}</li>
+            {% endfor %}
+          </ul>
+          <a href="{{ row['URL'] }}" target="_blank">Link</a>
+
+        </div>
+      {% endfor %}
       </div>
-    {% endfor %}
+      <ul class="pagination float-right"></ul>
     </div>
-    <ul class="pagination float-right"></ul>
-  </div>
-  
-</section>
+  </main>
+
+
+    
+</div> <!--grid-row-->
+</div> <!--grid-container-->
+</div> <!--usa-section-->
