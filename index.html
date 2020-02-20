@@ -56,14 +56,22 @@ $(document).ready( function () {
           <div class="list">
           {% assign rows = site.data.pii-inventory | sort: "System Name" %}
           {% for row in rows %}
-            <div class="card outline-2px padding-2 margin-2">
-              <span class="system font-heading-xl text-blue">{{ row['System Name'] }}</span>
+            <div class="card padding-2 margin-2">
+              <span class="system font-heading-lg text-blue">{{ row['System Name'] }}</span>
               
+              <ul class="padding-0">
+              <strong style="color:#5B5B5B">Type:</strong>
+              SORN|PIA
+              </ul>
+
+              <ul class="padding-0">
+                <strong style="color:#5B5B5B">PII:</strong>
               <ul class="pii usa-list">
                 {% assign pii = row['PII'] | split: "," %}
                 {% for i in pii %}
                   <li>{{i}}</li>
                 {% endfor %}
+              </ul>
               </ul>
               <a href="{{ row['URL'] }}" target="_blank" class="usa-link">Link</a>
 
