@@ -3,5 +3,58 @@ permalink: /
 layout: wide
 title: Home
 ---
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script>
+
+$(document).ready( function () {
+  var options = {
+    valueNames: [ 'system', 'pii' ],
+    page: 10,
+    pagination: true
+  };
+
+  var systemList = new List('cards', options);
+
+})
+
+</script>
+
+<style>
+.pagination li {
+  display:inline-block;
+  padding:5px;
+}
+
+.pii {
+  columns: 2;
+}
+</style>
+
 <section class="grid-container usa-section usa-prose">
+  <div id="cards">
+    <input class="search" placeholder="Search" />
+    <div class="list">
+    {% assign rows = site.data.pii-inventory | sort: "System Name" %}
+    {% for row in rows %}
+      <div class="card outline-2px padding-2 margin-2">
+        <span class="system font-heading-xl">{{ row['System Name'] }}</span>
+        
+        <ul class="pii">
+          {% assign pii = row['PII'] | split: "," %}
+          {% for i in pii %}
+            <li>{{i}}</li>
+          {% endfor %}
+        </ul>
+        <a href="{{ row['URL'] }}" target="_blank">Link</a>
+
+      </div>
+    {% endfor %}
+    </div>
+    <ul class="pagination float-right"></ul>
+  </div>
+  
 </section>
