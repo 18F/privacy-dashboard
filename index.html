@@ -38,14 +38,9 @@ $(document).ready( function () {
   <div class="grid-container">
     <div class="grid-row grid-gap">
 
-      <div class="usa-layout-docs__sidenav desktop:grid-col-3">
+      <div class="filter_section desktop:grid-col-3">
         <nav aria-label="Secondary navigation">
             <span>Title element</span>
-            <ul class="usa-sidenav">
-                <li class="usa-sidenav__item">
-                    <a href="">Parent link</a>
-                </li>
-            </ul>
         </nav>    
       </div> <!--sidenav-->
 
@@ -57,22 +52,24 @@ $(document).ready( function () {
           {% assign rows = site.data.pii-inventory | sort: "System Name" %}
           {% for row in rows %}
             <div class="card padding-2 margin-2">
+              
               <span class="system font-heading-lg text-blue">{{ row['System Name'] }}</span>
               
               <ul class="padding-0">
               <strong style="color:#5B5B5B">Type:</strong>
               SORN|PIA
               </ul>
-
-              <ul class="padding-0">
-                <strong style="color:#5B5B5B">PII:</strong>
+              
+              <div >
+              <strong style="color:#5B5B5B">PII:</strong>
               <ul class="pii usa-list">
                 {% assign pii = row['PII'] | split: "," %}
                 {% for i in pii %}
                   <li>{{i}}</li>
                 {% endfor %}
               </ul>
-              </ul>
+            </div>
+
               <a href="{{ row['URL'] }}" target="_blank" class="usa-link">Link</a>
 
             </div>

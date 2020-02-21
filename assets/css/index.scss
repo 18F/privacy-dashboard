@@ -41,6 +41,13 @@
   outline-width: 1px;
 }
 
+.filter_section{
+  background-color: #C9c9c9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .pagination li {
   display:inline-block;
   padding:5px;
@@ -48,8 +55,8 @@
 
 .pii {
   columns: 2;
+  // display: inline-block; <-- attempt to display side by side with label
 }
-
 
 // .grid-container {
 //   max-width: 100%;
