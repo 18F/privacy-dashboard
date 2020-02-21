@@ -39,7 +39,23 @@ $(document).ready( function () {
     <div class="grid-row grid-gap">
 
       <div class="filter_section usa-prose desktop:grid-col-3 padding-2">          
-        <span><strong>FILTERS</strong></span>
+        <ul style="list-style:none; padding-left:0px;">
+          <li><span><strong>FILTERS</strong></span></li>
+          <li><span>QUICK FILTERS</span></li>
+          <li><span class="usa-tag"><input type="checkbox" name=" SSN" value=" SSN">SSN</span>
+          <span class="usa-tag"><input type="checkbox" name="Email" value="Email">email</span></li>
+          <li><span>CUSTOM FILTERS</span></li>
+          <li><span><strong>TYPE</strong></span></li>
+          <li><span class="usa-tag"><input type="checkbox" name="SORN" value="SORN">SORN</span class="usa-tag">
+          <span class="usa-tag"><input type="checkbox" name="PIA" value="PIA">PIA</span></li>
+          <li><label class="" for="search-field">System</label>
+          <input class="usa-input" id="system-field" type="search" name="system"></li>
+          <li><label class="" for="search-field">SORN-ID</label>
+          <input class="usa-input" id="sorn-field" type="search" name="SORN-ID"></li>
+          <li><label class="" for="search-field">PII</label>
+          <input class="usa-input" id="pii-field" type="search" name="PII"></li>
+        </ul>
+        <!-- <span class="margin-y-neg-"><strong>FILTERS</strong></span>
         <br/>
         <span>QUICK FILTERS</span>
         <br/>
@@ -52,16 +68,16 @@ $(document).ready( function () {
         <br/>
         <span><input type="checkbox" name="SORN" value="SORN">SORN</span>
         <span><input type="checkbox" name="PIA" value="PIA">PIA</span>
-        <br/>
+        <br/> -->
         
-        <label class="" for="search-field">System</label>
+        <!-- <label class="" for="search-field">System</label>
         <input class="usa-input" id="search-field" type="search" name="search">
         <br/>
         <label class="" for="search-field">SORN-ID</label>
         <input class="usa-input" id="search-field" type="search" name="search">
         <br/>
         <label class="" for="search-field">PII</label>
-        <input class="usa-input" id="search-field" type="search" name="search">
+        <input class="usa-input" id="search-field" type="search" name="search"> -->
 
         <!-- <span class="usa-tag">Email</span> -->
       </div> <!--filter_section-->
