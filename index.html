@@ -17,8 +17,35 @@ $(document).ready( function () {
     pagination: true
   };
 
-  var systemList = new List('cards', options);
+  var list = new List('cards', options);
 
+  const systemSearch = $("#system-search");
+  const piiSearch = $("#pii-search");
+
+  const filter = function() {
+    var systemVal = systemSearch.val();
+    var piiVal = piiSearch.val();
+
+    list.filter( function(item) {
+      var systemNames = item.values()["system"]
+      var piiNames = item.values()["pii"]
+      var systemFilter = systemNames.includes(systemVal) || !systemVal
+      var piiFilter = piiNames.includes(piiVal) || !piiVal
+      if (systemFilter && piiFilter) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+  }
+
+  systemSearch.keyup( function(_) {
+    filter()
+  })
+
+  piiSearch.keyup( function(_) {
+    filter()
+  })
 })
 
 </script>
