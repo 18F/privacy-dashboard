@@ -17,8 +17,35 @@ $(document).ready( function () {
     pagination: true
   };
 
-  var systemList = new List('cards', options);
+  var list = new List('cards', options);
 
+  const systemSearch = $("#system-search");
+  const piiSearch = $("#pii-search");
+
+  const filter = function() {
+    var systemVal = systemSearch.val();
+    var piiVal = piiSearch.val();
+
+    list.filter( function(item) {
+      var systemNames = item.values()["system"]
+      var piiNames = item.values()["pii"]
+      var systemFilter = systemNames.includes(systemVal) || !systemVal
+      var piiFilter = piiNames.includes(piiVal) || !piiVal
+      if (systemFilter && piiFilter) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+  }
+
+  systemSearch.keyup( function(_) {
+    filter()
+  })
+
+  piiSearch.keyup( function(_) {
+    filter()
+  })
 })
 
 </script>
@@ -34,9 +61,12 @@ $(document).ready( function () {
 }
 </style>
 
+<input id="system-search" class="search" placeholder="System" />
+<input id="pii-search" class="search" placeholder="PII" />
+
 <section class="grid-container usa-section usa-prose">
   <div id="cards">
-    <input class="search" placeholder="Search" />
+    
     <div class="list">
     {% assign rows = site.data.pii-inventory | sort: "System Name" %}
     {% for row in rows %}
