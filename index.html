@@ -26,8 +26,7 @@ $(document).ready( function () {
 <div class="usa-section">
   <div class="grid-container">
     <div class="grid-row grid-gap">
-
-      <div class="filter_section usa-prose desktop:grid-col-3">          
+      <div class="filter_section usa-list desktop:grid-col-3">          
         <ul>
           <li>
             <span><strong>FILTERS</strong></span>
@@ -52,11 +51,20 @@ $(document).ready( function () {
             <span><strong>TYPE</strong></span>
           </li>
           <li>
-              <input type="checkbox" name="SORN" value="SORN">  
-              <label for="SORN">SORN</label>
-              <input type="checkbox" name="PIA" value="PIA">
-              <label for="PIA">PIA</label>
+            <div class="usa-checkbox float-left margin-right-2">
+              <input class="usa-checkbox__input" type="checkbox" id="filter__SORNS" name="SORN" value="SORN" checked>
+              <label class="usa-checkbox__label" for="filter__SORNS">SORN</label>
+            </div>
           </li>
+          <li>
+            <div class="usa-checkbox float-left">
+              <input class="usa-checkbox__input" type="checkbox" id="filter__PIA" name="PIA" value="PIA" checked>
+              <label class="usa-checkbox__label" for="filter__PIA">PIA</label>
+            </div>
+          </li>
+        </ul>
+        <br>
+        <ul>
           <li>
             <label class="" for="search-field">System</label>
             <input class="usa-input" id="system-field" type="search" name="system">
