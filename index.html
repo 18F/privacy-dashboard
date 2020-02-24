@@ -23,17 +23,6 @@ $(document).ready( function () {
 
 </script>
 
-<!-- <style>
-.pagination li {
-  display:inline-block;
-  padding:5px;
-}
-
-.pii {
-  columns: 2;
-}
-</style> -->
-
 <div class="usa-section">
   <div class="grid-container">
     <div class="grid-row grid-gap">
@@ -47,8 +36,14 @@ $(document).ready( function () {
             <span>QUICK FILTERS</span>
           </li>
           <li>
-            <span class="usa-tag"><input type="checkbox" name=" SSN" value=" SSN">SSN</span>
-            <span class="usa-tag"><input type="checkbox" name="Email" value="Email">email</span>
+            <span class="usa-tag">
+              <input type="checkbox" name="SSN" value="SSN">
+              <label for="SSN">SSN</label>
+            </span>
+            <span class="usa-tag">
+              <input type="checkbox" name="Email" value="Email">
+              <label for="Email">email</label>
+            </span>
           </li>
           <li>
             <span>CUSTOM FILTERS</span>
@@ -57,15 +52,10 @@ $(document).ready( function () {
             <span><strong>TYPE</strong></span>
           </li>
           <li>
-            <span class="usa-tag">
-              <!-- <input class="usa-checkbox__input" id="truth" type="checkbox" name="historical-figures-1" value="truth" checked> -->
               <input type="checkbox" name="SORN" value="SORN">  
               <label for="SORN">SORN</label>
-            </span>
-            <span class="usa-tag">
               <input type="checkbox" name="PIA" value="PIA">
               <label for="PIA">PIA</label>
-            </span>
           </li>
           <li>
             <label class="" for="search-field">System</label>
