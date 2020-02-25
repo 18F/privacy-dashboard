@@ -32,7 +32,7 @@ $(document).ready( function () {
     }
   }
 
-  
+
   const filter = function(values) {
     list.filter( function(item) {
 
@@ -52,11 +52,9 @@ $(document).ready( function () {
     })
   }
 
-
   const activeFilter = function() {
     console.log("WHAT");
   }
-
 
   searches.forEach(
     search => search.keyup( function() {
@@ -65,7 +63,6 @@ $(document).ready( function () {
       activeFilter(values)
     })
   )
-
 })
 
 </script>
