@@ -48,7 +48,7 @@
 }
 
 .filter_section ul {
-  list-style: none; 
+  list-style: none;
   padding-left:0px;
 }
 
@@ -73,7 +73,33 @@
 //   width: 100%;
 // }
 
+table.dataTable tbody td {
+  vertical-align: top !important;
+}
 
+table.dataTable tbody tr.odd td {
+  background-color: #f0f0f0;
+}
+
+.cell__system-name {
+  width: 20%;
+}
+
+.cell__type {
+  width: 7%;
+}
+
+.cell__sorn-id {
+  width: 18%;
+}
+
+.cell__pii {
+  width: 48%;
+}
+
+.cell__source {
+  width: 7%;
+}
 // default mode hide banner
 .usa-banner__content {
   display: hidden;

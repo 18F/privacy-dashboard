@@ -39,7 +39,8 @@ dap_agency: GSA
 primary_navigation:
   - name: Old Prototypes
     url: /old-prototypes
-
+  - name: Table Layout
+    url: /table-layout
 
 # secondary_navigation:
 #   - name: Secondary link
@@ -69,6 +70,9 @@ collections:
     permalink: /:path/
 
 permalink: pretty
+
+sass:
+  sass_dir: assets/
 
 markdown: kramdown
 plugins:
