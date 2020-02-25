@@ -24,25 +24,24 @@ $(document).ready( function () {
   const piiSearch = $("#pii-field");
   const searches = [systemSearch, sornSearch, piiSearch]
 
-  const searchValues = function() {
-    return values = {
+  function getSearchValues() {
+    return searchValues = {
       system: systemSearch.val().toLowerCase(),
       sorn: sornSearch.val().toLowerCase(),
       pii: piiSearch.val().toLowerCase()
     }
   }
 
-
-  const filter = function(values) {
+  function filter(searchValues) {
     list.filter( function(item) {
 
-      var systemNames = item.values()["system"].toLowerCase()
-      var sornNames = item.values()["sorn-id"].toLowerCase()
-      var piiNames = item.values()["pii"].toLowerCase()
+      var systemName = item.values()["system"].toLowerCase()
+      var sornID = item.values()["sorn-id"].toLowerCase()
+      var piiValue = item.values()["pii"].toLowerCase()
 
-      var systemFilter = systemNames.includes(values.system) || !values.system
-      var sornFilter = sornNames.includes(values.sorn) || !values.sorn
-      var piiFilter = piiNames.includes(values.pii) || !values.pii
+      var systemFilter = systemName.includes(searchValues.system) || !searchValues.system
+      var sornFilter = sornID.includes(searchValues.sorn) || !searchValues.sorn
+      var piiFilter = piiValue.includes(searchValues.pii) || !searchValues.pii
 
       if (systemFilter && sornFilter && piiFilter) {
         return true;
@@ -52,15 +51,20 @@ $(document).ready( function () {
     })
   }
 
-  const activeFilter = function() {
-    console.log("WHAT");
-  }
+  // function activeFilter(searchValues) {
+
+  //   if (searchValues.system) {
+  //     html = `<li class="usa-tag"><span id="system-search-tag"></span></li>`
+  //     $("#active-filters").append(html)
+      
+  //   }
+  // }
 
   searches.forEach(
     search => search.keyup( function() {
-      values = searchValues()
-      filter(values)
-      activeFilter(values)
+      searchValues = getSearchValues()
+      filter(searchValues)
+      // activeFilter(searchValues)
     })
   )
 })
@@ -128,18 +132,22 @@ $(document).ready( function () {
       <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs" id="main-content">
         <div>
           Active filters:
-          <ul>
-            <li class="usa-tag"><span id="system-search-tag"></span></li>
+          <ul id="active-filters">
           </ul>
           
         </div>
+
+        <div>
+          {% assign rows = site.data.pii-inventory | sort: "System Name" %}
+          Matching <span id="result-count">{{ rows.size - 1 }}</span> of {{ rows.size - 1 }}.
+        </div>
+
         <hr />
         <div id="cards">
           <div class="list">
-          {% assign rows = site.data.pii-inventory | sort: "System Name" %}
+
           {% for row in rows %}
             <div class="card padding-2 margin-2">
-
               <div class="grid-row margin-bottom-105">
                 <span class="system font-heading-lg text-blue">{{ row['System Name'] }}</span>
               </div>
