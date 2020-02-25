@@ -1,4 +1,4 @@
-PIA / SORN,SORN ID,System Name,URL,PII / Categories of Record,PII
+Type,SORN ID,System Name,URL,PII / Categories of Record,PII
 PIA,GSA/PPFM-11,Ancillary Financial Application (AFA) system ,https://www.gsa.gov/cdnstatic/Ancillary_Financial_Applications_AFA_PIA.pdf,name,"Name, TIN, SSN, home address, home phone, e-mail address, bank account information, contract numbers, history of payments., DUNS Number, invoice number"
 PIA,,Beta.SAM.gov,https://www.gsa.gov/cdnstatic/BetaSAM%20PIA%20.pdf,entity legal business name,"business name, email address, telephone number, TIN, address, SSN"
 PIA,,Challenge.gov,https://www.gsa.gov/cdnstatic/Challengegov%20PIA.pdf,e-mail address,"e-mail address, username, password, First and last name , Phone number, City, state and country, Website (e.g., school, company, Twitter or LinkedIN pages) , Photo or image, Biographical sketch of no more than 1,000 words, Additional skills and interests from a preset selection, Additional skills and images in a free form text box"

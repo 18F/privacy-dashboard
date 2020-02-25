@@ -12,26 +12,39 @@ title: Home
 
 $(document).ready( function () {
   var options = {
-    valueNames: [ 'system', 'pii' ],
+    valueNames: [ 'system', 'sorn-id', 'pii' ],
     page: 10,
     pagination: true
   };
 
   var list = new List('cards', options);
 
-  const systemSearch = $("#system-search");
-  const piiSearch = $("#pii-search");
+  const systemSearch = $("#system-field");
+  const sornSearch = $("#sorn-field");
+  const piiSearch = $("#pii-field");
+  const searches = [systemSearch, sornSearch, piiSearch]
 
-  const filter = function() {
-    var systemVal = systemSearch.val();
-    var piiVal = piiSearch.val();
+  const searchValues = function() {
+    return values = {
+      system: systemSearch.val().toLowerCase(),
+      sorn: sornSearch.val().toLowerCase(),
+      pii: piiSearch.val().toLowerCase()
+    }
+  }
 
+  
+  const filter = function(values) {
     list.filter( function(item) {
-      var systemNames = item.values()["system"]
-      var piiNames = item.values()["pii"]
-      var systemFilter = systemNames.includes(systemVal) || !systemVal
-      var piiFilter = piiNames.includes(piiVal) || !piiVal
-      if (systemFilter && piiFilter) {
+
+      var systemNames = item.values()["system"].toLowerCase()
+      var sornNames = item.values()["sorn-id"].toLowerCase()
+      var piiNames = item.values()["pii"].toLowerCase()
+
+      var systemFilter = systemNames.includes(values.system) || !values.system
+      var sornFilter = sornNames.includes(values.sorn) || !values.sorn
+      var piiFilter = piiNames.includes(values.pii) || !values.pii
+
+      if (systemFilter && sornFilter && piiFilter) {
         return true;
       } else {
         return false;
@@ -39,13 +52,20 @@ $(document).ready( function () {
     })
   }
 
-  systemSearch.keyup( function(_) {
-    filter()
-  })
 
-  piiSearch.keyup( function(_) {
-    filter()
-  })
+  const activeFilter = function() {
+    console.log("WHAT");
+  }
+
+
+  searches.forEach(
+    search => search.keyup( function() {
+      values = searchValues()
+      filter(values)
+      activeFilter(values)
+    })
+  )
+
 })
 
 </script>
@@ -94,24 +114,30 @@ $(document).ready( function () {
         <ul>
           <li>
             <label class="" for="search-field">System</label>
-            <input class="usa-input" id="system-field" type="search" name="system">
+            <input class="usa-input" id="system-field" type="input" name="system">
           </li>
           <li>
-            <label class="" for="search-field">SORN-ID</label>
-            <input class="usa-input" id="sorn-field" type="search" name="SORN-ID">
+            <label class="" for="search-field">SORN ID</label>
+            <input class="usa-input" id="sorn-field" type="input" name="sorn id">
           </li>
           <li>
             <label class="" for="search-field">PII</label>
-            <input class="usa-input" id="pii-field" type="search" name="PII">
+            <input class="usa-input" id="pii-field" type="input" name="PII">
           </li>
         </ul>
         
       </div> <!--filter_section-->
 
       <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs" id="main-content">
-        <div id="cards">
-          <input class="search margin-2" placeholder="Search"/>
+        <div>
+          Active filters:
+          <ul>
+            <li class="usa-tag"><span id="system-search-tag"></span></li>
+          </ul>
           
+        </div>
+        <hr />
+        <div id="cards">
           <div class="list">
           {% assign rows = site.data.pii-inventory | sort: "System Name" %}
           {% for row in rows %}
@@ -125,15 +151,15 @@ $(document).ready( function () {
                     <strong style="color:#5B5B5B">Type:</strong>
                   </div>
                   <div class="grid-col-10">
-                    SORN|PIA
+                    {{ row['Type'] }}
                   </div>
                 </div>
                 <div class="grid-row margin-bottom-105">
                   <div class="grid-col-2">
-                    <strong style="color:#5B5B5B">SORN|ID:</strong>
+                    <strong style="color:#5B5B5B">SORN ID:</strong>
                   </div>
-                  <div class="grid-col-10">
-                    GSA-****
+                  <div class="sorn-id grid-col-10">
+                    {{ row['SORN ID']}}
                   </div>
                 </div>
               <!-- </div> -->
