@@ -23,10 +23,10 @@ $(document).ready( function () {
 
 </script>
 
-<div class="usa-section">
+
   <div class="grid-container">
     <div class="grid-row grid-gap">
-      <div class="filter_section usa-list desktop:grid-col-3">          
+      <div class="filter_section usa-list desktop:grid-col-3">
         <ul>
           <li>
             <span><strong>FILTERS</strong></span>
@@ -67,31 +67,32 @@ $(document).ready( function () {
         <ul>
           <li>
             <label class="" for="search-field">System</label>
-            <input class="usa-input" id="system-field" type="search" name="system">
+            <input class="usa-input border-right" id="system-field" type="search" name="system">
           </li>
           <li>
             <label class="" for="search-field">SORN-ID</label>
-            <input class="usa-input" id="sorn-field" type="search" name="SORN-ID">
+            <input class="usa-input border-right" id="sorn-field" type="search" name="SORN-ID">
           </li>
           <li>
             <label class="" for="search-field">PII</label>
-            <input class="usa-input" id="pii-field" type="search" name="PII">
+            <input class="usa-input border-right" id="pii-field" type="search" name="PII">
           </li>
         </ul>
-        
+
       </div> <!--filter_section-->
 
       <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs" id="main-content">
         <div id="cards">
           <input class="search margin-2" placeholder="Search"/>
-          
+
           <div class="list">
           {% assign rows = site.data.pii-inventory | sort: "System Name" %}
           {% for row in rows %}
             <div class="card padding-2 margin-2">
-              
-              <span class="system font-heading-lg text-blue">{{ row['System Name'] }}</span>
-              
+
+              <div class="grid-row margin-bottom-105">
+                <span class="system font-heading-lg text-blue">{{ row['System Name'] }}</span>
+              </div>
               <!-- <ul class="padding-0"> -->
                 <div class="grid-row margin-bottom-105">
                   <div class="grid-col-2">
@@ -117,14 +118,14 @@ $(document).ready( function () {
                 </div>
                 <div class="grid-col-10">
                   <ul class="pii">
-                    {% assign pii = row['PII'] | split: "," %}
+                    {% assign pii = row['PII'] | split: "," | sort_natural %}
                     {% for i in pii %}
                       <li>{{i}}</li>
                     {% endfor %}
                   </ul>
-                </div>    
-              </div>  
-            
+                </div>
+              </div>
+
 
               <a href="{{ row['URL'] }}" target="_blank" class="usa-link">Link</a>
 
@@ -136,7 +137,6 @@ $(document).ready( function () {
       </main>
 
 
-        
+
     </div> <!--grid-row-->
   </div> <!--grid-container-->
-</div> <!--usa-section-->
