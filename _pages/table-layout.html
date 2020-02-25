@@ -1,0 +1,51 @@
+---
+permalink: table-layout
+layout: wide
+title: Table Layout
+---
+<section class="grid-container usa-section usa-prose">
+  <table id="myTable" class="usa-table usa-table--borderless" valign="top">
+                <thead>
+                <!-- First column is html title to use -->
+                <!-- {% for column in site.data.plain-language[0] %}
+                    {% if forloop.index == 1 %}
+                        <th>System</th>
+                        {% continue %}
+                    {% endif %}
+                    {% if forloop.index == 2 or forloop.index == 3 %}
+                        {% continue %}
+                    {% endif %}
+                    <th>{{ column[0] }}</th>
+                {% endfor %} -->
+                <th>System</th>
+                <th>Type</th>
+                <th>SORN ID</th>
+                <th>PII</th>
+                <th>Source</th>
+                </thead>
+                <tbody>
+                  {% assign rows = site.data.pii-inventory | sort: "System Name" %}
+                  {% for row in rows %}
+                    <tr>
+                      <td class="cell cell__system-name">{{row['System Name']}}</td>
+                      <td class="cell cell__type"> SORN/PIA </td>
+                      <td class="cell cell__sorn-id"> GSA-12345</td>
+                      <td class="cell cell__pii">
+                        {% assign pii = row['PII'] | split: "," | sort_natural %}
+                        {% for i in pii %}
+                          {% if forloop.last %}
+                          <span>{{i}}</span>
+                          {% else %}
+                          <span>{{i}} • </span>
+                          {% endif %}
+                        {% endfor %}
+                      </td>
+                      <td class="text-top cell__source">
+                        <a href="#"><span>Link </Span></a>
+                      </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+
+    </section>
