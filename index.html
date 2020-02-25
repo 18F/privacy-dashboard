@@ -64,6 +64,10 @@ $(document).ready( function () {
     search => search.keyup( function() {
       searchValues = getSearchValues()
       filter(searchValues)
+      list.on('filterComplete', function() {
+        // console.log(list.matchingItems.length)
+        $("#result-count").text(list.matchingItems.length)
+      })
       // activeFilter(searchValues)
     })
   )
