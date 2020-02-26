@@ -44,7 +44,7 @@ $(document).ready( function () {
       var type = item.values()["type"]
 
       var systemFilter = systemName.includes(searchValues.system) || !searchValues.system
-      var sornFilter = sornID.includes(searchValues.sorn) || !searchValues.sorn
+      var sornIdFilter = sornID.includes(searchValues.sorn) || !searchValues.sorn
       var piiFilter = piiValue.includes(searchValues.pii) || !searchValues.pii
       var piaFilter = true
       var sornFilter = true
@@ -61,7 +61,7 @@ $(document).ready( function () {
         sornFilter = !type.includes("SORN") 
       }
 
-      if (systemFilter && sornFilter && piiFilter && piaFilter && sornFilter) {
+      if (systemFilter && sornIdFilter && piiFilter && piaFilter && sornFilter) {
         return true;
       } else {
         return false;
