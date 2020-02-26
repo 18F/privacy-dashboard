@@ -22,7 +22,6 @@ $(document).ready( function () {
   const systemSearch = $("#system-field");
   const sornSearch = $("#sorn-field");
   const piiSearch = $("#pii-field");
-  const searches = [systemSearch, sornSearch, piiSearch]
 
   function getSearchValues() {
     return searchValues = {
@@ -52,50 +51,42 @@ $(document).ready( function () {
     })
   }
 
-  function activeFilter(searchValues) {
-    // SYSTEM
-    var systemTagExists = $("#system-tag").length;
-    if (searchValues.system && !systemTagExists) {
-      html = `<li id="system-tag" class="usa-tag">System Name: ${searchValues.system}</li>`
+  function activeFilter(key) {
+    // key is one of the keys of searchValues
+    // system, sorn, or pii
+    keyTag = `#${key}-tag`
+    var tagExists = $(keyTag).length;
+    if (searchValues[key] && !tagExists) {
+      html = `<li id="${key}-tag" class="usa-tag">System Name: ${searchValues[key]}</li>`
       $("#active-filters").append(html)
-    } else if (searchValues.system && systemTagExists) {
-      $("#system-tag").text("System Name: " + searchValues.system)
-    } else if (!searchValues.system && systemTagExists) {
-      $("#system-tag").remove()
-    }
-
-    // SORN ID
-    var sornTagExists = $("#sorn-tag").length;
-    if (searchValues.sorn && !sornTagExists) {
-      html = `<li id="sorn-tag" class="usa-tag">sorn Name: ${searchValues.sorn}</li>`
-      $("#active-filters").append(html)
-    } else if (searchValues.sorn && sornTagExists) {
-      $("#sorn-tag").text("sorn Name: " + searchValues.sorn)
-    } else if (!searchValues.sorn && sornTagExists) {
-      $("#sorn-tag").remove()
-    }
-
-    // PII
-    var piiTagExists = $("#pii-tag").length;
-    if (searchValues.pii && !piiTagExists) {
-      html = `<li id="pii-tag" class="usa-tag">pii Name: ${searchValues.pii}</li>`
-      $("#active-filters").append(html)
-    } else if (searchValues.pii && piiTagExists) {
-      $("#pii-tag").text("pii Name: " + searchValues.pii)
-    } else if (!searchValues.pii && piiTagExists) {
-      $("#pii-tag").remove()
+    } else if (searchValues[key] && tagExists) {
+      $(`#${key}-tag`).text(`${key}: ${searchValues[key]}`)
+    } else if (!searchValues[key] && tagExists) {
+      $(`#${key}-tag`).remove()
     }
   }
 
+  const searches = [systemSearch, sornSearch, piiSearch]
+  // Bind keypresses on each of the search boxes
   searches.forEach(
     search => search.keyup( function() {
+
+      // Get contents of the search boxes
       searchValues = getSearchValues()
+
+      // filter the main list
       filter(searchValues)
+
+      // after filter, get the result count
       list.on('filterComplete', function() {
         // console.log(list.matchingItems.length)
         $("#result-count").text(list.matchingItems.length)
       })
-      activeFilter(searchValues)
+
+      // Make the active filter tags for each search box
+      Object.keys(searchValues).forEach(
+        key => activeFilter(key)
+      )
     })
   )
 })
