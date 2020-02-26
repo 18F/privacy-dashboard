@@ -52,14 +52,40 @@ $(document).ready( function () {
     })
   }
 
-  // function activeFilter(searchValues) {
+  function activeFilter(searchValues) {
+    // SYSTEM
+    var systemTagExists = $("#system-tag").length;
+    if (searchValues.system && !systemTagExists) {
+      html = `<li id="system-tag" class="usa-tag">System Name: ${searchValues.system}</li>`
+      $("#active-filters").append(html)
+    } else if (searchValues.system && systemTagExists) {
+      $("#system-tag").text("System Name: " + searchValues.system)
+    } else if (!searchValues.system && systemTagExists) {
+      $("#system-tag").remove()
+    }
 
-  //   if (searchValues.system) {
-  //     html = `<li class="usa-tag"><span id="system-search-tag"></span></li>`
-  //     $("#active-filters").append(html)
-      
-  //   }
-  // }
+    // SORN ID
+    var sornTagExists = $("#sorn-tag").length;
+    if (searchValues.sorn && !sornTagExists) {
+      html = `<li id="sorn-tag" class="usa-tag">sorn Name: ${searchValues.sorn}</li>`
+      $("#active-filters").append(html)
+    } else if (searchValues.sorn && sornTagExists) {
+      $("#sorn-tag").text("sorn Name: " + searchValues.sorn)
+    } else if (!searchValues.sorn && sornTagExists) {
+      $("#sorn-tag").remove()
+    }
+
+    // PII
+    var piiTagExists = $("#pii-tag").length;
+    if (searchValues.pii && !piiTagExists) {
+      html = `<li id="pii-tag" class="usa-tag">pii Name: ${searchValues.pii}</li>`
+      $("#active-filters").append(html)
+    } else if (searchValues.pii && piiTagExists) {
+      $("#pii-tag").text("pii Name: " + searchValues.pii)
+    } else if (!searchValues.pii && piiTagExists) {
+      $("#pii-tag").remove()
+    }
+  }
 
   searches.forEach(
     search => search.keyup( function() {
@@ -69,7 +95,7 @@ $(document).ready( function () {
         // console.log(list.matchingItems.length)
         $("#result-count").text(list.matchingItems.length)
       })
-      // activeFilter(searchValues)
+      activeFilter(searchValues)
     })
   )
 })
