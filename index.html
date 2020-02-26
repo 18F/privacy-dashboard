@@ -12,7 +12,7 @@ title: Home
 
 $(document).ready( function () {
   var options = {
-    valueNames: [ 'system', 'sorn-id', 'pii' ],
+    valueNames: [ 'system', 'sorn-id', 'pii', 'type' ],
     page: 10,
     pagination: true
   };
@@ -38,6 +38,7 @@ $(document).ready( function () {
       var systemName = item.values()["system"].toLowerCase()
       var sornID = item.values()["sorn-id"].toLowerCase()
       var piiValue = item.values()["pii"].toLowerCase()
+      var docType = item.values()["type"]
 
       var systemFilter = systemName.includes(searchValues.system) || !searchValues.system
       var sornFilter = sornID.includes(searchValues.sorn) || !searchValues.sorn
@@ -160,7 +161,7 @@ $(document).ready( function () {
                   <div class="grid-col-2">
                     <strong style="color:#5B5B5B">Type:</strong>
                   </div>
-                  <div class="grid-col-10">
+                  <div class="type grid-col-10">
                     {{ row['Type'] }}
                   </div>
                 </div>
