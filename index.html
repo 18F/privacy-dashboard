@@ -25,6 +25,7 @@ $(document).ready( function () {
   const piaCheckbox = $("#filter__PIA")
   const sornCheckbox = $("#filter__SORNS")
   const searches = [systemSearch, sornSearch, piiSearch]
+  const checkboxes = [piaCheckbox, sornCheckbox]
 
   function getSearchValues() {
     return searchValues = {
@@ -77,7 +78,13 @@ $(document).ready( function () {
   //   }
   // }
 
-// TODO: add a click / unclick action to call filter()
+  checkboxes.forEach(
+    checkbox => checkbox.click( function() {
+      searchValues = getSearchValues()
+      getSearchValues
+      filter(searchValues)
+    })
+  )
 
   searches.forEach(
     search => search.keyup( function() {
@@ -93,7 +100,6 @@ $(document).ready( function () {
 
 </script>
 
-<!-- test comment -->
   <div class="grid-container">
     <div class="grid-row grid-gap">
       <div class="filter_section usa-list desktop:grid-col-3">
