@@ -22,6 +22,8 @@ $(document).ready( function () {
   const systemSearch = $("#system-field");
   const sornSearch = $("#sorn-field");
   const piiSearch = $("#pii-field");
+  const piaCheckbox = $("#filter__PIA")
+  const sornCheckbox = $("#filter__SORNS")
   const searches = [systemSearch, sornSearch, piiSearch]
 
   function getSearchValues() {
@@ -38,13 +40,27 @@ $(document).ready( function () {
       var systemName = item.values()["system"].toLowerCase()
       var sornID = item.values()["sorn-id"].toLowerCase()
       var piiValue = item.values()["pii"].toLowerCase()
-      var docType = item.values()["type"]
+      var type = item.values()["type"]
 
       var systemFilter = systemName.includes(searchValues.system) || !searchValues.system
       var sornFilter = sornID.includes(searchValues.sorn) || !searchValues.sorn
       var piiFilter = piiValue.includes(searchValues.pii) || !searchValues.pii
+      var piaFilter = true
+      var sornFilter = true
 
-      if (systemFilter && sornFilter && piiFilter) {
+      if (piaCheckbox.is(":checked")) {
+        //pass
+      } else {
+        piaFilter = !type.includes("PIA") 
+      }
+      
+      if (sornCheckbox.is(":checked")) {
+        //pass
+      } else {
+        sornFilter = !type.includes("SORN") 
+      }
+
+      if (systemFilter && sornFilter && piiFilter && piaFilter && sornFilter) {
         return true;
       } else {
         return false;
@@ -61,12 +77,13 @@ $(document).ready( function () {
   //   }
   // }
 
+// TODO: add a click / unclick action to call filter()
+
   searches.forEach(
     search => search.keyup( function() {
       searchValues = getSearchValues()
       filter(searchValues)
       list.on('filterComplete', function() {
-        // console.log(list.matchingItems.length)
         $("#result-count").text(list.matchingItems.length)
       })
       // activeFilter(searchValues)
