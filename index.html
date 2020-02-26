@@ -69,14 +69,20 @@ $(document).ready( function () {
     })
   }
 
-  // function activeFilter(searchValues) {
-
-  //   if (searchValues.system) {
-  //     html = `<li class="usa-tag"><span id="system-search-tag"></span></li>`
-  //     $("#active-filters").append(html)
-      
-  //   }
-  // }
+  function activeFilter(key) {
+    // key is one of the keys of searchValues
+    // system, sorn, or pii
+    keyTag = `#${key}-tag`
+    var tagExists = $(keyTag).length;
+    if (searchValues[key] && !tagExists) {
+      html = `<li id="${key}-tag" class="usa-tag">System Name: ${searchValues[key]}</li>`
+      $("#active-filters").append(html)
+    } else if (searchValues[key] && tagExists) {
+      $(`#${key}-tag`).text(`${key}: ${searchValues[key]}`)
+    } else if (!searchValues[key] && tagExists) {
+      $(`#${key}-tag`).remove()
+    }
+  }
 
   checkboxes.forEach(
     checkbox => checkbox.click( function() {
@@ -86,14 +92,26 @@ $(document).ready( function () {
     })
   )
 
+  // const searches = [systemSearch, sornSearch, piiSearch]
+  // Bind keypresses on each of the search boxes
   searches.forEach(
     search => search.keyup( function() {
+
+      // Get contents of the search boxes
       searchValues = getSearchValues()
+
+      // filter the main list
       filter(searchValues)
+
+      // after filter, get the result count
       list.on('filterComplete', function() {
         $("#result-count").text(list.matchingItems.length)
       })
-      // activeFilter(searchValues)
+
+      // Make the active filter tags for each search box
+      Object.keys(searchValues).forEach(
+        key => activeFilter(key)
+      )
     })
   )
 })
