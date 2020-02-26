@@ -28,8 +28,8 @@ title: Table Layout
                   {% for row in rows %}
                     <tr>
                       <td class="cell cell__system-name">{{row['System Name']}}</td>
-                      <td class="cell cell__type"> SORN/PIA </td>
-                      <td class="cell cell__sorn-id"> GSA-12345</td>
+                      <td class="cell cell__type"> {{ row['Type'] }} </td>
+                      <td class="cell cell__sorn-id"> {{ row['SORN ID']}}</td>
                       <td class="cell cell__pii">
                         {% assign pii = row['PII'] | split: "," | sort_natural %}
                         {% for i in pii %}
@@ -41,7 +41,7 @@ title: Table Layout
                         {% endfor %}
                       </td>
                       <td class="text-top cell__source">
-                        <a href="#"><span>Link </Span></a>
+                        <a href="{{ row['URL'] }}" target="_blank"><span>Link </Span></a>
                       </td>
                     </tr>
                 {% endfor %}
