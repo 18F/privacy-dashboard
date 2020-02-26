@@ -89,6 +89,9 @@ $(document).ready( function () {
       searchValues = getSearchValues()
       getSearchValues
       filter(searchValues)
+      list.on('filterComplete', function() {
+        $("#result-count").text(list.matchingItems.length)
+      })
     })
   )
 
