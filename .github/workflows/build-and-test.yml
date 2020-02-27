@@ -1,0 +1,50 @@
+name: Integration Tests
+
+on: [push, pull_request]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Set up Node 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
+    - name: Cache npm dependencies
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install NPM dependencies
+      run: npm install
+
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6
+
+    - name: Cache gems
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
+    - name: Install gems
+      run: |
+        bundle config path vendor/bundle
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+
+    - name: Build and test
+      run: |
+        bundle exec jekyll build
+        bundle exec rspec -fd
