@@ -2,6 +2,7 @@
 require 'rspec'
 require 'capybara/rspec'
 require 'rack/jekyll'
+require 'pry'
 
 RSpec.configure do |config|
 

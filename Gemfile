@@ -28,6 +28,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem "capybara"
   gem "rack-jekyll"
+  gem 'pry'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
