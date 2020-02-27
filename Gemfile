@@ -17,7 +17,10 @@ gem "jekyll", "~> 3.8"
 group :jekyll_plugins do
   gem 'jekyll-sitemap'
   gem 'jekyll-seo-tag'
-  gem "jekyll-assets", "~> 3.0", group: :jekyll_plugins
+end
+
+group :jekyll_plugins, :test do
+  gem "jekyll-assets", "~> 3.0"
 end
 
 group :development, :test do
