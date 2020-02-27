@@ -47,4 +47,4 @@ jobs:
     - name: Build and test
       run: |
         bundle exec jekyll build
-        bundle exec rspec
+        bundle exec rspec -fd

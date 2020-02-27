@@ -16,6 +16,4 @@ RSpec.configure do |config|
   Capybara.app = Rack::Jekyll.new(force_build: true)
   
   Capybara.server = :webrick
-
-  Capybara.raise_server_errors = false
 end
