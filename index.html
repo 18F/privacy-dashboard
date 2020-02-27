@@ -87,7 +87,6 @@ $(document).ready( function () {
   checkboxes.forEach(
     checkbox => checkbox.click( function() {
       searchValues = getSearchValues()
-      getSearchValues
       filter(searchValues)
       list.on('filterComplete', function() {
         $("#result-count").text(list.matchingItems.length)
@@ -189,7 +188,7 @@ $(document).ready( function () {
           <div class="grid-col-3 margin-bottom-0 text-right results-meta__count">
             <span class="font-body-xs">
             {% assign rows = site.data.pii-inventory | sort: "System Name" %}
-            Matching <span id="result-count" class="text-bold">{{ rows.size | minus: 1  }}</span> of <span class="text-bold">{{ rows.size | minus: 1 }}</span>
+            Matching <span id="result-count" class="text-bold">{{ rows.size }}</span> of <span class="text-bold">{{ rows.size }}</span>
             </span>
           </div>
         </div>
