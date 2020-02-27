@@ -65,7 +65,12 @@
   columns: 2;
   margin-top: 0px;
   padding-left: 20px;
+  column-gap: 2em;
   // display: inline-block; <-- attempt to display side by side with label
+}
+
+.pii li {
+  margin-bottom: .25em;
 }
 
 // .grid-container {
@@ -100,6 +105,8 @@ table.dataTable tbody tr.odd td {
 .cell__source {
   width: 7%;
 }
+
+
 // default mode hide banner
 .usa-banner__content {
   display: hidden;

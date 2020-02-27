@@ -179,24 +179,26 @@ $(document).ready( function () {
       </div> <!--filter_section-->
 
       <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs" id="main-content">
-        <div>
-          Active filters:
-          <ul id="active-filters">
-          </ul>
+        <div class="grid-row margin-2 margin-right-0 results-meta">
+          <div class="grid-col-9 display-inline results-meta__filters">
+            <span class="font-body-xs text-uppercase text-bold text-ls-1 "> Active filters: </span>
+            <ul id="active-filters" class="margin-top-05 margin-bottom-05 padding-0">
+            </ul>
+          </div>
 
+          <div class="grid-col-3 margin-bottom-0 text-right results-meta__count">
+            <span class="font-body-xs">
+            {% assign rows = site.data.pii-inventory | sort: "System Name" %}
+            Matching <span id="result-count" class="text-bold">{{ rows.size - 1 }}</span> of <span class="text-bold">{{ rows.size - 1 }}</span>
+            </span>
+          </div>
         </div>
-
-        <div>
-          {% assign rows = site.data.pii-inventory | sort: "System Name" %}
-          Matching <span id="result-count">{{ rows.size - 1 }}</span> of {{ rows.size - 1 }}.
-        </div>
-
-        <hr />
+        <hr class="margin-left-2 maring-right-0">
         <div id="cards">
           <div class="list">
 
           {% for row in rows %}
-            <div class="card padding-2 margin-2">
+            <div class="card padding-2 margin-2 margin-right-0">
               <div class="grid-row margin-bottom-105">
                 <span class="system font-heading-lg text-blue">{{ row['System Name'] }}</span>
               </div>
@@ -238,7 +240,7 @@ $(document).ready( function () {
               </div>
 
 
-              <a href="{{ row['URL'] }}" target="_blank" class="usa-link">Link</a>
+              <a href="{{ row['URL'] }}" target="_blank" class="usa-link">Source</a>
 
             </div>
           {% endfor %}
