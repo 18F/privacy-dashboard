@@ -19,6 +19,11 @@ $(document).ready( function () {
 
   var list = new List('cards', options);
 
+  // after filter, get the result count
+  list.on('filterComplete', function() {
+    $("#result-count").text(list.matchingItems.length)
+  })
+
   const systemSearch = $("#system-field");
   const sornSearch = $("#sorn-field");
   const piiSearch = $("#pii-field");
@@ -88,9 +93,6 @@ $(document).ready( function () {
     checkbox => checkbox.click( function() {
       searchValues = getSearchValues()
       filter(searchValues)
-      list.on('filterComplete', function() {
-        $("#result-count").text(list.matchingItems.length)
-      })
     })
   )
 
@@ -104,11 +106,6 @@ $(document).ready( function () {
 
       // filter the main list
       filter(searchValues)
-
-      // after filter, get the result count
-      list.on('filterComplete', function() {
-        $("#result-count").text(list.matchingItems.length)
-      })
 
       // Make the active filter tags for each search box
       Object.keys(searchValues).forEach(
