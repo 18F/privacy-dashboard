@@ -188,7 +188,7 @@ $(document).ready( function () {
 
         <div>
           {% assign rows = site.data.pii-inventory | sort: "System Name" %}
-          Matching <span id="result-count">{{ rows.size - 1 }}</span> of {{ rows.size - 1 }}.
+          Matching <span id="result-count">{{ rows.size | minus: 1 }}</span> of {{ rows.size | minus: 1 }}.
         </div>
 
         <hr />
