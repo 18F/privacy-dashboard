@@ -52,13 +52,13 @@ $(document).ready( function () {
       if (piaCheckbox.is(":checked")) {
         //pass
       } else {
-        piaFilter = !type.includes("PIA") 
+        piaFilter = !type.includes("PIA")
       }
-      
+
       if (sornCheckbox.is(":checked")) {
         //pass
       } else {
-        sornFilter = !type.includes("SORN") 
+        sornFilter = !type.includes("SORN")
       }
 
       if (systemFilter && sornIdFilter && piiFilter && piaFilter && sornFilter) {
@@ -183,7 +183,7 @@ $(document).ready( function () {
           Active filters:
           <ul id="active-filters">
           </ul>
-          
+
         </div>
 
         <div>
@@ -221,7 +221,11 @@ $(document).ready( function () {
 
               <div class="grid-row margin-bottom-105">
                 <div class="grid-col-2">
+                  {% if row['Type'] == "SORN"%}
+                  <strong style="color:#5B5B5B">Categories<br>of Record:</strong>
+                  {% else %}
                   <strong style="color:#5B5B5B">PII:</strong>
+                  {% endif %}
                 </div>
                 <div class="grid-col-10">
                   <ul class="pii">
