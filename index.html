@@ -14,9 +14,12 @@ $(document).ready( function () {
   var options = {
     valueNames: [ 'system', 'sorn-id', 'pii', 'type' ],
     page: 10,
-    pagination: true
+    pagination: [{
+        innerWindow: 1,
+        outerWindow: 1
+    }]
   };
-
+  console.log(options);
   var list = new List('cards', options);
 
   // listener: after filter, get the result count
@@ -43,12 +46,12 @@ $(document).ready( function () {
       pii: piiSearch.val().toLowerCase()
     }
   }
-  
+
   // run list.js filter
   function filter(searchValues) {
     list.filter( function(item) {
 
-      // for each card, get lower case values 
+      // for each card, get lower case values
       var systemName = item.values()["system"].toLowerCase()
       var sornID = item.values()["sorn-id"].toLowerCase()
       var piiValue = item.values()["pii"].toLowerCase()
@@ -59,7 +62,7 @@ $(document).ready( function () {
       var systemFilter = systemName.includes(searchValues.system) || !searchValues.system
       var sornIdFilter = sornID.includes(searchValues.sorn) || !searchValues.sorn
       var piiFilter = piiValue.includes(searchValues.pii) || !searchValues.pii
-      
+
       // document type filters are true (include) by default
       var piaFilter = true
       var sornFilter = true
@@ -273,11 +276,9 @@ $(document).ready( function () {
             </div>
           {% endfor %}
           </div>
-          <ul class="pagination float-right"></ul>
+          <ul class="pagination"></ul>
         </div>
       </main>
-
-
 
     </div> <!--grid-row-->
   </div> <!--grid-container-->

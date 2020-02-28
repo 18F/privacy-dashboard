@@ -63,11 +63,6 @@
   margin-bottom: .5em;
 }
 
-.pagination li {
-  display:inline-block;
-  padding:5px;
-}
-
 .pii {
   columns: 2;
   margin-top: 0px;
@@ -113,6 +108,38 @@ table.dataTable tbody tr.odd td {
   width: 7%;
 }
 
+.pagination {
+  display: inline-block;
+  float: right;
+  margin-top: 0;
+}
+
+.pagination li {
+  display:inline-block;
+}
+
+a.page {
+  color: color('blue-50v');
+  font-family: family('sans');
+  font-size: size('body', 'xs');
+  margin: 0 units(.5);
+  padding: units(.5) units(1);
+  text-decoration: none;
+  &:hover {
+    background-color: color('blue-warm-5');
+    text-decoration: underline;
+  }
+}
+
+.active .page {
+  background-color: color('blue-50v');
+  color: white;
+  &:hover {
+    background-color: color('blue-50v');
+    color: white;
+    text-decoration: none;
+  }
+}
 
 // default mode hide banner
 .usa-banner__content {
