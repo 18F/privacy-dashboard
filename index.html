@@ -106,7 +106,7 @@ $(document).ready( function () {
     keyTag = `#${key}-tag`
     var tagExists = $(keyTag).length;
     if (searchValues[key] && !tagExists) {
-      html = `<li id="${key}-tag" class="usa-tag">System Name: ${searchValues[key]}</li>`
+      html = `<li id="${key}-tag" class="usa-tag">${key}: ${searchValues[key]}</li>`
       $("#active-filters").append(html)
     } else if (searchValues[key] && tagExists) {
       $(`#${key}-tag`).text(`${key}: ${searchValues[key]}`)
