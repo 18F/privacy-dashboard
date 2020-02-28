@@ -78,6 +78,7 @@ markdown: kramdown
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-assets
 
 exclude:
   - Gemfile

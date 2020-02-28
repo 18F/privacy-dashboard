@@ -46,5 +46,5 @@ jobs:
 
     - name: Build and test
       run: |
-        bundle exec jekyll build
+        JEKYLL_ENV=test bundle exec jekyll build
         bundle exec rspec -fd

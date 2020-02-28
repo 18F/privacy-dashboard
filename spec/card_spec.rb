@@ -2,6 +2,12 @@ describe "the card page", type: :feature do
   before do
     visit '/'
   end
+
+  it "loads the test data" do
+    expect(all('.card').count).to eq 4
+    expect(find("#result-count").text).to eq "4"
+  end
+
   it "has the page title" do
     expect(page).to have_title "PII Inventory"
   end
@@ -16,4 +22,3 @@ describe "the card page", type: :feature do
     expect(first_card.has_link?('Source')).to be_truthy
   end
 end
-
