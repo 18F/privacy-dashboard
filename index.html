@@ -30,8 +30,10 @@ $(document).ready( function () {
   const piiSearch = $("#pii-field");
   const piaCheckbox = $("#filter__PIA")
   const sornCheckbox = $("#filter__SORNS")
+  const ssnCheckbox = $("#filter__SSN")
+  const emailCheckbox = $("#Email")
   const searches = [systemSearch, sornSearch, piiSearch]
-  const checkboxes = [piaCheckbox, sornCheckbox]
+  const checkboxes = [piaCheckbox, sornCheckbox, ssnCheckbox, emailCheckbox]
 
   // get current input from search fields
   function getSearchValues() {
@@ -61,6 +63,8 @@ $(document).ready( function () {
       // document type filters are true (include) by default
       var piaFilter = true
       var sornFilter = true
+      var ssnFilter = true
+      var emailFilter = true
 
       // if PIA document type checkbox is not checked, apply filter for that type
       if (piaCheckbox.is(":checked")) {
@@ -75,8 +79,11 @@ $(document).ready( function () {
       } else {
         sornFilter = !type.includes("SORN")
       }
+
+      console.log(ssnCheckbox.is(":checked"))
+
       // display item if all conditions are true, otherwise filter
-      if (systemFilter && sornIdFilter && piiFilter && piaFilter && sornFilter) {
+      if (ssnFilter && emailFilter && systemFilter && sornIdFilter && piiFilter && piaFilter && sornFilter) {
         return true;
       } else {
         return false;
@@ -129,8 +136,9 @@ $(document).ready( function () {
 </script>
 
 <!-- Set up Jekyll Data -->
-<div id="jekyll-env" hidden>{{ jekyll.environment }}</div>
+
 {% if jekyll.environment == 'test' %}
+  <div id="jekyll-env">{{ jekyll.environment }}</div>
   {% assign rows = site.data.test-inventory | sort: "System Name" %}
 {% else %}
   {% assign rows = site.data.pii-inventory | sort: "System Name" %}
@@ -148,8 +156,8 @@ $(document).ready( function () {
           </li>
           <li>
             <div class="usa-checkbox float-left margin-right-2 bg-base-lighter checkbox-tags">
-              <input class="usa-checkbox__input" type="checkbox" id="SSN" name="SSN" value="SSN">
-              <label class="usa-checkbox__label margin-bottom-0" for="SSN">SSN</label>
+              <input class="usa-checkbox__input" type="checkbox" id="filter__SSN" name="SSN" value="SSN">
+              <label class="usa-checkbox__label margin-bottom-0" id="filter__SORN_label" for="filter__SSN">SSN</label>
             </div>
             <div class="usa-checkbox float-left margin-right-2 bg-base-lighter checkbox-tags">
               <input class="usa-checkbox__input" type="checkbox" id="Email" name="Email" value="Email">
@@ -203,7 +211,7 @@ $(document).ready( function () {
 
           <div class="grid-col-3 margin-bottom-0 text-right results-meta__count">
             <span class="font-body-xs">
-            Matching <span id="result-count" class="text-bold">{{ rows.size }}</span> of <span class="text-bold">{{ rows.size }}</span>
+            Matching <span id="result-count" class="text-bold">{{ rows.size }}</span> of <span id="total-count" class="text-bold">{{ rows.size }}</span>
             </span>
           </div>
         </div>
