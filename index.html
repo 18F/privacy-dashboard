@@ -31,7 +31,7 @@ $(document).ready( function () {
   const piaCheckbox = $("#filter__PIA")
   const sornCheckbox = $("#filter__SORNS")
   const ssnCheckbox = $("#filter__SSN")
-  const emailCheckbox = $("#Email")
+  const emailCheckbox = $("#filter__email")
   const searches = [systemSearch, sornSearch, piiSearch]
   const checkboxes = [piaCheckbox, sornCheckbox, ssnCheckbox, emailCheckbox]
 
@@ -80,7 +80,13 @@ $(document).ready( function () {
         sornFilter = !type.includes("SORN")
       }
 
-      console.log(ssnCheckbox.is(":checked"))
+      if (ssnCheckbox.is(":checked")) {
+        ssnFilter = piiValue.includes("ssn")
+      }
+
+      if (emailCheckbox.is(":checked")) {
+        emailFilter = piiValue.includes("email")
+      }
 
       // display item if all conditions are true, otherwise filter
       if (ssnFilter && emailFilter && systemFilter && sornIdFilter && piiFilter && piaFilter && sornFilter) {
@@ -157,11 +163,11 @@ $(document).ready( function () {
           <li>
             <div class="usa-checkbox float-left margin-right-2 bg-base-lighter checkbox-tags">
               <input class="usa-checkbox__input" type="checkbox" id="filter__SSN" name="SSN" value="SSN">
-              <label class="usa-checkbox__label margin-bottom-0" id="filter__SORN_label" for="filter__SSN">SSN</label>
+              <label class="usa-checkbox__label margin-bottom-0" id="filter__SSN_label" for="filter__SSN">SSN</label>
             </div>
             <div class="usa-checkbox float-left margin-right-2 bg-base-lighter checkbox-tags">
-              <input class="usa-checkbox__input" type="checkbox" id="Email" name="Email" value="Email">
-              <label class="usa-checkbox__label margin-bottom-0" for="Email">email</label>
+              <input class="usa-checkbox__input" type="checkbox" id="filter__email" name="Email" value="Email">
+              <label class="usa-checkbox__label margin-bottom-0" id="filter__email_label" for="filter__email">email</label>
             </div>
           </li>
           <li>
@@ -173,13 +179,13 @@ $(document).ready( function () {
           <li>
             <div class="usa-checkbox float-left margin-right-2">
               <input class="usa-checkbox__input" type="checkbox" id="filter__SORNS" name="SORN" value="SORN" checked>
-              <label class="usa-checkbox__label" for="filter__SORNS">SORN</label>
+              <label class="usa-checkbox__label" id="filter__SORN_label" for="filter__SORNS">SORN</label>
             </div>
           </li>
           <li>
             <div class="usa-checkbox float-left">
               <input class="usa-checkbox__input" type="checkbox" id="filter__PIA" name="PIA" value="PIA" checked>
-              <label class="usa-checkbox__label" for="filter__PIA">PIA</label>
+              <label class="usa-checkbox__label" id="filter__PIA_label" for="filter__PIA">PIA</label>
             </div>
           </li>
         </ul>

@@ -29,23 +29,63 @@ context "the card page", type: :feature, js: true do
     end
   end
 
-  xcontext "NOT WORKING YET quick filters" do
+  context "Quick filters" do
     describe "clicking on SSN" do
       it "filters the list" do
         find("#filter__SSN_label").click
 
         expect(find("#result-count").text).to eq "2"
+        expect(all('.card').length).to eq 2
+
+        expect(all('.pii')[0].text.downcase).to include "ssn"
+        expect(all('.pii')[1].text.downcase).to include "ssn"
+      end
+    end
+
+    describe "clicking on email" do
+      it "filters the list" do
+        find("#filter__email_label").click
+
+        expect(find("#result-count").text).to eq "1"
+        expect(all('.card').length).to eq 1
+
+        expect(all('.pii')[0].text.downcase).to include "email"
       end
     end
   end
 
-  xcontext "NOT WORKING YET Custom filters" do
+  context "Custom filters" do
     describe "clicking on SORN" do
       it "filters the list" do
         find("#filter__SORN_label").click
 
         expect(find("#result-count").text).to eq "2"
         expect(all('.card').length).to eq 2
+      end
+
+      it "clicking again unfilters the list" do
+        find("#filter__SORN_label").click
+        find("#filter__SORN_label").click
+
+        expect(find("#result-count").text).to eq "4"
+        expect(all('.card').length).to eq 4
+      end
+    end
+
+    describe "clicking on PIA" do
+      it "filters the list" do
+        find("#filter__PIA_label").click
+
+        expect(find("#result-count").text).to eq "2"
+        expect(all('.card').length).to eq 2
+      end
+
+      it "clicking again unfilters the list" do
+        find("#filter__PIA_label").click
+        find("#filter__PIA_label").click
+
+        expect(find("#result-count").text).to eq "4"
+        expect(all('.card').length).to eq 4
       end
     end
   end
@@ -60,12 +100,46 @@ context "the card page", type: :feature, js: true do
         expect(find(".system").text).to eq "First System Name"
       end
 
-      it "shows all cards againa when search field is erased" do
+      it "shows all cards again when search field is erased" do
         find("#system-field").set("")
 
         expect(find("#result-count").text).to eq "4"
         expect(all('.card').length).to eq 4
         expect(all(".system")[0].text).to eq "First System Name"
+      end
+    end
+
+    describe "typing in SORN ID search" do
+      it "filters the list" do
+        find("#sorn-field").set("GSA/PPFM-11")
+
+        expect(find("#result-count").text).to eq "1"
+        expect(all('.card').length).to eq 1
+        expect(find(".sorn-id").text).to eq "GSA/PPFM-11"
+      end
+
+      it "shows all cards again when search field is erased" do
+        find("#sorn-field").set("")
+
+        expect(find("#result-count").text).to eq "4"
+        expect(all('.card').length).to eq 4
+      end
+    end
+
+    describe "typing in PII search" do
+      it "filters the list" do
+        find("#pii-field").set("FIRST SYSTEM ONLY PII")
+
+        expect(find("#result-count").text).to eq "1"
+        expect(all('.card').length).to eq 1
+        expect(find(".pii").text).to include "FIRST SYSTEM ONLY PII"
+      end
+
+      it "shows all cards again when search field is erased" do
+        find("#pii-field").set("")
+
+        expect(find("#result-count").text).to eq "4"
+        expect(all('.card').length).to eq 4
       end
     end
   end
