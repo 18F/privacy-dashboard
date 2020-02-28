@@ -19,11 +19,12 @@ $(document).ready( function () {
 
   var list = new List('cards', options);
 
-  // after filter, get the result count
+  // listener: after filter, get the result count
   list.on('filterComplete', function() {
     $("#result-count").text(list.matchingItems.length)
   })
 
+  // pointers to form elements
   const systemSearch = $("#system-field");
   const sornSearch = $("#sorn-field");
   const piiSearch = $("#pii-field");
@@ -32,6 +33,7 @@ $(document).ready( function () {
   const searches = [systemSearch, sornSearch, piiSearch]
   const checkboxes = [piaCheckbox, sornCheckbox]
 
+  // get current input from search fields
   function getSearchValues() {
     return searchValues = {
       system: systemSearch.val().toLowerCase(),
@@ -39,33 +41,41 @@ $(document).ready( function () {
       pii: piiSearch.val().toLowerCase()
     }
   }
-
+  
+  // run list.js filter
   function filter(searchValues) {
     list.filter( function(item) {
 
+      // for each card, get lower case values 
       var systemName = item.values()["system"].toLowerCase()
       var sornID = item.values()["sorn-id"].toLowerCase()
       var piiValue = item.values()["pii"].toLowerCase()
       var type = item.values()["type"]
 
+      // Set filter value to true (include) if search text is contained in field
+      // OR if there is no value entered in the field
       var systemFilter = systemName.includes(searchValues.system) || !searchValues.system
       var sornIdFilter = sornID.includes(searchValues.sorn) || !searchValues.sorn
       var piiFilter = piiValue.includes(searchValues.pii) || !searchValues.pii
+      
+      // document type filters are true (include) by default
       var piaFilter = true
       var sornFilter = true
 
+      // if PIA document type checkbox is not checked, apply filter for that type
       if (piaCheckbox.is(":checked")) {
         //pass
       } else {
         piaFilter = !type.includes("PIA")
       }
 
+      // if SORN document type checkbox is not checked, apply filter for that type
       if (sornCheckbox.is(":checked")) {
         //pass
       } else {
         sornFilter = !type.includes("SORN")
       }
-
+      // display item if all conditions are true, otherwise filter
       if (systemFilter && sornIdFilter && piiFilter && piaFilter && sornFilter) {
         return true;
       } else {
@@ -89,6 +99,7 @@ $(document).ready( function () {
     }
   }
 
+  // bind checkbox click() action to trigger the filter() function
   checkboxes.forEach(
     checkbox => checkbox.click( function() {
       searchValues = getSearchValues()
