@@ -115,11 +115,29 @@ $(document).ready( function () {
     }
   }
 
+  function quickActiveFilters() {
+    // Quick filters
+    if (ssnCheckbox.is(":checked") && !$("#ssn-tag").length) {
+      html = `<li id="ssn-tag" class="usa-tag">PII: SSN</li>`
+      $("#active-filters").append(html)
+    } else if (!ssnCheckbox.is(":checked") && $("#ssn-tag").length){
+      $(`#ssn-tag`).remove()
+    }
+
+    if (emailCheckbox.is(":checked") && !$("#email-tag").length) {
+      html = `<li id="email-tag" class="usa-tag">PII: email</li>`
+      $("#active-filters").append(html)
+    } else if (!emailCheckbox.is(":checked") && $("#email-tag").length) {
+      $(`#email-tag`).remove()
+    }
+  }
+
   // bind checkbox click() action to trigger the filter() function
   checkboxes.forEach(
     checkbox => checkbox.click( function() {
       searchValues = getSearchValues()
       filter(searchValues)
+      quickActiveFilters()
     })
   )
 

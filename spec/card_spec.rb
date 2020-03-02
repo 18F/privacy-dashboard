@@ -40,6 +40,13 @@ context "the card page", type: :feature, js: true do
         expect(all('.pii')[0].text.downcase).to include "ssn"
         expect(all('.pii')[1].text.downcase).to include "ssn"
       end
+
+      it "shows an active filter pill" do
+        find("#filter__SSN_label").click
+
+        expect(find("#ssn-tag")).to be_truthy
+        expect(find("#ssn-tag").text).to eq "PII: SSN"
+      end
     end
 
     describe "clicking on email" do
@@ -50,6 +57,13 @@ context "the card page", type: :feature, js: true do
         expect(all('.card').length).to eq 1
 
         expect(all('.pii')[0].text.downcase).to include "email"
+      end
+
+      it "shows an active filter pill" do
+        find("#filter__email_label").click
+
+        expect(find("#email-tag")).to be_truthy
+        expect(find("#email-tag").text).to eq "PII: EMAIL"
       end
     end
   end
