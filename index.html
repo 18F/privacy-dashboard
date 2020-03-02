@@ -173,63 +173,70 @@ $(document).ready( function () {
 
   <div class="grid-container">
     <div class="grid-row grid-gap">
-      <div class="filter_section usa-list desktop:grid-col-3">
-        <ul>
-          <li>
-            <span><strong>FILTERS</strong></span>
-          </li>
-          <li>
-            <span>QUICK FILTERS</span>
-          </li>
-          <li>
-            <div class="usa-checkbox float-left margin-right-2 bg-base-lighter checkbox-tags">
-              <input class="usa-checkbox__input" type="checkbox" id="filter__SSN" name="SSN" value="SSN">
-              <label class="usa-checkbox__label margin-bottom-0" id="filter__SSN_label" for="filter__SSN">SSN</label>
-            </div>
-            <div class="usa-checkbox float-left margin-right-2 bg-base-lighter checkbox-tags">
-              <input class="usa-checkbox__input" type="checkbox" id="filter__email" name="Email" value="Email">
-              <label class="usa-checkbox__label margin-bottom-0" id="filter__email_label" for="filter__email">email</label>
-            </div>
-          </li>
-          <li>
-            <span>CUSTOM FILTERS</span>
-          </li>
-          <li>
-            <span><strong>TYPE</strong></span>
-          </li>
-          <li>
-            <div class="usa-checkbox float-left margin-right-2">
-              <input class="usa-checkbox__input" type="checkbox" id="filter__SORNS" name="SORN" value="SORN" checked>
-              <label class="usa-checkbox__label" id="filter__SORN_label" for="filter__SORNS">SORN</label>
-            </div>
-          </li>
-          <li>
-            <div class="usa-checkbox float-left">
-              <input class="usa-checkbox__input" type="checkbox" id="filter__PIA" name="PIA" value="PIA" checked>
-              <label class="usa-checkbox__label" id="filter__PIA_label" for="filter__PIA">PIA</label>
-            </div>
-          </li>
-        </ul>
-        <br>
-        <ul>
-          <li>
-            <label class="" for="search-field">System</label>
-            <input class="usa-input" id="system-field" type="input" name="system">
-          </li>
-          <li>
-            <label class="" for="search-field">SORN ID</label>
-            <input class="usa-input" id="sorn-field" type="input" name="sorn id">
-          </li>
-          <li>
-            <label class="" for="search-field">PII</label>
-            <input class="usa-input" id="pii-field" type="input" name="PII">
-          </li>
-        </ul>
+      <div class="usa-list desktop:grid-col-3">
+        <div class="filter_section padding-2">
+          <ul class="margin-top-0">
+            <li>
+              <span><strong>FILTERS</strong></span>
+            </li>
+            <li>
+              <span>QUICK FILTERS</span>
+            </li>
+            <li>
+              <div class="usa-checkbox float-left margin-right-2 bg-base-lighter checkbox-tags">
+                <input class="usa-checkbox__input" type="checkbox" id="filter__SSN" name="SSN" value="SSN">
+                <label class="usa-checkbox__label margin-bottom-0" id="filter__SSN_label" for="filter__SSN">SSN</label>
+              </div>
+              <div class="usa-checkbox float-left margin-right-2 bg-base-lighter checkbox-tags">
+                <input class="usa-checkbox__input" type="checkbox" id="filter__email" name="Email" value="Email">
+                <label class="usa-checkbox__label margin-bottom-0" id="filter__email_label" for="filter__email">email</label>
+              </div>
+            </li>
+           </ul>
+
+           <ul class="margin-top-8">
+             <hr class="margin-bottom-2">
+            <li class="margin-bottom-05">
+              <span>CUSTOM FILTERS</span>
+            </li>
+            <li>
+              <span><strong>TYPE</strong></span>
+            </li>
+            <li>
+              <div class="usa-checkbox float-left margin-right-2">
+                <input class="usa-checkbox__input" type="checkbox" id="filter__SORNS" name="SORN" value="SORN" checked>
+                <label class="usa-checkbox__label" id="filter__SORN_label" for="filter__SORNS">SORN</label>
+              </div>
+            </li>
+            <li>
+              <div class="usa-checkbox float-left">
+                <input class="usa-checkbox__input" type="checkbox" id="filter__PIA" name="PIA" value="PIA" checked>
+                <label class="usa-checkbox__label" id="filter__PIA_label" for="filter__PIA">PIA</label>
+              </div>
+            </li>
+          </ul>
+          <br>
+          <ul class="margin-top-1 margin-bottom-0">
+            <li>
+              <label class="" for="search-field">System</label>
+              <input class="usa-input" id="system-field" type="input" name="system">
+            </li>
+            <li>
+              <label class="" for="search-field">SORN ID</label>
+              <input class="usa-input" id="sorn-field" type="input" name="sorn id">
+            </li>
+            <li>
+              <label class="" for="search-field">PII</label>
+              <input class="usa-input" id="pii-field" type="input" name="PII">
+            </li>
+          </ul>
+
+        </div>
 
       </div> <!--filter_section-->
 
       <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs" id="main-content">
-        <div class="grid-row margin-2 margin-right-0 results-meta">
+        <div class="grid-row margin-top-2 margin-right-0 results-meta">
           <div class="grid-col-9 display-inline results-meta__filters">
             <span class="font-body-xs text-uppercase text-bold text-ls-1 "> Active filters: </span>
             <ul id="active-filters" class="margin-top-05 margin-bottom-05 padding-0">
@@ -242,12 +249,12 @@ $(document).ready( function () {
             </span>
           </div>
         </div>
-        <hr class="margin-left-2 maring-right-0">
+        <hr class="margin-right-0">
         <div id="cards">
           <div class="list">
 
           {% for row in rows %}
-            <div class="card padding-2 margin-2 margin-right-0">
+            <div class="card padding-2 margin-top-2 margin-right-0">
               <div class="grid-row margin-bottom-105">
                 <span class="system font-heading-lg text-blue">{{ row['System Name'] }}</span>
               </div>
