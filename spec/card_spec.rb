@@ -114,6 +114,13 @@ context "the card page", type: :feature, js: true do
         expect(find(".system").text).to eq "First System Name"
       end
 
+      it "shows an active filter pill" do
+        find("#system-field").set("First System Name")
+
+        expect(find("#system-tag")).to be_truthy
+        expect(find("#system-tag").text).to eq "SYSTEM: FIRST SYSTEM NAME"
+      end
+
       it "shows all cards again when search field is erased" do
         find("#system-field").set("")
 
@@ -132,6 +139,13 @@ context "the card page", type: :feature, js: true do
         expect(find(".sorn-id").text).to eq "GSA/PPFM-11"
       end
 
+      it "shows an active filter pill" do
+        find("#sorn-field").set("GSA/PPFM-11")
+
+        expect(find("#sorn-tag")).to be_truthy
+        expect(find("#sorn-tag").text).to eq "SORN: GSA/PPFM-11"
+      end
+
       it "shows all cards again when search field is erased" do
         find("#sorn-field").set("")
 
@@ -147,6 +161,13 @@ context "the card page", type: :feature, js: true do
         expect(find("#result-count").text).to eq "1"
         expect(all('.card').length).to eq 1
         expect(find(".pii").text).to include "FIRST SYSTEM ONLY PII"
+      end
+
+      it "shows an active filter pill" do
+        find("#pii-field").set("FIRST SYSTEM ONLY PII")
+
+        expect(find("#pii-tag")).to be_truthy
+        expect(find("#pii-tag").text).to eq "PII: FIRST SYSTEM ONLY PII"
       end
 
       it "shows all cards again when search field is erased" do
