@@ -1,5 +1,13 @@
 
-# PII Inventory for Privacy Offices
+# PII Inventory Dashboard
+
+This repo is a part of the [DevOps for Privacy Offices](https://github.com/18f/privacy-tools) 10x project.
+
+## Description
+
+This dashboard presents information about personally identifiable information (PII) that is collected by our partner's GSA systems. The data was scraped from privacy documents published by GSA.
+
+For more information on our sources, see https://github.com/18F/privacy-tools/wiki/Data-Sources
 
 ## Running Locally
 
