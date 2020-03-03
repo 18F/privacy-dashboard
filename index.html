@@ -156,8 +156,20 @@ $(document).ready( function () {
       Object.keys(searchValues).forEach(
         key => activeFilter(key)
       )
+
+      // highlight
+      $('ul.pii li.highlight').removeClass('highlight');
+      if (searchValues.pii) {
+        // case insensitive jquery text search
+        jQuery.expr[':'].icontains = function(a, i, m) {
+          return jQuery(a).text().toUpperCase()
+            .indexOf(m[3].toUpperCase()) >= 0;
+        };
+        $(`ul.pii li:icontains(${searchValues.pii})`).addClass('highlight')
+      }
     })
   )
+
 })
 
 </script>
