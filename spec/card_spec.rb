@@ -47,6 +47,16 @@ context "the card page", type: :feature, js: true do
         expect(find("#ssn-tag")).to be_truthy
         expect(find("#ssn-tag").text).to eq "PII: SSN"
       end
+
+      it "highlights the matching pii" do
+        find("#filter__SSN_label").click
+
+        # test data has 2 matches, upper and lower case
+        expect(all('.highlight').count).to eq 2
+        all('.highlight').each do |li|
+          expect(li.text).to match(/SSN/i)
+        end
+      end
     end
 
     describe "clicking on email" do
@@ -64,6 +74,14 @@ context "the card page", type: :feature, js: true do
 
         expect(find("#email-tag")).to be_truthy
         expect(find("#email-tag").text).to eq "PII: EMAIL"
+      end
+
+      it "highlights the matching pii" do
+        find("#filter__email_label").click
+
+        # test data has 1 match
+        expect(all('.highlight').count).to eq 1
+        expect(find('.highlight').text).to eq "email"
       end
     end
   end
@@ -168,6 +186,14 @@ context "the card page", type: :feature, js: true do
 
         expect(find("#pii-tag")).to be_truthy
         expect(find("#pii-tag").text).to eq "PII: FIRST SYSTEM ONLY PII"
+      end
+
+      it "highlights the matching pii" do
+        find("#pii-field").set("FIRST SYSTEM ONLY PII")
+
+        # test data has 1 match
+        expect(all('.highlight').count).to eq 1
+        expect(find('.highlight').text).to eq "FIRST SYSTEM ONLY PII"
       end
 
       it "shows all cards again when search field is erased" do

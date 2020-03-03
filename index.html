@@ -11,6 +11,12 @@ title: Home
 <script>
 
 $(document).ready( function () {
+  // case insensitive jquery text search
+  jQuery.expr[':'].icontains = function(a, i, m) {
+    return jQuery(a).text().toUpperCase()
+      .indexOf(m[3].toUpperCase()) >= 0;
+  };
+  
   var options = {
     valueNames: [ 'system', 'sorn-id', 'pii', 'type' ],
     page: 10,
@@ -19,7 +25,7 @@ $(document).ready( function () {
         outerWindow: 1
     }]
   };
-  console.log(options);
+
   var list = new List('cards', options);
 
   // listener: after filter, get the result count
@@ -132,12 +138,29 @@ $(document).ready( function () {
     }
   }
 
+  function highlight() {
+    // highlight matching search results
+    $('ul.pii li.highlight').removeClass('highlight');
+    if (searchValues.pii) {
+      $(`ul.pii li:icontains(${searchValues.pii})`).addClass('highlight')
+    }
+
+    if (ssnCheckbox.is(":checked")) {
+      $(`ul.pii li:icontains(SSN)`).addClass('highlight')
+    }
+
+    if (emailCheckbox.is(":checked")) {
+      $(`ul.pii li:icontains(email)`).addClass('highlight')
+    }
+  }
+
   // bind checkbox click() action to trigger the filter() function
   checkboxes.forEach(
     checkbox => checkbox.click( function() {
       searchValues = getSearchValues()
       filter(searchValues)
       quickActiveFilters()
+      highlight()
     })
   )
 
@@ -157,16 +180,7 @@ $(document).ready( function () {
         key => activeFilter(key)
       )
 
-      // highlight
-      $('ul.pii li.highlight').removeClass('highlight');
-      if (searchValues.pii) {
-        // case insensitive jquery text search
-        jQuery.expr[':'].icontains = function(a, i, m) {
-          return jQuery(a).text().toUpperCase()
-            .indexOf(m[3].toUpperCase()) >= 0;
-        };
-        $(`ul.pii li:icontains(${searchValues.pii})`).addClass('highlight')
-      }
+      highlight()
     })
   )
 
