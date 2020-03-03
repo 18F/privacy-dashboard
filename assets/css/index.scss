@@ -115,7 +115,7 @@ table.dataTable tbody tr.odd td {
 .pagination {
   display: inline-block;
   float: right;
-  margin-top: 0;
+  margin-top: units(2);
 }
 
 .pagination li {
@@ -133,6 +133,10 @@ a.page {
     background-color: color('blue-warm-5');
     text-decoration: underline;
   }
+}
+
+a.page:last-of-type {
+  margin-right: 0;
 }
 
 .active .page {
