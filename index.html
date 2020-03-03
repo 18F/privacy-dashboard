@@ -315,7 +315,7 @@ $(document).ready( function () {
                   <ul class="pii">
                     {% assign pii = row['PII'] | split: "," | sort_natural %}
                     {% for i in pii %}
-                      <li>{{i}}</li>
+                      <li><span>{{i}}</span></li>
                     {% endfor %}
                   </ul>
                 </div>
