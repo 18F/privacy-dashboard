@@ -49,12 +49,17 @@ context "the card page", type: :feature, js: true do
       it "when searching by system name" do
         find("#general-search").set("First System Name")
         find("#general-search-button").click
-        
+
         expect(all('.card').length).to eq 1
         expect(find(".system").text).to eq "First System Name"
       end
 
-      xit "when searching by SORN ID" do
+      it "when searching by SORN ID" do
+        find("#general-search").set("PPFM")
+        find("#general-search-button").click
+
+        expect(all('.card').length).to eq 1
+        expect(find(".sorn-id").text).to eq "GSA/PPFM-11"
       end
 
       xit "when searching by PII" do
