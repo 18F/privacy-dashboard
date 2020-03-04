@@ -184,6 +184,11 @@ $(document).ready( function () {
     })
   )
 
+  $("#general-search-button").click(function(e){
+    var generalSearchVal = $("#general-search").val()
+    list.search(generalSearchVal)
+  })
+
 })
 
 </script>

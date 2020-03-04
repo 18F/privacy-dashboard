@@ -59,6 +59,16 @@ context "the card page", type: :feature, js: true do
 
       xit "when searching by PII" do
       end
+
+      it "and then filters on them" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+
+        expect(all('.card').length).to eq 2
+
+        find("#pii-field").set("FIRST SYSTEM ONLY PII")
+        expect(all('.card').length).to eq 1
+      end
     end
 
     xdescribe "shows count of matching systems to the search term" do
