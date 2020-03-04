@@ -23,7 +23,14 @@ context "the card page", type: :feature, js: true do
       expect(page).to have_selector "#general-search-button"
     end
 
-    xit "has filter elements" do
+    it "has filter elements" do
+      expect(page).to have_selector "#system-field"
+      expect(page).to have_selector "#sorn-field"
+      expect(page).to have_selector "#pii-field"
+      expect(page).to have_selector("#filter__PIA", visible: false)
+      expect(page).to have_selector("#filter__SORNS", visible: false)
+      expect(page).to have_selector("#filter__SSN", visible: false)
+      expect(page).to have_selector("#filter__email", visible: false)
     end
   
     it "cards have the expected elements" do
@@ -37,9 +44,14 @@ context "the card page", type: :feature, js: true do
     end
   end
 
-  xcontext "general search" do
+  context "general search" do
     describe "finds searched systems" do
-      xit "when searching by system name" do
+      it "when searching by system name" do
+        find("#general-search").set("First System Name")
+        find("#general-search-button").click
+        
+        expect(all('.card').length).to eq 1
+        expect(find(".system").text).to eq "First System Name"
       end
 
       xit "when searching by SORN ID" do
