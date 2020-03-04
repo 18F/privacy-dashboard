@@ -17,6 +17,14 @@ context "the card page", type: :feature, js: true do
     it "has the page title" do
       expect(page).to have_title "PII Inventory"
     end
+
+    it "has general search bar" do
+      expect(page).to have_selector "#general-search"
+      expect(page).to have_selector "#general-search-button"
+    end
+
+    xit "has filter elements" do
+    end
   
     it "cards have the expected elements" do
       first_card = first('.card')
@@ -26,6 +34,22 @@ context "the card page", type: :feature, js: true do
       expect(first_card.has_text?('SORN ID:')).to be_truthy
       expect(first_card.has_text?('PII:')).to be_truthy
       expect(first_card.has_link?('Source')).to be_truthy
+    end
+  end
+
+  xcontext "general search" do
+    describe "finds searched systems" do
+      xit "when searching by system name" do
+      end
+
+      xit "when searching by SORN ID" do
+      end
+
+      xit "when searching by PII" do
+      end
+    end
+
+    xdescribe "shows count of matching systems to the search term" do
     end
   end
 
