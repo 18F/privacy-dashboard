@@ -28,6 +28,15 @@ $(document).ready( function () {
 
   var list = new List('cards', options);
 
+  // listener: after search, get the result count
+  list.on('searchComplete', function() {
+    $("#result-count").text(list.matchingItems.length)
+    $("#total-count").text(list.matchingItems.length)
+    var searchTerm = $("#general-search").val()
+    var searchTermText = `results for "${searchTerm}"`
+    $("#search-term").text(searchTermText)
+  })
+
   // listener: after filter, get the result count
   list.on('filterComplete', function() {
     $("#result-count").text(list.matchingItems.length)
@@ -274,16 +283,16 @@ $(document).ready( function () {
           </button>
         </div>
         <div class="grid-row margin-top-2 margin-right-0 results-meta">
-          <div class="grid-col-9 display-inline results-meta__filters">
+          <div class="grid-col-7 display-inline results-meta__filters">
             <span class="font-body-xs text-uppercase text-bold text-ls-1 "> Active filters: </span>
             <ul id="active-filters" class="margin-top-05 margin-bottom-05 padding-0">
             </ul>
           </div>
 
-          <div class="grid-col-3 margin-bottom-0 text-right results-meta__count">
-            <span class="font-body-xs">
-            Matching <span id="result-count" class="text-bold">{{ rows.size }}</span> of <span id="total-count" class="text-bold">{{ rows.size }}</span>
-            </span>
+          <div class="grid-col-5 margin-bottom-0 text-right results-meta__count">
+             <div id="search-result-counter" class="font-body-xs">
+              Showing <span id="result-count" class="text-bold">{{ rows.size }}</span> of <span id="total-count" class="text-bold">{{ rows.size }}</span> <span id="search-term"></span>
+            </div>
           </div>
         </div>
         <hr class="margin-right-0">

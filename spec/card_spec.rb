@@ -81,7 +81,13 @@ context "the card page", type: :feature, js: true do
       end
     end
 
-    xdescribe "shows count of matching systems to the search term" do
+    describe "shows count of matching systems to the search term" do
+      it "says the name of the search term in the results counter" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+
+        expect(find("#search-result-counter").text).to eq 'Showing 2 of 2 results for "PII IN TWO SYSTEMS"'
+      end
     end
   end
 
