@@ -91,6 +91,44 @@ context "the card page", type: :feature, js: true do
     end
   end
 
+  context "general search and filters at the same time" do
+    describe "search first, then filters" do
+        it "has the right result count" do
+          find("#general-search").set("PII IN TWO SYSTEMS")
+          find("#general-search-button").click
+          find("#system-field").set("First System Name")
+
+          expect(find("#search-result-counter").text).to eq 'Showing 1 of 2 results for "PII IN TWO SYSTEMS"'
+        end
+    end
+
+    describe "filters first, then search" do
+      it "has the right result count" do
+        find("#system-field").set("First System Name")
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+
+        expect(find("#search-result-counter").text).to eq 'Showing 1 of 2 results for "PII IN TWO SYSTEMS"'
+      end
+    end
+
+    describe "when removing filters and searches" do
+      it "has the right result count" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+        find("#system-field").set("First System Name")
+        expect(find("#search-result-counter").text).to eq 'Showing 1 of 2 results for "PII IN TWO SYSTEMS"'
+
+        find("#general-search").set("")
+        find("#general-search-button").click
+        expect(find("#search-result-counter").text).to eq 'Showing 1 of 4'
+
+        find("#system-field").set("")
+        expect(find("#search-result-counter").text).to eq 'Showing 4 of 4'
+      end
+    end
+  end
+
   context "Quick filters" do
     describe "clicking on SSN" do
       it "filters the list" do

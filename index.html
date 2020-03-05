@@ -33,8 +33,12 @@ $(document).ready( function () {
     $("#result-count").text(list.matchingItems.length)
     $("#total-count").text(list.matchingItems.length)
     var searchTerm = $("#general-search").val()
-    var searchTermText = `results for "${searchTerm}"`
-    $("#search-term").text(searchTermText)
+    if (searchTerm) {
+      var searchTermText = `results for "${searchTerm}"`
+      $("#search-term").text(searchTermText)
+    } else {
+      $("#search-term").text('');
+    }
   })
 
   // listener: after filter, get the result count
@@ -54,7 +58,7 @@ $(document).ready( function () {
   const checkboxes = [piaCheckbox, sornCheckbox, ssnCheckbox, emailCheckbox]
 
   // get current input from search fields
-  function getSearchValues() {
+  function getTypedFilterValues() {
     return searchValues = {
       system: systemSearch.val().toLowerCase(),
       sorn: sornSearch.val().toLowerCase(),
@@ -166,7 +170,7 @@ $(document).ready( function () {
   // bind checkbox click() action to trigger the filter() function
   checkboxes.forEach(
     checkbox => checkbox.click( function() {
-      searchValues = getSearchValues()
+      searchValues = getTypedFilterValues()
       filter(searchValues)
       quickActiveFilters()
       highlight()
@@ -177,25 +181,27 @@ $(document).ready( function () {
   // Bind keypresses on each of the search boxes
   searches.forEach(
     search => search.keyup( function() {
-
-      // Get contents of the search boxes
-      searchValues = getSearchValues()
-
-      // filter the main list
-      filter(searchValues)
-
-      // Make the active filter tags for each search box
-      Object.keys(searchValues).forEach(
-        key => activeFilter(key)
-      )
-
-      highlight()
+      applyFilters()
     })
   )
 
+  function applyFilters() {
+    // Get contents of the search boxes
+    searchValues = getTypedFilterValues()
+    // filter the main list
+    filter(searchValues)
+    // Make the active filter tags for each search box
+    Object.keys(searchValues).forEach(
+      key => activeFilter(key)
+    )
+    highlight()
+  }
+
   $("#general-search-button").click(function(e){
     var generalSearchVal = $("#general-search").val()
+    list.filter()
     list.search(generalSearchVal)
+    applyFilters()
   })
 
 })
