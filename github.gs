@@ -14,7 +14,7 @@
 
 var github = {
         'username': 'peterrowland',
-        'accessToken': 'd091bc69d6f92eb19a12490785c37b1441669d58',
+        'accessToken': '20b7803daa0bbe2d1e4b03f55548e0abf6a2ee03',
         'repository': 'test-GS-commits',
         'branch': 'master',
         'commitMessage': Utilities.formatString('publish data on %s', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'))
@@ -24,29 +24,50 @@ var gSheets = {
         'sheetId': 'xxxxxxxxx'
     };
 
-function run() {
+function getLastSha(filename) {
     var requestUrl = Utilities.formatString(
     'https://api.github.com/repos/%s/%s/contents/%s',
     github.username,
     github.repository,
-    'gs.txt'
-    )
-
+    filename
+    ),
     response = UrlFetchApp.fetch(requestUrl, {
-      'method': 'PUT',
-      'headers': {
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json',
+        'method': 'GET',
+        'headers': {
           'Authorization': Utilities.formatString('token %s', github.accessToken)
-      },
-      'payload': JSON.stringify({
-          'message': github.commitMessage,
-          'content': Utilities.base64Encode('test_content', Utilities.Charset.UTF_8),        
-        //   'sha': lastSha,
-          'branch': github.branch
-      })
-    });
-    Logger.log(response)
+        }
+    }),
+    jsonResponse = JSON.parse(response.getContentText());
+
+    return jsonResponse.sha;
+}
+
+function run() {
+    
+    Logger.log(getLastSha('gs1.txt'))
+    
+    // var requestUrl = Utilities.formatString(
+    // 'https://api.github.com/repos/%s/%s/contents/%s',
+    // github.username,
+    // github.repository,
+    // 'gs1.txt'
+    // )
+    
+    // response = UrlFetchApp.fetch(requestUrl, {
+    //   'method': 'PUT',
+    //   'headers': {
+    //       'Accept': 'application/vnd.github.v3+json',
+    //       'Content-Type': 'application/json',
+    //       'Authorization': Utilities.formatString('token %s', github.accessToken)
+    //   },
+    //   'payload': JSON.stringify({
+    //       'message': github.commitMessage,
+    //       'content': Utilities.base64Encode('test_content', Utilities.Charset.UTF_8),        
+    //     //   'sha': lastSha,
+    //       'branch': github.branch
+    //   })
+    // });
+    // Logger.log(response)
 }
     
 
