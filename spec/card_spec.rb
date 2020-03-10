@@ -79,6 +79,16 @@ context "the card page", type: :feature, js: true do
         find("#pii-field").set("FIRST SYSTEM ONLY PII")
         expect(all('.card').length).to eq 1
       end
+
+      it "highlights the matching pii" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+
+        expect(all('.highlight').count).to eq 2
+        all('.highlight').each do |li|
+          expect(li.text).to eq 'PII IN TWO SYSTEMS'
+        end
+      end
     end
 
     describe "shows count of matching systems to the search term" do
@@ -125,6 +135,19 @@ context "the card page", type: :feature, js: true do
 
         find("#system-field").set("")
         expect(find("#search-result-counter").text).to eq 'Showing 4 of 4'
+      end
+
+      it "highlights correctly, when search field is empty but not submitted" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+        find("#pii-field").set("FIRST SYSTEM ONLY PII")
+        expect(all('.highlight').count).to eq 2
+
+        find("#general-search").set("")
+        expect(all('.highlight').count).to eq 2
+
+        find("#pii-field").set("")
+        expect(all('.highlight').count).to eq 2
       end
     end
   end
