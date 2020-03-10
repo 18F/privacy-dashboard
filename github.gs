@@ -44,30 +44,29 @@ function getLastSha(filename) {
 
 function run() {
     
-    Logger.log(getLastSha('gs1.txt'))
+    var lastSha = (getLastSha('gs1.txt'))
     
-    // var requestUrl = Utilities.formatString(
-    // 'https://api.github.com/repos/%s/%s/contents/%s',
-    // github.username,
-    // github.repository,
-    // 'gs1.txt'
-    // )
+    var requestUrl = Utilities.formatString(
+    'https://api.github.com/repos/%s/%s/contents/%s',
+    github.username,
+    github.repository,
+    'gs1.txt'
+    )
     
-    // response = UrlFetchApp.fetch(requestUrl, {
-    //   'method': 'PUT',
-    //   'headers': {
-    //       'Accept': 'application/vnd.github.v3+json',
-    //       'Content-Type': 'application/json',
-    //       'Authorization': Utilities.formatString('token %s', github.accessToken)
-    //   },
-    //   'payload': JSON.stringify({
-    //       'message': github.commitMessage,
-    //       'content': Utilities.base64Encode('test_content', Utilities.Charset.UTF_8),        
-    //     //   'sha': lastSha,
-    //       'branch': github.branch
-    //   })
-    // });
-    // Logger.log(response)
+    response = UrlFetchApp.fetch(requestUrl, {
+      'method': 'PUT',
+      'headers': {
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+          'Authorization': Utilities.formatString('token %s', github.accessToken)
+      },
+      'payload': JSON.stringify({
+          'message': github.commitMessage,
+          'content': Utilities.base64Encode(Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'), Utilities.Charset.UTF_8),        
+          'sha': lastSha,
+          'branch': github.branch
+      })
+    });
 }
     
 
