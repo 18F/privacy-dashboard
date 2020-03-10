@@ -283,10 +283,15 @@ $(document).ready( function () {
 
       <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs" id="main-content">
         <div class="grid-row margin-top-2 margin-right-0">
-          <input class="usa-input" id="general-search" type="search" name="search">
-          <button id="general-search-button" class="usa-button" type="submit">
-            <span class="usa-search__submit-text">Search</span>
-          </button>
+          <div class="grid-col-12">
+            <form class="usa-search" role="search" onsubmit="return false">
+              <input class="usa-input" id="general-search" type="search" name="search">
+              <button id="general-search-button" class="usa-button" type="submit">
+                <span class="usa-search__submit-text">Search</span>
+              </button>
+            </form>
+          </div>
+
         </div>
         <div class="grid-row margin-top-2 margin-right-0 results-meta">
           <div class="grid-col-7 display-inline results-meta__filters">
@@ -357,5 +362,5 @@ $(document).ready( function () {
         </div>
       </main>
 
-    </div> <!--grid-row--> 
+    </div> <!--grid-row-->
   </div> <!--grid-container-->
