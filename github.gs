@@ -6,10 +6,10 @@
  */
 
 // TODO:
-// talk to GH API (token)
-// commit a message to a new file in GH
+// talk to GH API (token) √
+// commit a message to a new file in GH √
 // set up a trigger
-// update a file in GH
+// update a file in GH √
 // commit spreadsheet export .csv to GH
 
 var github = {
@@ -42,17 +42,15 @@ function getLastSha(filename) {
     return jsonResponse.sha;
 }
 
-function run() {
-    
-    var lastSha = (getLastSha('gs1.txt'))
+function commitToGithub (filename, content, lastSha) {
     
     var requestUrl = Utilities.formatString(
     'https://api.github.com/repos/%s/%s/contents/%s',
     github.username,
     github.repository,
-    'gs1.txt'
+    filename
     )
-    
+
     response = UrlFetchApp.fetch(requestUrl, {
       'method': 'PUT',
       'headers': {
@@ -62,11 +60,19 @@ function run() {
       },
       'payload': JSON.stringify({
           'message': github.commitMessage,
-          'content': Utilities.base64Encode(Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'), Utilities.Charset.UTF_8),        
+          'content': Utilities.base64Encode(content, Utilities.Charset.UTF_8), // Testing with committing current date
           'sha': lastSha,
           'branch': github.branch
       })
     });
+
+return false
+}
+
+function run() {
+    
+    var lastSha = (getLastSha('gs1.txt'))
+    commitToGithub('gs1.txt', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'), lastSha)
 }
     
 
