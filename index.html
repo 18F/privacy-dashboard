@@ -165,6 +165,11 @@ $(document).ready( function () {
     if (emailCheckbox.is(":checked")) {
       $(`ul.pii li:icontains(email)`).addClass('highlight')
     }
+
+    var searchTerm = $("#general-search").val()
+    if (searchTerm) {
+      $(`ul.pii li:icontains(${searchTerm})`).addClass('highlight')
+    }
   }
 
   // bind checkbox click() action to trigger the filter() function
@@ -202,6 +207,8 @@ $(document).ready( function () {
     list.filter()
     list.search(generalSearchVal)
     applyFilters()
+
+    highlight()
   })
 
 })
