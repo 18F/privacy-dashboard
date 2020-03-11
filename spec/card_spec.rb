@@ -270,12 +270,18 @@ context "the card page", type: :feature, js: true do
         expect(find("#system-tag").text).to eq "SYSTEM: FIRST SYSTEM NAME"
       end
 
-      it "shows all cards again when search field is erased" do
-        find("#system-field").set("")
+      context "when search field is erased" do
+        before { find("#system-field").set("") }
 
-        expect(find("#result-count").text).to eq "4"
-        expect(all('.card').length).to eq 4
-        expect(all(".system")[0].text).to eq "First System Name"
+        it "shows the correct number of cards again" do
+          expect(find("#result-count").text).to eq "4"
+          expect(all('.card').length).to eq 4
+          expect(all(".system")[0].text).to eq "First System Name"
+        end
+
+        it "removes the active filter tag" do
+           expect(page).not_to have_selector("#system-tag")
+        end
       end
     end
 
