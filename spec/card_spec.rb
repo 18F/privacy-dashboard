@@ -17,6 +17,21 @@ context "the card page", type: :feature, js: true do
     it "has the page title" do
       expect(page).to have_title "PII Inventory"
     end
+
+    it "has general search bar" do
+      expect(page).to have_selector "#general-search"
+      expect(page).to have_selector "#general-search-button"
+    end
+
+    it "has filter elements" do
+      expect(page).to have_selector "#system-field"
+      expect(page).to have_selector "#sorn-field"
+      expect(page).to have_selector "#pii-field"
+      expect(page).to have_selector("#filter__PIA", visible: false)
+      expect(page).to have_selector("#filter__SORNS", visible: false)
+      expect(page).to have_selector("#filter__SSN", visible: false)
+      expect(page).to have_selector("#filter__email", visible: false)
+    end
   
     it "cards have the expected elements" do
       first_card = first('.card')
@@ -26,6 +41,122 @@ context "the card page", type: :feature, js: true do
       expect(first_card.has_text?('SORN ID:')).to be_truthy
       expect(first_card.has_text?('PII:')).to be_truthy
       expect(first_card.has_link?('Source')).to be_truthy
+    end
+  end
+
+  context "general search" do
+    describe "finds searched systems" do
+      it "when searching by system name" do
+        find("#general-search").set("First System Name")
+        find("#general-search-button").click
+
+        expect(all('.card').length).to eq 1
+        expect(find(".system").text).to eq "First System Name"
+      end
+
+      it "when searching by SORN ID" do
+        find("#general-search").set("PPFM")
+        find("#general-search-button").click
+
+        expect(all('.card').length).to eq 1
+        expect(find(".sorn-id").text).to eq "GSA/PPFM-11"
+      end
+
+      it "when searching by PII" do
+        find("#general-search").set("parental")
+        find("#general-search-button").click
+
+        expect(all('.card').length).to eq 1
+        expect(find(".pii").text).to have_text "parental"
+      end
+
+      it "and then filters on them" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+
+        expect(all('.card').length).to eq 2
+
+        find("#pii-field").set("FIRST SYSTEM ONLY PII")
+        expect(all('.card').length).to eq 1
+      end
+
+      it "highlights the matching pii" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+
+        expect(all('.highlight').count).to eq 2
+        all('.highlight').each do |li|
+          expect(li.text).to eq 'PII IN TWO SYSTEMS'
+        end
+      end
+    end
+
+    describe "shows count of matching systems to the search term" do
+      it "says the name of the search term in the results counter" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+
+        expect(find("#search-result-counter").text).to eq 'Showing 2 of 2 results for "PII IN TWO SYSTEMS"'
+      end
+    end
+  end
+
+  context "general search and filters at the same time" do
+    describe "search first, then filters" do
+        it "has the right result count" do
+          find("#general-search").set("PII IN TWO SYSTEMS")
+          find("#general-search-button").click
+          find("#system-field").set("First System Name")
+
+          expect(find("#search-result-counter").text).to eq 'Showing 1 of 2 results for "PII IN TWO SYSTEMS"'
+        end
+
+        it "highlights the expected PII" do
+          find("#general-search").set("PII IN TWO SYSTEMS")
+          find("#general-search-button").click
+          find("#pii-field").set("FIRST SYSTEM ONLY PII")
+
+          expect(all('.highlight').count).to eq 2
+        end
+      end
+
+    describe "filters first, then search" do
+      it "has the right result count" do
+        find("#system-field").set("First System Name")
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+
+        expect(find("#search-result-counter").text).to eq 'Showing 1 of 2 results for "PII IN TWO SYSTEMS"'
+      end
+    end
+
+    describe "when removing filters and searches" do
+      it "has the right result count" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+        find("#system-field").set("First System Name")
+        expect(find("#search-result-counter").text).to eq 'Showing 1 of 2 results for "PII IN TWO SYSTEMS"'
+
+        find("#general-search").set("")
+        find("#general-search-button").click
+        expect(find("#search-result-counter").text).to eq 'Showing 1 of 4'
+
+        find("#system-field").set("")
+        expect(find("#search-result-counter").text).to eq 'Showing 4 of 4'
+      end
+
+      it "highlights correctly, when search field is empty but not submitted" do
+        find("#general-search").set("PII IN TWO SYSTEMS")
+        find("#general-search-button").click
+        find("#pii-field").set("FIRST SYSTEM ONLY PII")
+        expect(all('.highlight').count).to eq 2
+
+        find("#general-search").set("")
+        expect(all('.highlight').count).to eq 2
+
+        find("#pii-field").set("")
+        expect(all('.highlight').count).to eq 2
+      end
     end
   end
 

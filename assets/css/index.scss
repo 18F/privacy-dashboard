@@ -59,6 +59,14 @@
   padding-left:0px;
 }
 
+.usa-search {
+  display: flex;
+}
+
+#general-search {
+  max-width: 100%;
+}
+
 .usa-list li {
   margin-bottom: .5em;
 }
@@ -66,18 +74,30 @@
 .pii {
   columns: 2;
   margin-top: 0px;
-  padding-left: 20px;
+  padding-left: 0;
   column-gap: 2em;
   // display: inline-block; <-- attempt to display side by side with label
 }
 
 .pii li {
   margin-bottom: .25em;
+  list-style: none;
+  position: relative;
+  padding-left: units(1.5);
+}
+
+.pii li:before {
+  content: "• ";
+  position: absolute;
+  left: 0;
 }
 
 .highlight span{
   background-color: yellow;
+  padding-left: units(.5);
+  padding-right: units(.5);
 }
+
 
 // .grid-container {
 //   max-width: 100%;
@@ -148,6 +168,17 @@ a.page:last-of-type {
     text-decoration: none;
   }
 }
+
+
+li.disabled .page {;
+  color: color('gray-50');
+  &:hover {
+    cursor: not-allowed	;
+    background-color: white;
+    text-decoration: none;
+  }
+}
+
 
 // default mode hide banner
 .usa-banner__content {
