@@ -98,6 +98,7 @@
   padding-right: units(.5);
 }
 
+
 // .grid-container {
 //   max-width: 100%;
 //   width: 100%;
@@ -167,6 +168,17 @@ a.page:last-of-type {
     text-decoration: none;
   }
 }
+
+
+li.disabled .page {;
+  color: color('gray-50');
+  &:hover {
+    cursor: not-allowed	;
+    background-color: white;
+    text-decoration: none;
+  }
+}
+
 
 // default mode hide banner
 .usa-banner__content {
