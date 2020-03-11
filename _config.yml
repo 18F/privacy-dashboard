@@ -96,6 +96,7 @@ exclude:
   - CONTRIBUTING.md
   - LICENSE.md
   - assets
+  - spec
 
 assets:
   sources:

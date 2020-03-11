@@ -31,54 +31,30 @@ $(document).ready( function () {
   var list = new List('cards', options);
 
   // pointers to form elements
-  const systemSearch = $("#system-field");
-  const sornSearch = $("#sorn-field");
-  const piiSearch = $("#pii-field");
+  const systemFilterField = $("#system-field");
+  const sornFilterField = $("#sorn-field");
+  const piiFilterField = $("#pii-field");
   const piaCheckbox = $("#filter__PIA")
   const sornCheckbox = $("#filter__SORNS")
   const ssnCheckbox = $("#filter__SSN")
   const emailCheckbox = $("#filter__email")
-  const searches = [systemSearch, sornSearch, piiSearch]
-  const checkboxes = [piaCheckbox, sornCheckbox, ssnCheckbox, emailCheckbox]
 
-  // Set up page data
+  // Set up hash to hold search and filter data as needed
   var SearchFilterData = {
-    ssnFilter: null,
-    emailFilter: null,
-    systemFilter: null,
-    sornFilter: null,
-    piiFilter: null,
+    system: null,
+    sorn: null,
+    pii: null,
     generalSearch: null
   };
 
-  // listener: after search, get the result count
-  list.on('searchComplete', function() {
-    $("#result-count").text(list.matchingItems.length)
-    $("#total-count").text(list.matchingItems.length)
-    if (SearchFilterData.searchTerm) {
-      var searchTermText = `results for "${SearchFilterData.searchTerm}"`
-      $("#search-term").text(searchTermText)
-    } else {
-      $("#search-term").text('');
-    }
-  })
-
-  // listener: after filter, get the result count
-  list.on('filterComplete', function() {
-    $("#result-count").text(list.matchingItems.length)
-  })
-
-  // get current input from search fields
-  function getTypedFilterValues() {
-    SearchFilterData.systemFilter = systemSearch.val().toLowerCase()
-    SearchFilterData.sornFilter = sornSearch.val().toLowerCase()
-    SearchFilterData.piiFilter = piiSearch.val().toLowerCase()
-  }
-
   // run list.js filter
   function filter() {
-    list.filter( function(item) {
+    // get latest filter data
+    SearchFilterData.system = systemFilterField.val().toLowerCase()
+    SearchFilterData.sorn = sornFilterField.val().toLowerCase()
+    SearchFilterData.pii = piiFilterField.val().toLowerCase()
 
+    list.filter( function(item) {
       // for each card, get lower case values
       var systemName = item.values()["system"].toLowerCase()
       var sornID = item.values()["sorn-id"].toLowerCase()
@@ -87,27 +63,25 @@ $(document).ready( function () {
 
       // Set filter value to true (include) if search text is contained in field
       // OR if there is no value entered in the field
-      var systemFilter = systemName.includes(SearchFilterData.systemFilter) || !SearchFilterData.systemFilter
-      var sornIdFilter = sornID.includes(SearchFilterData.sornFilter) || !SearchFilterData.sornFilter
-      var piiFilter = piiValue.includes(SearchFilterData.piiFilter) || !SearchFilterData.piiFilter
+      var systemFilter = systemName.includes(SearchFilterData.system) || !SearchFilterData.system
+      var sornIdFilter = sornID.includes(SearchFilterData.sorn) || !SearchFilterData.sorn
+      var piiFilter = piiValue.includes(SearchFilterData.pii) || !SearchFilterData.pii
 
       // document type filters are true (include) by default
       var piaFilter = true
       var sornFilter = true
+
+      // Quick filters are true by default
       var ssnFilter = true
       var emailFilter = true
 
       // if PIA document type checkbox is not checked, apply filter for that type
-      if (piaCheckbox.is(":checked")) {
-        //pass
-      } else {
+      if (!piaCheckbox.is(":checked")) {
         piaFilter = !type.includes("PIA")
       }
 
       // if SORN document type checkbox is not checked, apply filter for that type
-      if (sornCheckbox.is(":checked")) {
-        //pass
-      } else {
+      if (!sornCheckbox.is(":checked")) {
         sornFilter = !type.includes("SORN")
       }
 
@@ -128,42 +102,24 @@ $(document).ready( function () {
     })
   }
 
-  function setActiveFilterTags() {
-    // Leaving this duplicated code for now.
-    // The typed filters will likely change
-    // so clever refactoring would make changes harder
-    var tagExists = $("#system-tag").length;
-    if (SearchFilterData.systemFilter && !tagExists) {
-      systemTagHtml = `<li id="system-tag" class="usa-tag">System: ${SearchFilterData.systemFilter}</li>`
-      $("#active-filters").append(systemTagHtml)
-    } else if (SearchFilterData.systemFilter && tagExists) {
-      $("#system-tag").text(`System: ${SearchFilterData.systemFilter}`)
-    } else if (SearchFilterData.systemFilter && tagExists) {
-      $("#system-tag").remove()
-    }
-
-    tagExists = $("#sorn-tag").length;
-    if (SearchFilterData.sornFilter && !tagExists) {
-      sornTagHtml = `<li id="sorn-tag" class="usa-tag">sorn: ${SearchFilterData.sornFilter}</li>`
-      $("#active-filters").append(sornTagHtml)
-    } else if (SearchFilterData.sornFilter && tagExists) {
-      $("#sorn-tag").text(`Sorn: ${SearchFilterData.sornFilter}`)
-    } else if (SearchFilterData.sornFilter && tagExists) {
-      $("#sorn-tag").remove()
-    }
-
-    tagExists = $("#pii-tag").length;
-    if (SearchFilterData.piiFilter && !tagExists) {
-      piiTagHtml = `<li id="pii-tag" class="usa-tag">pii: ${SearchFilterData.piiFilter}</li>`
-      $("#active-filters").append(piiTagHtml)
-    } else if (SearchFilterData.piiFilter && tagExists) {
-      $("#pii-tag").text(`pii: ${SearchFilterData.piiFilter}`)
-    } else if (SearchFilterData.piiFilter && tagExists) {
-      $("#pii-tag").remove()
+  function setTypedFilterTags() {
+    var typedFilterKeys = ['system', 'sorn', 'pii'] // Add any new typed filter keys here
+    for (key of typedFilterKeys) {
+      var tag = $(`#${key}-tag`);
+      var tagExists = tag.length;
+      var value = SearchFilterData[key];
+      if (value && !tagExists) {
+        tagHtml = `<li id="${key}-tag" class="usa-tag">${key}: ${value}</li>`
+        $("#active-filters").append(tagHtml)
+      } else if (value && tagExists) {
+        tag.text(`${key}: ${value}`)
+      } else if (value && tagExists) {
+        tag.remove()
+      }
     }
   }
 
-  function quickActiveFilters() {
+  function setQuickFilterTags() {
     // Quick filters
     if (ssnCheckbox.is(":checked") && !$("#ssn-tag").length) {
       html = `<li id="ssn-tag" class="usa-tag">PII: SSN</li>`
@@ -183,8 +139,8 @@ $(document).ready( function () {
   function highlight() {
     // highlight matching search results
     $('ul.pii li.highlight').removeClass('highlight');
-    if (SearchFilterData.piiFilter) {
-      $(`ul.pii li:icontains(${SearchFilterData.piiFilter})`).addClass('highlight')
+    if (SearchFilterData.pii) {
+      $(`ul.pii li:icontains(${SearchFilterData.pii})`).addClass('highlight')
     }
 
     if (ssnCheckbox.is(":checked")) {
@@ -195,48 +151,55 @@ $(document).ready( function () {
       $(`ul.pii li:icontains(email)`).addClass('highlight')
     }
 
-    if (SearchFilterData.searchTerm) {
-      $(`ul.pii li:icontains(${SearchFilterData.searchTerm})`).addClass('highlight')
+    if (SearchFilterData.generalSearch) {
+      $(`ul.pii li:icontains(${SearchFilterData.generalSearch})`).addClass('highlight')
     }
   }
 
+  const checkboxes = [piaCheckbox, sornCheckbox, ssnCheckbox, emailCheckbox]
   // bind checkbox click() action to trigger the filter() function
   checkboxes.forEach(
     checkbox => checkbox.click( function() {
-      getTypedFilterValues()
       filter()
-      quickActiveFilters()
+      setQuickFilterTags()
       highlight()
     })
   )
 
-  // const searches = [systemSearch, sornSearch, piiSearch]
   // Bind keypresses on each of the search boxes
-  searches.forEach(
+  const filters = [systemFilterField, sornFilterField, piiFilterField]
+  filters.forEach(
     search => search.keyup( function() {
-      applyFilters()
+      filter()
+      setTypedFilterTags()
       highlight()
     })
   )
-
-  function applyFilters() {
-    // Get contents of the search boxes
-    getTypedFilterValues()
-    // filter the main list
-    filter()
-    // Make the active filter tags for each filter box
-    setActiveFilterTags()
-  }
 
   $("#general-search-button").click(function(){
-    SearchFilterData.searchTerm = $("#general-search").val()
+    SearchFilterData.generalSearch = $("#general-search").val()
     list.filter()
-    list.search(SearchFilterData.searchTerm)
-    applyFilters()
-
+    list.search(SearchFilterData.generalSearch)
+    filter()
     highlight()
   })
 
+   // listener: after search, get the result count
+   list.on('searchComplete', function() {
+    $("#result-count").text(list.matchingItems.length)
+    $("#total-count").text(list.matchingItems.length)
+    if (SearchFilterData.generalSearch) {
+      var searchTermText = `results for "${SearchFilterData.generalSearch}"`
+      $("#search-term").text(searchTermText)
+    } else {
+      $("#search-term").text('');
+    }
+  })
+
+  // listener: after filter, get the result count
+  list.on('filterComplete', function() {
+    $("#result-count").text(list.matchingItems.length)
+  })
 })
 
 </script>

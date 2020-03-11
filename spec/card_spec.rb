@@ -110,7 +110,15 @@ context "the card page", type: :feature, js: true do
 
           expect(find("#search-result-counter").text).to eq 'Showing 1 of 2 results for "PII IN TWO SYSTEMS"'
         end
-    end
+
+        it "highlights the expected PII" do
+          find("#general-search").set("PII IN TWO SYSTEMS")
+          find("#general-search-button").click
+          find("#pii-field").set("FIRST SYSTEM ONLY PII")
+
+          expect(all('.highlight').count).to eq 2
+        end
+      end
 
     describe "filters first, then search" do
       it "has the right result count" do
