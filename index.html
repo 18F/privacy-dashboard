@@ -32,9 +32,8 @@ $(document).ready( function () {
   list.on('searchComplete', function() {
     $("#result-count").text(list.matchingItems.length)
     $("#total-count").text(list.matchingItems.length)
-    var searchTerm = $("#general-search").val()
-    if (searchTerm) {
-      var searchTermText = `results for "${searchTerm}"`
+    if (GeneralSearchData.searchTerm) {
+      var searchTermText = `results for "${GeneralSearchData.searchTerm}"`
       $("#search-term").text(searchTermText)
     } else {
       $("#search-term").text('');
@@ -166,9 +165,8 @@ $(document).ready( function () {
       $(`ul.pii li:icontains(email)`).addClass('highlight')
     }
 
-    var searchTerm = $("#general-search").val()
-    if (searchTerm) {
-      $(`ul.pii li:icontains(${searchTerm})`).addClass('highlight')
+    if (GeneralSearchData.searchTerm) {
+      $(`ul.pii li:icontains(${GeneralSearchData.searchTerm})`).addClass('highlight')
     }
   }
 
@@ -187,6 +185,7 @@ $(document).ready( function () {
   searches.forEach(
     search => search.keyup( function() {
       applyFilters()
+      highlight()
     })
   )
 
@@ -199,13 +198,14 @@ $(document).ready( function () {
     Object.keys(searchValues).forEach(
       key => activeFilter(key)
     )
-    highlight()
   }
 
-  $("#general-search-button").click(function(e){
-    var generalSearchVal = $("#general-search").val()
+  var GeneralSearchData = {};
+
+  $("#general-search-button").click(function(){
+    GeneralSearchData.searchTerm = $("#general-search").val()
     list.filter()
-    list.search(generalSearchVal)
+    list.search(GeneralSearchData.searchTerm)
     applyFilters()
 
     highlight()
