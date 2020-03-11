@@ -14,7 +14,7 @@
 
 var github = {
         'username': 'peterrowland',
-        'accessToken': '623df71eee6f1fd3e1447d2a56f1c798875175e9',
+        'accessToken': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
         'repository': 'test-GS-commits',
         'branch': 'master',
         'commitMessage': Utilities.formatString('publish data on %s', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'))
@@ -88,7 +88,7 @@ function saveCsv() {
     for (var r = 0; r < data.length; r++) {
         var row = ""
         for (var c = 0; c < data[r].length; c++) {
-            row = row + ',' + data[r][c]
+            row = row + data[r][c] + ','
         }
         csv = csv + row + '\n'
     }
@@ -100,7 +100,7 @@ function run() {
     
     csv = saveCsv()
 
-    var filename = 'test.csv' // DEBUG
+    var filename = 'test2.csv' // DEBUG
     // var lastSha = (getLastSha(filename)) // DEBUG
 
     // Logger.log(lastSha)
