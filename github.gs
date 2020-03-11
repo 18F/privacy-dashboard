@@ -6,15 +6,21 @@
  */
 
 // TODO:
-// talk to GH API (token) √
-// commit a message to a new file in GH √
-// set up a trigger √
-// update a file in GH √
-// commit spreadsheet export .csv to GH
+// √talk to GH API (token) √
+// √commit a message to a new file in GH √
+// √set up a trigger √
+// √update a file in GH √
+// √commit spreadsheet export .csv to GH √
+// 
+// fix csv formatting - quote everything? safe quotes?
+// how can we access token without committing in code?
+// can we checkout and activate script automatically?
+// why does the spreadsheet have to be re-authorized?
 
 var github = {
         'username': 'peterrowland',
-        'accessToken': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+        // 'accessToken': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+        'accessToken': '67d31e3d82a6974dc7ccc74b80742a45505983d5',
         'repository': 'test-GS-commits',
         'branch': 'master',
         'commitMessage': Utilities.formatString('publish data on %s', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'))
@@ -86,11 +92,18 @@ function saveCsv() {
 
     // build export string
     for (var r = 0; r < data.length; r++) {
+        // var row = data[r].join(", ")
         var row = ""
         for (var c = 0; c < data[r].length; c++) {
-            row = row + data[r][c] + ','
+            
+            data[r][c] = data[r][c].toString().replace(/"/g,'""')
+
+            if (data[r][c].toString().indexOf(",") != -1) {
+                    data[r][c] = "\"" + data[r][c] + "\"";
+            }
+        row = row + data[r][c] + ","
         }
-        csv = csv + row + '\n'
+    csv = csv + row + '\n'
     }
     
 return csv
@@ -100,12 +113,12 @@ function run() {
     
     csv = saveCsv()
 
+    Logger.log(csv)
+
     var filename = 'test2.csv' // DEBUG
-    // var lastSha = (getLastSha(filename)) // DEBUG
+    var lastSha = (getLastSha(filename)) // DEBUG
 
-    // Logger.log(lastSha)
-
-    commitToGithub(filename, csv)
+    commitToGithub(filename, csv, lastSha)
 }
     
 
