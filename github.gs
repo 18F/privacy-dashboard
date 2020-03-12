@@ -26,8 +26,22 @@ var github = {
     };
 
 var gSheets = {
-        'sheetId': 'xxxxxxxxx'
+        'sheetId': "1cB5Wn-TD6JTi4mchtaQ61ic4Hjosd0Dsn6M0Qx0dXZ0"
     };
+
+function getToken() {
+
+    // open spreadsheet and get value
+    var ss = SpreadsheetApp.openById(gSheets.sheetId); // Should be by id
+    var sheet = ss.getSheetByName('credentials')
+    var range = sheet.getRange('A1');
+    var result = range.getValues();
+    
+    // Set Github access token
+    github.accessToken = result[0][0];
+    
+    return false;
+}
 
 function getLastSha(filename) {
     var requestUrl = Utilities.formatString(
@@ -81,9 +95,9 @@ return false
 function saveCsv() {
     // get the active spreadsheet
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
-    // create a folder from the name of the spreadsheet
-    var fileName = spreadsheet + ".csv";
-    
+    var ss = SpreadsheetApp.openById(gSheets.sheetId);
+    var sheet = ss.getSheetByName('output');
+
     // variables for export
     var range = spreadsheet.getDataRange();
     var data = range.getValues();
@@ -128,7 +142,9 @@ return csv
 
 function run() {
     
-    csv = saveCsv()
+    csv = saveCsv();
+
+    getToken(); 
 
     var filename = 'test2.csv' // DEBUG
     var lastSha = (getLastSha(filename)) // DEBUG
