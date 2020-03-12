@@ -92,17 +92,26 @@ function saveCsv() {
 
     // build export string
     for (var r = 0; r < data.length; r++) {
-        // var row = data[r].join(", ")
+        
+        // create empty row
         var row = ""
+
+        // loop through cells in row
         for (var c = 0; c < data[r].length; c++) {
             
+            // replace single quotes with double quotes, for clean csv
             data[r][c] = data[r][c].toString().replace(/"/g,'""')
 
+            // add quotes to fields with commas, for clean csv
             if (data[r][c].toString().indexOf(",") != -1) {
                     data[r][c] = "\"" + data[r][c] + "\"";
-            }
-        row = row + data[r][c] + ","
+            }    
+            
+            // add data to row 
+            row = row + data[r][c] + ","
         }
+    
+    // add row to csv
     csv = csv + row + '\n'
     }
     
