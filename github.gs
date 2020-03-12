@@ -12,7 +12,7 @@
 // √update a file in GH √
 // √commit spreadsheet export .csv to GH √
 // 
-// fix csv formatting - quote everything? safe quotes?
+// √ fix csv formatting - quote everything? safe quotes?
 // how can we access token without committing in code?
 // can we checkout and activate script automatically?
 // why does the spreadsheet have to be re-authorized?
@@ -107,11 +107,20 @@ function saveCsv() {
             }    
             
             // add data to row 
-            row = row + data[r][c] + ","
+            row = row + data[r][c]
+
+            // add comma, if not last cell in row
+            if (c < data[r].length - 1) {
+                row = row + ","
+            }
         }
     
     // add row to csv
-    csv = csv + row + '\n'
+    csv = csv + row
+    
+    // add newline to csv, if not last row
+    if (r < data.length - 1) 
+        csv = csv + '\n'
     }
     
 return csv
@@ -120,8 +129,6 @@ return csv
 function run() {
     
     csv = saveCsv()
-
-    Logger.log(csv)
 
     var filename = 'test2.csv' // DEBUG
     var lastSha = (getLastSha(filename)) // DEBUG
