@@ -5,6 +5,10 @@
  * Refs: https://developer.github.com/v3/repos/contents/#create-a-file
  */
 
+/**
+ * @OnlyCurrentDoc
+ */
+
 // TODO:
 // √talk to GH API (token) √
 // √commit a message to a new file in GH √
@@ -17,23 +21,68 @@
 // can we checkout and activate script automatically?
 // why does the spreadsheet have to be re-authorized?
 
+function onOpen() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var menuEntries = [
+    {name: "Export csv", functionName: "run"}
+  ];
+  ss.addMenu("Export CSV", menuEntries);
+}
+ 
+function makeLabel(app, text, id) {
+  var lb = app.createLabel(text);
+  if (id) lb.setId(id);
+  return lb;
+}
+
+function makeListBox(app, name, items) {
+  var listBox = app.createListBox().setId(name).setName(name);
+  listBox.setVisibleItemCount(1);
+  
+  var cache = CacheService.getPublicCache();
+  var selectedValue = cache.get(name);
+  Logger.log(selectedValue);
+  for (var i = 0; i < items.length; i++) {
+    listBox.addItem(items[i]);
+    if (items[1] == selectedValue) {
+      listBox.setSelectedIndex(i);
+    }
+  }
+  return listBox;
+}
+
+function makeButton(app, parent, name, callback) {
+  var button = app.createButton(name);
+  app.add(button);
+  var handler = app.createServerClickHandler(callback).addCallbackElement(parent);;
+  button.addClickHandler(handler);
+  return button;
+}
+
+function makeTextBox(app, name) { 
+  var textArea    = app.createTextArea().setWidth('100%').setHeight('200px').setId(name).setName(name);
+  return textArea;
+}
+
+
 var github = {
-        'username': 'peterrowland',
-        'accessToken': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-        'repository': 'test-GS-commits',
-        'branch': 'master',
+        'username': 'peterrowland', // Update
+        'accessToken': '',
+        'repository': 'test-GS-commits', // Update
+        'branch': 'master', // Update
         'commitMessage': Utilities.formatString('publish data on %s', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'))
     };
 
 var gSheets = {
-        'sheetId': "1cB5Wn-TD6JTi4mchtaQ61ic4Hjosd0Dsn6M0Qx0dXZ0"
+        'sheetId': "1cB5Wn-TD6JTi4mchtaQ61ic4Hjosd0Dsn6M0Qx0dXZ0" // Update
     };
 
 function getToken() {
 
     // open spreadsheet and get value
-    var ss = SpreadsheetApp.openById(gSheets.sheetId); // Should be by id
-    var sheet = ss.getSheetByName('credentials')
+    // var ss = SpreadsheetApp.openById(gSheets.sheetId); // Should be by id
+    var ss = SpreadsheetApp.getActiveSpreadsheet()
+    var sheet = ss.getSheetByName('credentials') // Update
     var range = sheet.getRange('A1');
     var result = range.getValues();
     
@@ -94,12 +143,12 @@ return false
  */
 function saveCsv() {
     // get the active spreadsheet
-    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
-    var ss = SpreadsheetApp.openById(gSheets.sheetId);
+    var ss = SpreadsheetApp.getActiveSpreadsheet()
+    // var ss = SpreadsheetApp.openById(gSheets.sheetId);
     var sheet = ss.getSheetByName('output');
 
     // variables for export
-    var range = spreadsheet.getDataRange();
+    var range = sheet.getDataRange();
     var data = range.getValues();
     var csv = "";
 
