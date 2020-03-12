@@ -19,8 +19,7 @@
 
 var github = {
         'username': 'peterrowland',
-        // 'accessToken': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-        'accessToken': '67d31e3d82a6974dc7ccc74b80742a45505983d5',
+        'accessToken': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
         'repository': 'test-GS-commits',
         'branch': 'master',
         'commitMessage': Utilities.formatString('publish data on %s', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'))
