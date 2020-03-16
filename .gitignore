@@ -6,3 +6,5 @@ node_modules
 .jekyll-cache/
 .DS_Store
 assets/.DS_Store
+.clasp.json
+appsscript.json

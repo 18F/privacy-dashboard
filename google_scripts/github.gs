@@ -18,10 +18,10 @@
 // why does the spreadsheet have to be re-authorized?
 
 var github = {
-        'username': 'peterrowland',
+        'username': '18f',
         'accessToken': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
         'repository': 'test-GS-commits',
-        'branch': 'master',
+        'branch': 'privacy-dashboard',
         'commitMessage': Utilities.formatString('publish data on %s', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'))
     };
 
