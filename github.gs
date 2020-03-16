@@ -28,41 +28,6 @@ function onOpen() {
   ];
   ss.addMenu("Export CSV", menuEntries);
 }
- 
-function makeLabel(app, text, id) {
-  var lb = app.createLabel(text);
-  if (id) lb.setId(id);
-  return lb;
-}
-
-function makeListBox(app, name, items) {
-  var listBox = app.createListBox().setId(name).setName(name);
-  listBox.setVisibleItemCount(1);
-  
-  var cache = CacheService.getPublicCache();
-  var selectedValue = cache.get(name);
-  Logger.log(selectedValue);
-  for (var i = 0; i < items.length; i++) {
-    listBox.addItem(items[i]);
-    if (items[1] == selectedValue) {
-      listBox.setSelectedIndex(i);
-    }
-  }
-  return listBox;
-}
-
-function makeButton(app, parent, name, callback) {
-  var button = app.createButton(name);
-  app.add(button);
-  var handler = app.createServerClickHandler(callback).addCallbackElement(parent);;
-  button.addClickHandler(handler);
-  return button;
-}
-
-function makeTextBox(app, name) { 
-  var textArea    = app.createTextArea().setWidth('100%').setHeight('200px').setId(name).setName(name);
-  return textArea;
-}
 
 
 var github = {
