@@ -5,49 +5,27 @@
  * Refs: https://developer.github.com/v3/repos/contents/#create-a-file
  */
 
-/**
- * @OnlyCurrentDoc
- */
-
-// TODO:
-// √talk to GH API (token) √
-// √commit a message to a new file in GH √
-// √set up a trigger √
-// √update a file in GH √
-// √commit spreadsheet export .csv to GH √
-// 
-// √ fix csv formatting - quote everything? safe quotes?
-// how can we access token without committing in code?
-// can we checkout and activate script automatically?
-// why does the spreadsheet have to be re-authorized?
-
 function onOpen() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var menuEntries = [
-    {name: "Export csv", functionName: "run"}
+    {name: "Save data to dashboard", functionName: "run"}
   ];
-  ss.addMenu("Export CSV", menuEntries);
+  ss.addMenu("Save data to dashboard", menuEntries);
 }
 
-
 var github = {
-        'username': 'peterrowland', // Update
+        'username': '18f',
         'accessToken': '',
-        'repository': 'test-GS-commits', // Update
-        'branch': 'master', // Update
+        'repository': 'privacy-dashboard',
+        'branch': 'google-script',
         'commitMessage': Utilities.formatString('publish data on %s', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'))
     };
 
-var gSheets = {
-        'sheetId': "1cB5Wn-TD6JTi4mchtaQ61ic4Hjosd0Dsn6M0Qx0dXZ0" // Update
-    };
 
 function getToken() {
-
     // open spreadsheet and get value
-    // var ss = SpreadsheetApp.openById(gSheets.sheetId); // Should be by id
-    var ss = SpreadsheetApp.getActiveSpreadsheet()
-    var sheet = ss.getSheetByName('credentials') // Update
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName('credentials')
     var range = sheet.getRange('A1');
     var result = range.getValues();
     
@@ -108,9 +86,8 @@ return false
  */
 function saveCsv() {
     // get the active spreadsheet
-    var ss = SpreadsheetApp.getActiveSpreadsheet()
-    // var ss = SpreadsheetApp.openById(gSheets.sheetId);
-    var sheet = ss.getSheetByName('output');
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
+    var sheet = spreadsheet.getSheetByName('data');
 
     // variables for export
     var range = sheet.getDataRange();
@@ -155,13 +132,12 @@ return csv
 }
 
 function run() {
-    
     csv = saveCsv();
 
     getToken(); 
 
-    var filename = 'test2.csv' // DEBUG
-    var lastSha = (getLastSha(filename)) // DEBUG
+    var filename = '_data/pii-inventory.csv'
+    var lastSha = (getLastSha(filename))
 
     commitToGithub(filename, csv, lastSha)
 }
