@@ -5,6 +5,7 @@
  * Refs: https://developer.github.com/v3/repos/contents/#create-a-file
  */
 
+// Adds a menu item in the spreadsheet that triggers this script's run() function
 function onOpen() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var menuEntries = [
@@ -13,6 +14,7 @@ function onOpen() {
   ss.addMenu("Save data to dashboard", menuEntries);
 }
 
+// variables for committing data to GitHub
 var github = {
         'username': '18f',
         'accessToken': '',
@@ -21,7 +23,7 @@ var github = {
         'commitMessage': Utilities.formatString('publish data on %s', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'))
     };
 
-
+// retrieve Github personal access token from the 'credentials' sheet.  
 function getToken() {
     // open spreadsheet and get value
     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -35,6 +37,7 @@ function getToken() {
     return false;
 }
 
+// get last committed SHA value of the pii-inventory.csv file 
 function getLastSha(filename) {
     var requestUrl = Utilities.formatString(
     'https://api.github.com/repos/%s/%s/contents/%s',
@@ -53,6 +56,7 @@ function getLastSha(filename) {
     return jsonResponse.sha;
 }
 
+// commit to Github via API
 // lastSha argument is optional, only needed to update files
 function commitToGithub (filename, content, lastSha) {
     
@@ -81,9 +85,8 @@ function commitToGithub (filename, content, lastSha) {
 return false
 }
 
-/**
- * Adapted from: https://gist.github.com/mrkrndvs/a2c8ff518b16e9188338cb809e06ccf1
- */
+// save contents of spreadsheet as csv
+// Adapted from: https://gist.github.com/mrkrndvs/a2c8ff518b16e9188338cb809e06ccf1
 function saveCsv() {
     // get the active spreadsheet
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
