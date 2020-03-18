@@ -46,10 +46,11 @@ function getToken() {
 // get last committed SHA value of the pii-inventory.csv file 
 function getLastSha(filename) {
     var requestUrl = Utilities.formatString(
-    'https://api.github.com/repos/%s/%s/contents/%s',
+    'https://api.github.com/repos/%s/%s/contents/%s?ref=%s',
     github.username,
     github.repository,
-    filename
+    filename,
+    github.branch
     ),
     response = UrlFetchApp.fetch(requestUrl, {
         'method': 'GET',
