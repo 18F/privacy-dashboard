@@ -1,3 +1,9 @@
+
+// Script will only ask for permissions for the spreadsheet it is attached to, not all Drive files.
+/**
+ * @OnlyCurrentDoc
+ */
+
 /**
  * Adapted from: https://github.com/18F/fedramp-data/blob/master/scripts/google-sheets-script.gs
  *
