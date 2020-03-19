@@ -96,6 +96,8 @@ exclude:
   - CONTRIBUTING.md
   - LICENSE.md
   - assets
+  - google_scripts
+  - GS_GH_notes.md
   - spec
 
 assets:
