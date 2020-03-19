@@ -8,3 +8,4 @@ node_modules
 assets/.DS_Store
 .clasp.json
 appsscript.json
+spec/failures

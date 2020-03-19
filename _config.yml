@@ -98,6 +98,7 @@ exclude:
   - assets
   - google_scripts
   - GS_GH_notes.md
+  - spec
 
 assets:
   sources:
