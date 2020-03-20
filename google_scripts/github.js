@@ -25,7 +25,7 @@ var github = {
         'username': '18f',
         'accessToken': '',
         'repository': 'privacy-dashboard',
-        'branch': 'google-script',
+        'branch': 'master',
         'commitMessage': Utilities.formatString('publish data on %s', Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'))
     };
 
