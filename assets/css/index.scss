@@ -4,16 +4,64 @@
 
 // Add your SASS/CSS here
 
+//GSA Colors
+$base-color: #1b1b1b;
+
+$blue-90: #122D52;
+$blue-70: #005599; //primary blue
+$blue-50: #006DB6;
+$blue-20: #CCD6E0;
+$blue-10: #E0E6EB;
+
+$gray-cool-50: #71767A;
+$gray-cool-10: #DCDEE0;
+$gray-5: #F0F0F0;
+$gray-3: #F6F6F6;
+$gray-2: #F9F9F9;
+
+$red-60: #AF3639;
+$gold-10v: #FFE396;
+$gold-5: #EFEADF;
+
+.usa-header--extended {
+  background-color: $blue-90;
+}
+
+.usa-logo a {
+  color: white;
+}
+
+.usa-nav {
+  background-color: white;
+}
+
+.usa-nav__secondary {
+  color: white;
+}
+
+#main-content {
+  background-color: $gray-2;
+}
+
+.is-hidden {
+  display:none;
+}
+
+
 .checkbox-tags {
+  border: 1px solid $blue-20;
   border-radius: 2px;
-  padding: 0.25rem;
-  margin-bottom: 16px;
+  padding: units(1);
+  margin-right: units(1);
+  margin-bottom: units(2);
 }
 
 
 .usa-tag {
-  background-color: #D8d8d8;
-  color: black;
+  background-color: white;
+  border: 1px solid $gray-cool-10 ;
+  border-radius: units('05');
+  color: $blue-90;
   display: inline;
 }
 
@@ -44,13 +92,28 @@
 }
 
 .card {
-  outline-color: #C9c9c9;
+  outline-color: $blue-90;
   outline-style: solid;
   outline-width: 1px;
+  background-color: white;
+}
+
+.card__h2 {
+  color: $blue-90;
+  font-family: family('sans');
+  font-size: size('body', 'lg');
+  margin: 0;
+}
+
+.card__label {
+  color: $gray-cool-50;
+  font-size: size('body', 'xs');
+  font-weight: 700;
 }
 
 .filter_section{
-  background-color: #F2F2F2;
+  background-color: #fbfcfd;
+  border: 1px solid $gray-cool-10;
   // max-height: 475px;
 }
 
@@ -93,7 +156,7 @@
 }
 
 .highlight span{
-  background-color: yellow;
+  background-color: $gold-10v;
   padding-left: units(.5);
   padding-right: units(.5);
 }
