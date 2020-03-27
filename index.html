@@ -307,27 +307,35 @@ $(document).ready( function () {
           <div class="list">
 
           {% for row in rows %}
-            <div class="card padding-2 margin-top-2 margin-right-0">
+            {% if row['Type'] == "SORN"%}
+            <div class="card card--sorn padding-2 margin-top-2 margin-right-0">
               <div class="grid-row margin-bottom-105">
-                <h2 class="system card__h2">{{ row['System Name'] }}</h2>
+                <h2 class="system card__h2 card__h2--sorn">{{ row['System Name'] }}
+                </h2>
               </div>
-              <!-- <ul class="padding-0"> -->
-                <div class="grid-row margin-bottom-105">
-                  <div class="grid-col-2">
-                    <span class="card__label">Type:</span>
-                  </div>
-                  <div class="type grid-col-10">
-                    {{ row['Type'] }}
-                  </div>
+            {% else %}
+            <div class="card card--pia padding-2 margin-top-2 margin-right-0">
+              <div class="grid-row margin-bottom-105">
+                <h2 class="system card__h2 card__h2--pia">{{ row['System Name'] }}</h2>
+              </div>
+            {% endif %}
+            <!-- <ul class="padding-0"> -->
+              <div class="grid-row margin-bottom-105">
+                <div class="grid-col-2">
+                  <span class="card__label">Type:</span>
                 </div>
-                <div class="grid-row margin-bottom-105">
-                  <div class="grid-col-2">
-                    <span class="card__label">SORN ID:</span>
-                  </div>
-                  <div class="sorn-id grid-col-10">
-                    {{ row['SORN ID']}}
-                  </div>
+                <div class="type grid-col-10">
+                  {{ row['Type'] }}
                 </div>
+              </div>
+              <div class="grid-row margin-bottom-105">
+                <div class="grid-col-2">
+                  <span class="card__label">SORN ID:</span>
+                </div>
+                <div class="sorn-id grid-col-10">
+                  {{ row['SORN ID']}}
+                </div>
+              </div>
               <!-- </div> -->
 
               <div class="grid-row margin-bottom-105">

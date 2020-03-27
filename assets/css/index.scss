@@ -40,7 +40,7 @@ $gold-5: #EFEADF;
 }
 
 #main-content {
-  background-color: $gray-2;
+  background-color: $gray-3;
 }
 
 .is-hidden {
@@ -92,17 +92,38 @@ $gold-5: #EFEADF;
 }
 
 .card {
-  outline-color: $blue-90;
-  outline-style: solid;
-  outline-width: 1px;
+  // outline-color: $blue-90;
+  // outline-style: solid;
+  // outline-width: 1px;
   background-color: white;
 }
 
+.card--sorn {
+  border-top: 6px solid #ad8b65;
+  border-bottom: 1px solid #ad8b65;
+  border-left: 1px solid #ad8b65;
+  border-right: 1px solid #ad8b65;
+}
+
+.card--pia {
+  border-top: 6px solid #005599;
+  border-bottom: 1px solid #005599;
+  border-left: 1px solid #005599;
+  border-right: 1px solid #005599;
+}
+
 .card__h2 {
-  color: $blue-90;
   font-family: family('sans');
   font-size: size('body', 'lg');
   margin: 0;
+}
+
+.card__h2--pia {
+  color: $blue-90
+}
+
+.card__h2--sorn {
+  color: color('gold-70');
 }
 
 .card__label {
