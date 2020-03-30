@@ -23,6 +23,8 @@ $red-60: #AF3639;
 $gold-10v: #FFE396;
 $gold-5: #EFEADF;
 
+$transparent: rgba(0,0,0,0);
+
 .usa-header--extended {
   background-color: $blue-90;
 }
@@ -227,14 +229,14 @@ table.dataTable tbody tr.odd td {
 }
 
 a.page {
-  color: color('blue-50v');
+  color: $blue-90;
   font-family: family('sans');
   font-size: size('body', 'xs');
   margin: 0 units(.5);
   padding: units(.5) units(1);
   text-decoration: none;
   &:hover {
-    background-color: color('blue-warm-5');
+    background-color: $blue-10;
     text-decoration: underline;
   }
 }
@@ -244,10 +246,10 @@ a.page:last-of-type {
 }
 
 .active .page {
-  background-color: color('blue-50v');
+  background-color: $blue-90;
   color: white;
   &:hover {
-    background-color: color('blue-50v');
+    background-color: $blue-90;
     color: white;
     text-decoration: none;
   }
@@ -258,7 +260,7 @@ li.disabled .page {;
   color: color('gray-50');
   &:hover {
     cursor: not-allowed	;
-    background-color: white;
+    background-color: $transparent;
     text-decoration: none;
   }
 }
