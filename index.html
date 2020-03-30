@@ -271,15 +271,18 @@ $(document).ready( function () {
                 <div class="grid-col-2">
                   <span class="card__label">SORN ID:</span>
                 </div>
-                <div class="grid-row margin-bottom-105">
-                  <div class="grid-col-2">
-                    <strong style="color:#5B5B5B">Authority:</strong>
-                  </div>
-                  <div class="authority grid-col-10">
-                    {{ row['Authority']}}
-                  </div>
+                <div class="sorn-id grid-col-10">
+                  {{ row['SORN ID']}}
                 </div>
-              <!-- </div> -->
+              </div>
+              <div class="grid-row margin-bottom-105">
+                <div class="grid-col-2">
+                  <span class="card__label">Authority:</span>
+                </div>
+                <div class="authority grid-col-10">
+                  {{ row['Authority']}}
+                </div>
+              </div>
 
               <div class="grid-row margin-bottom-105">
                 <div class="grid-col-2">
