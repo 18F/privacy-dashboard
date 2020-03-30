@@ -40,6 +40,7 @@ context "the card page", type: :feature, js: true do
       expect(first_card.has_css?('.system')).to be_truthy
       expect(first_card.has_text?('Type:')).to be_truthy
       expect(first_card.has_text?('SORN ID:')).to be_truthy
+      expect(first_card.has_text?('Authority:')).to be_truthy
       expect(first_card.has_text?('PII:')).to be_truthy
       expect(first_card.has_link?('Source')).to be_truthy
     end
@@ -61,6 +62,24 @@ context "the card page", type: :feature, js: true do
 
         expect(all('.card').length).to eq 1
         expect(find(".sorn-id").text).to eq "GSA/PPFM-11"
+      end
+
+      it "when searching by Authority" do
+        find("#general-search").set("Third Authority")
+        find("#general-search-button").click
+
+        expect(all('.card').length).to eq 1
+        expect(find(".authority").text).to eq "Third Authority"
+      end
+
+      it "highlights the matching authority" do
+        find("#general-search").set("Authority")
+        find("#general-search-button").click
+
+        expect(all('.highlight').count).to eq 2
+        all('.highlight').each do |li|
+          expect(li.text).to include('Authority')
+        end
       end
 
       it "when searching by PII" do
