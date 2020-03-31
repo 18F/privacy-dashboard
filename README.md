@@ -1,7 +1,8 @@
 
 # PII Inventory Dashboard
 
-This repo is a part of the [DevOps for Privacy Offices](https://github.com/18f/privacy-tools) 10x project.
+
+### We envision a future in which the public can easily understand how and why personally identifiable information gets collected by government agencies. We also envision a future in which the US public can trust the government to keep their personal data safe.
 
 ## Description
 
