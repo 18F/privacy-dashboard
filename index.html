@@ -18,10 +18,17 @@ $(document).ready( function () {
       .indexOf(m[3].toUpperCase()) >= 0;
   };
 
+  var jekyll_env = "{{jekyll.environment}}"
+    if (jekyll_env == "test") {
+      var page_number = 2
+  } else {
+    var page_number = 10
+  }
+
   // Set up for list.js
   var options = {
     valueNames: [ 'system', 'sorn-id', 'pii', 'type' ],
-    page: 10,
+    page: page_number,
     pagination: [{
         innerWindow: 1,
         outerWindow: 1
@@ -101,8 +108,8 @@ $(document).ready( function () {
   }
 
   function highlight() {
+    $('.highlight').removeClass('highlight');
     // highlight matching search results
-    $('ul.pii li.highlight').removeClass('highlight');
     if (SearchFilterData.pii) {
       $(`ul.pii li:icontains(${SearchFilterData.pii})`).addClass('highlight')
     }
@@ -118,7 +125,6 @@ $(document).ready( function () {
     checkbox => checkbox.click( function() {
       filter()
       setQuickFilterTags()
-      highlight()
     })
   )
 
@@ -128,7 +134,6 @@ $(document).ready( function () {
     search => search.keyup( function() {
       filter()
       setTypedFilterTags()
-      highlight()
     })
   )
 
@@ -137,7 +142,6 @@ $(document).ready( function () {
     list.filter()
     list.search(SearchFilterData.generalSearch)
     filter()
-    highlight()
   })
 
    // listener: after search, get the result count
@@ -155,6 +159,10 @@ $(document).ready( function () {
   // listener: after filter, get the result count
   list.on('filterComplete', function() {
     $("#result-count").text(list.matchingItems.length)
+  })
+
+  list.on('updated', function() {
+    highlight()
   })
 })
 

@@ -9,7 +9,11 @@ context "the card page", type: :feature, js: true do
     end
 
     it "test data is loaded" do
-      expect(all('.card').length).to eq 4
+      expect(page).to have_text "Showing 4 of 4"
+    end
+
+    it "test data is paginated" do
+      expect(all('.card').length).to eq 2
     end
   end
 
@@ -84,6 +88,36 @@ context "the card page", type: :feature, js: true do
         expect(all('.highlight').count).to eq 2
         all('.highlight').each do |li|
           expect(li.text).to eq 'PII IN TWO SYSTEMS'
+        end
+      end
+
+      context "paginated highlighting" do
+        it "highlights on paginated cards" do
+          find("#general-search").set("FOUR")
+          find("#general-search-button").click
+
+          expect(all('.highlight').count).to eq 2
+
+          click_link "2"
+
+          expect(all('.highlight').count).to eq 2
+        end
+
+
+        it "removes highlights from paginated cards" do
+          # we had a bug https://github.com/18F/privacy-tools/issues/48
+          find("#general-search").set("FOUR")
+          find("#general-search-button").click
+
+          find("#general-search").set("")
+          find("#general-search-button").click
+
+          expect(all('.highlight').count).to eq 0
+
+          click_link "2"
+
+          expect(all('.card').count).to eq 2
+          expect(all('.highlight').count).to eq 0
         end
       end
     end
@@ -171,7 +205,6 @@ context "the card page", type: :feature, js: true do
         find("#filter__SORN_label").click
 
         expect(find("#result-count").text).to eq "4"
-        expect(all('.card').length).to eq 4
       end
     end
 
@@ -188,7 +221,6 @@ context "the card page", type: :feature, js: true do
         find("#filter__PIA_label").click
 
         expect(find("#result-count").text).to eq "4"
-        expect(all('.card').length).to eq 4
       end
     end
   end
@@ -213,9 +245,8 @@ context "the card page", type: :feature, js: true do
       context "when search field is erased" do
         before { find("#system-field").set("") }
 
-        it "shows the correct number of cards again" do
+        it "shows the correct number of results again" do
           expect(find("#result-count").text).to eq "4"
-          expect(all('.card').length).to eq 4
           expect(all(".system")[0].text).to eq "First System Name"
         end
 
@@ -249,11 +280,10 @@ context "the card page", type: :feature, js: true do
         expect(find('.highlight').text).to eq "FIRST SYSTEM ONLY PII"
       end
 
-      it "shows all cards again when search field is erased" do
+      it "shows all results again when search field is erased" do
         find("#pii-field").set("")
 
         expect(find("#result-count").text).to eq "4"
-        expect(all('.card').length).to eq 4
       end
     end
   end
