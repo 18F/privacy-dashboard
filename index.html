@@ -32,17 +32,13 @@ $(document).ready( function () {
 
   // pointers to form elements
   const systemFilterField = $("#system-field");
-  const sornFilterField = $("#sorn-field");
   const piiFilterField = $("#pii-field");
   const piaCheckbox = $("#filter__PIA")
   const sornCheckbox = $("#filter__SORNS")
-  const ssnCheckbox = $("#filter__SSN")
-  const emailCheckbox = $("#filter__email")
 
   // Set up hash to hold search and filter data as needed
   var SearchFilterData = {
     system: null,
-    sorn: null,
     pii: null,
     generalSearch: null
   };
@@ -51,29 +47,22 @@ $(document).ready( function () {
   function filter() {
     // get latest filter data
     SearchFilterData.system = systemFilterField.val().toLowerCase()
-    SearchFilterData.sorn = sornFilterField.val().toLowerCase()
     SearchFilterData.pii = piiFilterField.val().toLowerCase()
 
     list.filter( function(item) {
       // for each card, get lower case values
       var systemName = item.values()["system"].toLowerCase()
-      var sornID = item.values()["sorn-id"].toLowerCase()
       var piiValue = item.values()["pii"].toLowerCase()
       var type = item.values()["type"]
 
       // Set filter value to true (include) if search text is contained in field
       // OR if there is no value entered in the field
       var systemFilter = systemName.includes(SearchFilterData.system) || !SearchFilterData.system
-      var sornIdFilter = sornID.includes(SearchFilterData.sorn) || !SearchFilterData.sorn
       var piiFilter = piiValue.includes(SearchFilterData.pii) || !SearchFilterData.pii
 
       // document type filters are true (include) by default
       var piaFilter = true
       var sornFilter = true
-
-      // Quick filters are true by default
-      var ssnFilter = true
-      var emailFilter = true
 
       // if PIA document type checkbox is not checked, apply filter for that type
       if (!piaCheckbox.is(":checked")) {
@@ -85,16 +74,8 @@ $(document).ready( function () {
         sornFilter = !type.includes("SORN")
       }
 
-      if (ssnCheckbox.is(":checked")) {
-        ssnFilter = piiValue.includes("ssn")
-      }
-
-      if (emailCheckbox.is(":checked")) {
-        emailFilter = piiValue.includes("email")
-      }
-
       // display item if all conditions are true, otherwise filter
-      if (ssnFilter && emailFilter && systemFilter && sornIdFilter && piiFilter && piaFilter && sornFilter) {
+      if (systemFilter && piiFilter && piaFilter && sornFilter) {
         return true;
       } else {
         return false;
@@ -103,7 +84,7 @@ $(document).ready( function () {
   }
 
   function setTypedFilterTags() {
-    var typedFilterKeys = ['system', 'sorn', 'pii'] // Add any new typed filter keys here
+    var typedFilterKeys = ['system', 'pii'] // Add any new typed filter keys here
     for (key of typedFilterKeys) {
       var tag = $(`#${key}-tag`);
       var tagExists = tag.length;
@@ -119,23 +100,6 @@ $(document).ready( function () {
     }
   }
 
-  function setQuickFilterTags() {
-    // Quick filters
-    if (ssnCheckbox.is(":checked") && !$("#ssn-tag").length) {
-      html = `<li id="ssn-tag" class="usa-tag">PII: SSN</li>`
-      $("#active-filters").append(html)
-    } else if (!ssnCheckbox.is(":checked") && $("#ssn-tag").length){
-      $(`#ssn-tag`).remove()
-    }
-
-    if (emailCheckbox.is(":checked") && !$("#email-tag").length) {
-      html = `<li id="email-tag" class="usa-tag">PII: email</li>`
-      $("#active-filters").append(html)
-    } else if (!emailCheckbox.is(":checked") && $("#email-tag").length) {
-      $(`#email-tag`).remove()
-    }
-  }
-
   function highlight() {
     // highlight matching search results
     $('ul.pii li.highlight').removeClass('highlight');
@@ -143,20 +107,12 @@ $(document).ready( function () {
       $(`ul.pii li:icontains(${SearchFilterData.pii})`).addClass('highlight')
     }
 
-    if (ssnCheckbox.is(":checked")) {
-      $(`ul.pii li:icontains(SSN)`).addClass('highlight')
-    }
-
-    if (emailCheckbox.is(":checked")) {
-      $(`ul.pii li:icontains(email)`).addClass('highlight')
-    }
-
     if (SearchFilterData.generalSearch) {
       $(`ul.pii li:icontains(${SearchFilterData.generalSearch})`).addClass('highlight')
     }
   }
 
-  const checkboxes = [piaCheckbox, sornCheckbox, ssnCheckbox, emailCheckbox]
+  const checkboxes = [piaCheckbox, sornCheckbox]
   // bind checkbox click() action to trigger the filter() function
   checkboxes.forEach(
     checkbox => checkbox.click( function() {
@@ -167,7 +123,7 @@ $(document).ready( function () {
   )
 
   // Bind keypresses on each of the search boxes
-  const filters = [systemFilterField, sornFilterField, piiFilterField]
+  const filters = [systemFilterField, piiFilterField]
   filters.forEach(
     search => search.keyup( function() {
       filter()
@@ -217,30 +173,9 @@ $(document).ready( function () {
     <div class="grid-row grid-gap">
       <div class="usa-list desktop:grid-col-3">
         <div class="filter_section padding-2">
-          <ul class="margin-top-0">
-            <li>
-              <span><strong>FILTERS</strong></span>
-            </li>
-            <li>
-              <span>QUICK FILTERS</span>
-            </li>
-            <li>
-              <div class="usa-checkbox float-left checkbox-tags">
-                <input class="usa-checkbox__input" type="checkbox" id="filter__SSN" name="SSN" value="SSN">
-                <label class="usa-checkbox__label margin-bottom-0" id="filter__SSN_label" for="filter__SSN">SSN</label>
-              </div>
-              <div class="usa-checkbox float-left checkbox-tags">
-                <input class="usa-checkbox__input" type="checkbox" id="filter__email" name="Email" value="Email">
-                <label class="usa-checkbox__label margin-bottom-0" id="filter__email_label" for="filter__email">Email</label>
-              </div>
-            </li>
-           </ul>
+          <span><strong>FILTERS</strong></span>
 
-           <ul class="margin-top-8">
-             <hr class="margin-bottom-2">
-            <li class="margin-bottom-05">
-              <span>CUSTOM FILTERS</span>
-            </li>
+          <ul>
             <li>
               <span><strong>TYPE</strong></span>
             </li>
@@ -262,10 +197,6 @@ $(document).ready( function () {
             <li>
               <label class="" for="search-field">System</label>
               <input class="usa-input" id="system-field" type="input" name="system">
-            </li>
-            <li>
-              <label class="" for="search-field">SORN ID</label>
-              <input class="usa-input" id="sorn-field" type="input" name="sorn id">
             </li>
             <li>
               <label class="" for="search-field">PII</label>

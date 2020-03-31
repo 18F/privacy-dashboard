@@ -25,12 +25,9 @@ context "the card page", type: :feature, js: true do
 
     it "has filter elements" do
       expect(page).to have_selector "#system-field"
-      expect(page).to have_selector "#sorn-field"
       expect(page).to have_selector "#pii-field"
       expect(page).to have_selector("#filter__PIA", visible: false)
       expect(page).to have_selector("#filter__SORNS", visible: false)
-      expect(page).to have_selector("#filter__SSN", visible: false)
-      expect(page).to have_selector("#filter__email", visible: false)
     end
   
     it "cards have the expected elements" do
@@ -160,64 +157,7 @@ context "the card page", type: :feature, js: true do
     end
   end
 
-  context "Quick filters" do
-    describe "clicking on SSN" do
-      it "filters the list" do
-        find("#filter__SSN_label").click
-
-        expect(find("#result-count").text).to eq "2"
-        expect(all('.card').length).to eq 2
-
-        expect(all('.pii')[0].text.downcase).to include "ssn"
-        expect(all('.pii')[1].text.downcase).to include "ssn"
-      end
-
-      it "shows an active filter pill" do
-        find("#filter__SSN_label").click
-
-        expect(find("#ssn-tag")).to be_truthy
-        expect(find("#ssn-tag").text).to eq "PII: SSN"
-      end
-
-      it "highlights the matching pii" do
-        find("#filter__SSN_label").click
-
-        # test data has 2 matches, upper and lower case
-        expect(all('.highlight').count).to eq 2
-        all('.highlight').each do |li|
-          expect(li.text).to match(/SSN/i)
-        end
-      end
-    end
-
-    describe "clicking on email" do
-      it "filters the list" do
-        find("#filter__email_label").click
-
-        expect(find("#result-count").text).to eq "1"
-        expect(all('.card').length).to eq 1
-
-        expect(all('.pii')[0].text.downcase).to include "email"
-      end
-
-      it "shows an active filter pill" do
-        find("#filter__email_label").click
-
-        expect(find("#email-tag")).to be_truthy
-        expect(find("#email-tag").text).to eq "PII: EMAIL"
-      end
-
-      it "highlights the matching pii" do
-        find("#filter__email_label").click
-
-        # test data has 1 match
-        expect(all('.highlight').count).to eq 1
-        expect(find('.highlight').text).to eq "email"
-      end
-    end
-  end
-
-  context "Custom filters" do
+  context "Type filters" do
     describe "clicking on SORN" do
       it "filters the list" do
         find("#filter__SORN_label").click
@@ -282,30 +222,6 @@ context "the card page", type: :feature, js: true do
         it "removes the active filter tag" do
            expect(page).not_to have_selector("#system-tag")
         end
-      end
-    end
-
-    describe "typing in SORN ID search" do
-      it "filters the list" do
-        find("#sorn-field").set("GSA/PPFM-11")
-
-        expect(find("#result-count").text).to eq "1"
-        expect(all('.card').length).to eq 1
-        expect(find(".sorn-id").text).to eq "GSA/PPFM-11"
-      end
-
-      it "shows an active filter pill" do
-        find("#sorn-field").set("GSA/PPFM-11")
-
-        expect(find("#sorn-tag")).to be_truthy
-        expect(find("#sorn-tag").text).to eq "SORN: GSA/PPFM-11"
-      end
-
-      it "shows all cards again when search field is erased" do
-        find("#sorn-field").set("")
-
-        expect(find("#result-count").text).to eq "4"
-        expect(all('.card').length).to eq 4
       end
     end
 
