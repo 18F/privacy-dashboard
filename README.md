@@ -2,7 +2,7 @@
 # PII Inventory Dashboard
 
 
-### We envision a future in which the public can easily understand how and why personally identifiable information gets collected by government agencies. We also envision a future in which the US public can trust the government to keep their personal data safe.
+### 
 
 ## Description
 
@@ -10,63 +10,21 @@ This dashboard presents information about personally identifiable information (P
 
 For more information on our sources, see https://github.com/18F/privacy-tools/wiki/Data-Sources
 
-## Running Locally
+Privacy offices are burdened with managing compliance paperwork, which reduces their bandwidth for proactive efforts to protect the public’s privacy. This searchable PII inventory was created by a team at 18F to give privacy offices some time back. Here are some activities that this inventory would speed up:
 
-Clone the repository.
+ - finding information about PII from PIAs and SORNs
+ - understanding the landscape of PII that you manage
+ - producing an inventory as per OMB Circular A-130 requirements
+ - improving PII collection practices by system owners
+ - minimize PII collection to only that which is legally authorized/mission-essential 
+ 
+Our tool processes GSA’s collection of PIA and SORN documents (PDF and XML) and creates an organized and searchable list of systems and the PII they collect.
+ 
+This PII inventory is a collaboration between 18F and GSA’s Privacy Office. It received funding by GSA’s 10x program. 
 
-    $ git clone https://github.com/18F/federalist-uswds-jekyll
-    $ cd federalist-uswds-jekyll
-
-Install the Node.js dependencies.
-
-    $ npm install
-
-Build the site.
-
-    $ npm run build
-
-Run the site locally.
-
-    $ npm start
-
-Open your web browser to [localhost:4000](http://localhost:4000/) to view your
-site.
-
-After you make changes, be sure to run the tests.
-
-    $ npm test
-
-Note that when built by Federalist, `npm run federalist` is used instead of the
-`build` script.
-
-## Data Source and Updating
-
-The data this tool presents is stored in a Google spreadsheet, owned and maintained by GSA's Privacy Office. `github.js` is  the Google Apps script that runs attached to the spreadsheet. 
-
-The script adds a menu item which calls the script and updates the data in the repo by exporting the current contents of the spreadsheet as a .csv and committing it to this projects repository.
-
-The script uses a Github personal access token with public repo permissions to make commits to this repository. 
-
-## Running Tests
-To run tests:
-
-```
-npm install
-bundle install
-bundle exec rspec
-```
-
-To see the tests run on each push to github go to: https://github.com/18F/privacy-dashboard/actions
-
-## Technologies Used
-
-- [Jekyll](https://jekyllrb.com/docs/) - The primary site engine that builds your code and content.
-- [Front Matter](https://jekyllrb.com/docs/frontmatter) - The top of each page/post includes keywords within `--` tags. This is meta data that helps Jekyll build the site, but you can also use it to pass custom variables.
-- [U.S. Web Design System v 2.0](https://v2.designsystem.digital.gov) 
-- rspec
-- list.JS
-- Google Apps Script, clasp
-
+We envision a future in which the public can easily understand how and why personally identifiable information gets collected by government agencies. We also envision a future in which the US public can trust the government to keep their personal data safe. We see this PII Inventory Dashboard as a foundational step in this direction.
+ 
+If you are interested in using our tool to create a PII inventory for your agency please reach out to us at privacy_devops@gsa.gov or on Github. We are happy to advise you on how to fork the repository if your team needs help. If you don’t have in-house capacity, 18F is a digital consultancy and we’re also available to work with you implement a PII inventory for your agency. 
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for additional information.
