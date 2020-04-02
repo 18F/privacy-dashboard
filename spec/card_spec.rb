@@ -112,7 +112,7 @@ context "the card page", type: :feature, js: true do
 
       context "paginated highlighting" do
         it "highlights on paginated cards" do
-          find("#general-search").set("FOUR")
+          find("#general-search").set("ALL FOUR")
           find("#general-search-button").click
 
           expect(all('.highlight').count).to eq 2
@@ -125,7 +125,7 @@ context "the card page", type: :feature, js: true do
 
         it "removes highlights from paginated cards" do
           # we had a bug https://github.com/18F/privacy-tools/issues/48
-          find("#general-search").set("FOUR")
+          find("#general-search").set("ALL FOUR")
           find("#general-search-button").click
 
           find("#general-search").set("")
