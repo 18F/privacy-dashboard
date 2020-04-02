@@ -19,10 +19,9 @@
 ##########################################################################################
 
 title: PII Inventory
-email: contact@example.gov
+email: gsa.privacyact@gsa.gov
 description: >- # this means to ignore newlines until "baseurl:"
-  Agency Name (EAC) Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Aenean et sapien a leo auctor scelerisque quis nec magna. Sed dictum ante a risus vehicula facilisis.
+  This dashboard presents information about personally identifiable information (PII) that is collected by GSA systems.
 baseurl: "" # the subpath of your site, e.g. /blog
 # url: "https://example.gov" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -36,11 +35,11 @@ google_analytics_ua: UA-????????-??
 dap_agency: GSA
 
 # Site Navigation
-primary_navigation:
-  - name: Old Prototypes
-    url: /old-prototypes
-  - name: Table Layout
-    url: /table-layout
+# primary_navigation:
+  # - name: Old Prototypes
+  #   url: /old-prototypes
+  # - name: Table Layout
+  #   url: /table-layout
 
 # secondary_navigation:
 #   - name: Secondary link
