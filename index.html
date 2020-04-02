@@ -19,15 +19,15 @@ $(document).ready( function () {
   };
 
   var jekyll_env = "{{jekyll.environment}}"
-    if (jekyll_env == "test") {
-      var page_number = 2
+  if (jekyll_env == "test") {
+    var page_number = 2
   } else {
     var page_number = 10
   }
 
   // Set up for list.js
   var options = {
-    valueNames: [ 'system', 'sorn-id', 'pii', 'type' ],
+    valueNames: [ 'system', 'sorn-id', 'authority', 'pii', 'type' ],
     page: page_number,
     pagination: [{
         innerWindow: 1,
@@ -108,14 +108,16 @@ $(document).ready( function () {
   }
 
   function highlight() {
-    $('.highlight').removeClass('highlight');
     // highlight matching search results
+    $('.highlight').removeClass('highlight');
+
     if (SearchFilterData.pii) {
       $(`ul.pii li:icontains(${SearchFilterData.pii})`).addClass('highlight')
     }
 
     if (SearchFilterData.generalSearch) {
       $(`ul.pii li:icontains(${SearchFilterData.generalSearch})`).addClass('highlight')
+      $(`div.authority:icontains(${SearchFilterData.generalSearch})`).addClass('highlight')
     }
   }
 
@@ -275,7 +277,14 @@ $(document).ready( function () {
                   {{ row['SORN ID']}}
                 </div>
               </div>
-              <!-- </div> -->
+              <div class="grid-row margin-bottom-105">
+                <div class="grid-col-2">
+                  <span class="card__label">Authority:</span>
+                </div>
+                <div class="authority grid-col-10">
+                  <span>{{ row['Authority']}}</span>
+                </div>
+              </div>
 
               <div class="grid-row margin-bottom-105">
                 <div class="grid-col-2">
