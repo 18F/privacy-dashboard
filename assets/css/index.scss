@@ -20,10 +20,9 @@ $gray-3: #F6F6F6;
 $gray-2: #F9F9F9;
 
 $red-60: #AF3639;
+$gold-40: #ad8b65;
 $gold-10v: #FFE396;
 $gold-5: #EFEADF;
-
-$transparent: rgba(0,0,0,0);
 
 .usa-header--extended {
   background-color: $blue-90;
@@ -101,17 +100,17 @@ $transparent: rgba(0,0,0,0);
 }
 
 .card--sorn {
-  border-top: 6px solid #ad8b65;
-  border-bottom: 1px solid #ad8b65;
-  border-left: 1px solid #ad8b65;
-  border-right: 1px solid #ad8b65;
+  border-top: 6px solid $gold-40;
+  border-bottom: 1px solid $gold-40;
+  border-left: 1px solid $gold-40;
+  border-right: 1px solid $gold-40;
 }
 
 .card--pia {
-  border-top: 6px solid #005599;
-  border-bottom: 1px solid #005599;
-  border-left: 1px solid #005599;
-  border-right: 1px solid #005599;
+  border-top: 6px solid $blue-70;
+  border-bottom: 1px solid $blue-70;
+  border-left: 1px solid $blue-70;
+  border-right: 1px solid $blue-70;
 }
 
 .card__h2 {
@@ -135,14 +134,41 @@ $transparent: rgba(0,0,0,0);
 }
 
 .filter_section{
-  background-color: #fbfcfd;
+  background-color: white;
   border: 1px solid $gray-cool-10;
   // max-height: 475px;
+}
+
+.filter__h2 {
+  font-size: size('body','xs');
+  color: $blue-90;
+  margin: 0;
 }
 
 .filter_section ul {
   list-style: none;
   padding-left:0px;
+}
+
+.filter__type {
+  margin-top: units(1);
+}
+
+.results-meta__label {
+  color: $blue-90;
+  font-size: size('body', 'xs');
+  font-weight: 700;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+}
+
+#search-result-counter {
+  color: $blue-90;
+}
+
+.usa-checkbox__input:checked + .usa-checkbox__label::before {
+  background-color: $blue-90;
+  box-shadow: 0 0 0 2px $blue-90;
 }
 
 .usa-search {
@@ -151,6 +177,16 @@ $transparent: rgba(0,0,0,0);
 
 #general-search {
   max-width: 100%;
+}
+
+#general-search-button {
+  background-color: $blue-90;
+  &:hover {
+    background-color: $blue-50;
+  }
+  &:active {
+    background-color: $blue-70
+  }
 }
 
 .usa-list li {
@@ -260,7 +296,7 @@ li.disabled .page {;
   color: color('gray-50');
   &:hover {
     cursor: not-allowed	;
-    background-color: $transparent;
+    background-color: transparent;
     text-decoration: none;
   }
 }

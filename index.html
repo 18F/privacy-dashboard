@@ -183,11 +183,11 @@ $(document).ready( function () {
     <div class="grid-row grid-gap">
       <div class="usa-list desktop:grid-col-3">
         <div class="filter_section padding-2">
-          <span><strong>FILTERS</strong></span>
+          <h2 class="filter__h2"><strong>FILTERS</strong></h2>
 
-          <ul>
+          <ul class="filter__type">
             <li>
-              <span><strong>TYPE</strong></span>
+              <span>Type</span>
             </li>
             <li>
               <div class="usa-checkbox float-left margin-right-2">
@@ -232,7 +232,7 @@ $(document).ready( function () {
         </div>
         <div class="grid-row margin-top-2 margin-right-0 results-meta">
           <div class="grid-col-6 display-inline results-meta__filters">
-            <span class="font-body-xs text-uppercase text-bold text-ls-1 "> Active filters: </span>
+            <span class="results-meta__label ">Active filters: </span>
             <ul id="active-filters" class="margin-top-05 margin-bottom-05 padding-0">
             </ul>
           </div>
@@ -243,7 +243,7 @@ $(document).ready( function () {
             </div>
           </div>
         </div>
-        <hr class="margin-right-0">
+        <!-- <hr class="margin-right-0"> -->
         <div id="cards">
           <div class="list">
 
