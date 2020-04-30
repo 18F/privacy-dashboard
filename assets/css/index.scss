@@ -5,26 +5,26 @@
 // Add your SASS/CSS here
 
 //GSA Colors
-$base-color: #1b1b1b;
+$base-color:   #1B1B1B;
 
-$blue-90: #122D52;
-$blue-70: #005599; //primary blue
-$blue-50: #006DB6;
-$blue-20: #CCD6E0;
-$blue-10: #E0E6EB;
+$blue-90:      #122D52;
+$blue-70:      #005599; //primary blue
+$blue-50:      #006DB6;
+$blue-20:      #CCD6E0;
+$blue-10:      #E0E6EB;
 
 $gray-cool-50: #71767A;
 $gray-cool-10: #DCDEE0;
-$gray-5: #F0F0F0;
-$gray-3: #F6F6F6;
-$gray-2: #F9F9F9;
+$gray-5:       #F0F0F0;
+$gray-3:       #F6F6F6;
+$gray-2:       #F9F9F9;
 
-$red-60: #AF3639;
-$gold-40: #ad8b65;
-$gold-10v: #FFE396;
-$gold-5: #EFEADF;
+$red-60:       #AF3639;
+$gold-40:      #AD8B65;
+$gold-10v:     #FFE396;
+$gold-5:       #EFEADF;
 
-.usa-header--extended {
+.usa-header--basic {
   background-color: $blue-90;
 }
 
@@ -32,13 +32,25 @@ $gold-5: #EFEADF;
   color: white;
 }
 
-.usa-nav {
-  background-color: white;
-}
+// .usa-nav {
+//   background-color: white;
+// }
 
 .usa-nav__secondary {
   color: white;
 }
+
+ .usa-nav__primary > .usa-nav__primary-item > a {
+  color: white;
+  &:hover {
+    color: color('blue-30v');
+  }
+}
+
+.usa-nav__link.pii-nav__link:hover::after {
+  background-color: color('blue-30v'); //need to fix
+}
+
 
 #main-content {
   background-color: $gray-3;

@@ -35,11 +35,14 @@ google_analytics_ua: UA-????????-??
 dap_agency: GSA
 
 # Site Navigation
-# primary_navigation:
-  # - name: Old Prototypes
-  #   url: /old-prototypes
-  # - name: Table Layout
-  #   url: /table-layout
+primary_navigation:
+  - name: Old Prototypes
+    url: /old-prototypes
+  - name: Table Layout
+    url: /table-layout
+  - name: About
+    url: /about
+
 
 # secondary_navigation:
 #   - name: Secondary link
