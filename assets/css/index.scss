@@ -24,17 +24,16 @@ $gold-40:      #AD8B65;
 $gold-10v:     #FFE396;
 $gold-5:       #EFEADF;
 
+
+// Header & Navigation
 .usa-header--basic {
   background-color: $blue-90;
 }
 
 .usa-logo a {
   color: white;
+  font-size: font-size('heading', '2xl');
 }
-
-// .usa-nav {
-//   background-color: white;
-// }
 
 .usa-nav__secondary {
   color: white;
@@ -53,7 +52,33 @@ $gold-5:       #EFEADF;
 
 
 #main-content {
+  border-top: 0;
   background-color: $gray-3;
+}
+
+// Explainer section
+.explainer {
+  border-top: $blue-50 2px solid;
+  border-bottom: $gray-cool-10 2px solid;
+  background-color: $blue-10;
+}
+
+.explainer__text {
+  color: $blue-90;
+  font-size: size('sans','sm');
+  line-height: line-height('body', 4);
+}
+
+// .explainer__link{
+//   color: white;
+//   &:hover {
+//     color: color('blue-30v');
+//   }
+// }
+
+.explainer__contact a {
+  color: white;
+  border-bottom: 1px solid white;
 }
 
 .is-hidden {
