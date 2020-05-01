@@ -26,6 +26,7 @@ end
 group :development, :test do
   gem "rspec"
   gem 'selenium-webdriver'
+  gem 'webdrivers'
   gem "capybara"
   gem "rack-jekyll"
   gem 'pry'
