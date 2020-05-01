@@ -50,6 +50,10 @@ $gold-5:       #EFEADF;
   background-color: color('blue-30v'); //need to fix
 }
 
+.usa-current.pii-nav__link::after{
+  background-color: color('blue-30v');
+}
+
 
 #main-content {
   border-top: 0;
@@ -58,7 +62,6 @@ $gold-5:       #EFEADF;
 
 // Explainer section
 .explainer {
-  border-top: $blue-50 2px solid;
   border-bottom: $gray-cool-10 2px solid;
   background-color: $blue-10;
 }
@@ -328,7 +331,6 @@ a.page:last-of-type {
   }
 }
 
-
 li.disabled .page {;
   color: color('gray-50');
   &:hover {
@@ -338,6 +340,17 @@ li.disabled .page {;
   }
 }
 
+.h2--page {
+  color: $blue-90;
+  font-size: size('heading', 'xl');
+  display: inline-block;
+  border-bottom: 6px $blue-90 solid;
+  margin: units(1.5) 0;
+}
+
+.about__text {
+  margin-bottom: units(4);
+}
 
 // default mode hide banner
 .usa-banner__content {

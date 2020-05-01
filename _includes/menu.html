@@ -10,7 +10,7 @@ where we provide an easy way to manage your navigation system
       <button class="usa-menu-btn">Menu</button>
     </div>
     <nav aria-label="Primary navigation" class="usa-nav">
-      <button class="usa-nav__close"><img src="/assets/img/close.svg" alt="close"></button>
+      <button class="usa-nav__close"><% asset close.svg alt="close" %></button>
       <ul class="usa-nav__primary usa-accordion">
         {% for nav_item in include.primary_navigation %}
         {% unless nav_item.children %}
