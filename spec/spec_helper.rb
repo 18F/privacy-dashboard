@@ -3,6 +3,7 @@ require 'rspec'
 require 'capybara/rspec'
 require 'rack/jekyll'
 require 'pry'
+require 'webdrivers/chromedriver'
 
 
 RSpec.configure do |config|
