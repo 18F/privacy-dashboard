@@ -179,6 +179,20 @@ $(document).ready( function () {
   {% assign rows = site.data.pii-inventory | sort: "System Name" %}
 {% endif %}
 
+  <div class="explainer">
+    <div class="grid-container">
+      <div class="grid-row grid-gap">
+        <div class="tablet:grid-col-7">
+          <p class="explainer__text">This tool processes GSA’s collection of PIA and SORN documents and creates an organized and searchable list of systems and the PII they collect.</p>
+        </div>
+        <div class="tablet:grid-col-5">
+          <p class="explainer__text text-right">Have questions or feedeback? Contact us at <br><a class="usa-link explainer__link" href="mailto:gsa.privacyact@gsa.gov"> gsa.privacyact@gsa.gov </a> </p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
   <div class="grid-container">
     <div class="grid-row grid-gap">
       <div class="usa-list desktop:grid-col-3">
@@ -305,7 +319,7 @@ $(document).ready( function () {
               </div>
 
 
-              <a href="{{ row['URL'] }}" target="_blank" class="usa-link">Source</a>
+              <a href="{{ row['URL'] }}" target="_blank" class="usa-link usa-link--external">Source</a>
 
             </div>
           {% endfor %}
