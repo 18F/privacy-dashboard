@@ -22,6 +22,6 @@
   },
   "devDependencies": {
     "a11y": "^0.5.1",
-    "minimist": ">=1.2.2"
+    "minimist": ">=1.2.3"
   }
 }
