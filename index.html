@@ -166,7 +166,20 @@ $(document).ready( function () {
   list.on('updated', function() {
     highlight()
   })
+
+  $(".pii-click-search").click(function(e){
+    piiText = e.currentTarget.parentElement.textContent
+    $("#general-search").val(piiText)
+    SearchFilterData.generalSearch = piiText
+    list.filter()
+    list.search(SearchFilterData.generalSearch)
+    filter()
+  });
+
+
 })
+
+
 
 </script>
 
@@ -312,7 +325,7 @@ $(document).ready( function () {
                   <ul class="pii">
                     {% assign pii = row['PII'] | split: "," | sort_natural %}
                     {% for i in pii %}
-                      <li><span>{{i}}</span></li>
+                      <li><span>{{i}}</span><button class="pii-click-search"><img src='img/search.svg' /></button></li>
                     {% endfor %}
                   </ul>
                 </div>
