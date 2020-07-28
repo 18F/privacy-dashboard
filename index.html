@@ -292,23 +292,23 @@ $(document).ready( function () {
                 </div>
               </div>
               <div class="grid-row margin-bottom-105">
-                <div class="grid-col-2">
+                <div class="tablet:grid-col-2">
                   <span class="card__label">Authority:</span>
                 </div>
-                <div class="authority grid-col-10">
+                <div class="authority tablet:grid-col-10">
                   <span>{{ row['Authority']}}</span>
                 </div>
               </div>
 
               <div class="grid-row margin-bottom-105">
-                <div class="grid-col-2">
+                <div class="tablet:grid-col-2">
                   {% if row['Type'] == "SORN"%}
-                  <span class="card__label">Categories<br>of Record:</span>
+                  <span class="card__label">Categories of&nbsp;Record:</span>
                   {% else %}
                   <span class="card__label"">PII:</span>
                   {% endif %}
                 </div>
-                <div class="grid-col-10">
+                <div class="tablet:grid-col-10">
                   <ul class="pii">
                     {% assign pii = row['PII'] | split: "," | sort_natural %}
                     {% for i in pii %}
