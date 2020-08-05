@@ -40,10 +40,12 @@ $gold-5:       #EFEADF;
 }
 
  .usa-nav__primary > .usa-nav__primary-item > a {
-  color: white;
-  &:hover {
-    color: color('blue-30v');
-  }
+   @include at-media('desktop'){
+     color: white;
+     &:hover {
+       color: color('blue-30v');
+     }
+   }
 }
 
 .usa-nav__link.pii-nav__link:hover::after {
