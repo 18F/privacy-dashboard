@@ -10,7 +10,12 @@ title: Home
 <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 <script>
 
-$(document).ready( function () {
+
+
+$(function () {
+
+  console.log("READY!")
+  $("#loader").hide()
   // JQuery plugin
   // case insensitive jquery text search
   jQuery.expr[':'].icontains = function(a, i, m) {
@@ -27,7 +32,7 @@ $(document).ready( function () {
 
   // Set up for list.js
   var options = {
-    valueNames: [ 'system', 'sorn-id', 'authority', 'pii', 'type' ],
+    valueNames: [ 'agency', 'system', 'authority', 'pii', 'url' ],
     page: page_number,
     pagination: [{
         innerWindow: 1,
@@ -53,97 +58,117 @@ $(document).ready( function () {
   // run list.js filter
   function filter() {
     // get latest filter data
-    SearchFilterData.system = systemFilterField.val().toLowerCase()
-    SearchFilterData.pii = piiFilterField.val().toLowerCase()
+    SearchFilterData.system = systemFilterField.val()//.toLowerCase()
+    SearchFilterData.pii = piiFilterField.val()//.toLowerCase()
 
     list.filter( function(item) {
       // for each card, get lower case values
-      var systemName = item.values()["system"].toLowerCase()
-      var piiValue = item.values()["pii"].toLowerCase()
-      var type = item.values()["type"]
+      // var systemName = item.values()["system"]//.toLowerCase()
+      // var piiValue = item.values()["pii"]//.toLowerCase()
+      // var type = item.values()["type"]
 
       // Set filter value to true (include) if search text is contained in field
       // OR if there is no value entered in the field
-      var systemFilter = systemName.includes(SearchFilterData.system) || !SearchFilterData.system
-      var piiFilter = piiValue.includes(SearchFilterData.pii) || !SearchFilterData.pii
+      // var systemFilter = systemName.includes(SearchFilterData.system) || !SearchFilterData.system
+      // var piiFilter = piiValue.includes(SearchFilterData.pii) || !SearchFilterData.pii
 
       // document type filters are true (include) by default
-      var piaFilter = true
-      var sornFilter = true
+      // var piaFilter = true
+      // var sornFilter = true
 
       // if PIA document type checkbox is not checked, apply filter for that type
-      if (!piaCheckbox.is(":checked")) {
-        piaFilter = !type.includes("PIA")
-      }
+      // if (!piaCheckbox.is(":checked")) {
+      //   piaFilter = !type.includes("PIA")
+      // }
 
       // if SORN document type checkbox is not checked, apply filter for that type
-      if (!sornCheckbox.is(":checked")) {
-        sornFilter = !type.includes("SORN")
-      }
+      // if (!sornCheckbox.is(":checked")) {
+      //   sornFilter = !type.includes("SORN")
+      // }
 
-      // display item if all conditions are true, otherwise filter
-      if (systemFilter && piiFilter && piaFilter && sornFilter) {
-        return true;
-      } else {
-        return false;
-      }
+      // // display item if all conditions are true, otherwise filter
+      // if (systemFilter && piiFilter && piaFilter && sornFilter) {
+      //   return true;
+      // } else {
+      //   return false;
+      // }
     })
   }
 
-  function setTypedFilterTags() {
-    var typedFilterKeys = ['system', 'pii'] // Add any new typed filter keys here
-    for (key of typedFilterKeys) {
-      var tag = $(`#${key}-tag`);
-      var tagExists = tag.length;
-      var value = SearchFilterData[key];
-      if (value && !tagExists) {
-        tagHtml = `<li id="${key}-tag" class="usa-tag">${key}: ${value}</li>`
-        $("#active-filters").append(tagHtml)
-      } else if (value && tagExists) {
-        tag.text(`${key}: ${value}`)
-      } else if (!value && tagExists) {
-        tag.remove()
-      }
-    }
-  }
+  // function setTypedFilterTags() {
+  //   var typedFilterKeys = ['system', 'pii'] // Add any new typed filter keys here
+  //   for (key of typedFilterKeys) {
+  //     var tag = $(`#${key}-tag`);
+  //     var tagExists = tag.length;
+  //     var value = SearchFilterData[key];
+  //     if (value && !tagExists) {
+  //       tagHtml = `<li id="${key}-tag" class="usa-tag">${key}: ${value}</li>`
+  //       $("#active-filters").append(tagHtml)
+  //     } else if (value && tagExists) {
+  //       tag.text(`${key}: ${value}`)
+  //     } else if (!value && tagExists) {
+  //       tag.remove()
+  //     }
+  //   }
+  // }
 
   function highlight() {
     // highlight matching search results
     $('.highlight').removeClass('highlight');
 
-    if (SearchFilterData.pii) {
-      $(`ul.pii li:icontains(${SearchFilterData.pii})`).addClass('highlight')
-    }
+    // if (SearchFilterData.pii) {
+    //   $(`div.pii:icontains(${SearchFilterData.pii})`).addClass('highlight')
+    // }
 
     if (SearchFilterData.generalSearch) {
-      $(`ul.pii li:icontains(${SearchFilterData.generalSearch})`).addClass('highlight')
-      $(`div.authority:icontains(${SearchFilterData.generalSearch})`).addClass('highlight')
+      var allText = $('body').html()
+      var reg = new RegExp(SearchFilterData.generalSearch, 'gi');
+      var txt = allText.replace(reg, function(str) {
+          return "<span class='highlight'>" + str + "</span>"
+        });
+        $('body').html(txt)
+      // if ($(`div.authority:icontains(${SearchFilterData.generalSearch})`)) {
+      //   var textDiv = $('div.authority').text();
+      //   var reg = new RegExp(SearchFilterData.generalSearch, 'gi');
+      //   var txt = textDiv.replace(reg, function(str) {
+      //     return "<span class='highlight'>" + str + "</span>"
+      //   });
+      //   $('div.authority').html(txt)
+      // }
+      // if ($(`div.pii:icontains(${SearchFilterData.generalSearch})`)) {
+      //   var textDiv = $('div.pii').text();
+      //   var reg = new RegExp(SearchFilterData.generalSearch, 'gi');
+      //   var txt = textDiv.replace(reg, function(str) {
+      //     return "<span class='highlight'>" + str + "</span>"
+      //   });
+      //   $('div.pii').html(txt)
+      // }
     }
   }
 
-  const checkboxes = [piaCheckbox, sornCheckbox]
-  // bind checkbox click() action to trigger the filter() function
-  checkboxes.forEach(
-    checkbox => checkbox.click( function() {
-      filter()
-      setQuickFilterTags()
-    })
-  )
+  // const checkboxes = [piaCheckbox, sornCheckbox]
+  // // bind checkbox click() action to trigger the filter() function
+  // checkboxes.forEach(
+  //   checkbox => checkbox.click( function() {
+  //     // filter()
+  //     setQuickFilterTags()
+  //   })
+  // )
 
-  // Bind keypresses on each of the search boxes
-  const filters = [systemFilterField, piiFilterField]
-  filters.forEach(
-    search => search.keyup( function() {
-      filter()
-      setTypedFilterTags()
-    })
-  )
+  // // Bind keypresses on each of the search boxes
+  // const filters = [systemFilterField, piiFilterField]
+  // filters.forEach(
+  //   search => search.keyup( function() {
+  //     // filter()
+  //     // setTypedFilterTags()
+  //   })
+  // )
 
   $("#general-search-button").click(function(){
     SearchFilterData.generalSearch = $("#general-search").val()
-    list.filter()
+    // list.filter()
     list.search(SearchFilterData.generalSearch)
-    filter()
+    // filter()
   })
 
    // listener: after search, get the result count
@@ -156,6 +181,7 @@ $(document).ready( function () {
     } else {
       $("#search-term").text('');
     }
+    // highlight()
   })
 
   // listener: after filter, get the result count
@@ -176,8 +202,10 @@ $(document).ready( function () {
   <div id="jekyll-env">{{ jekyll.environment }}</div>
   {% assign rows = site.data.test-inventory | sort: "System Name" %}
 {% else %}
-  {% assign rows = site.data.pii-inventory | sort: "System Name" %}
+  {% assign rows = site.data.sorns %}
 {% endif %}
+
+
 
   <div class="explainer">
     <div class="grid-container">
@@ -195,46 +223,14 @@ $(document).ready( function () {
   </div>
   <div class="grid-container">
     <div class="grid-row grid-gap">
-      <div class="usa-list desktop:grid-col-3">
-        <div class="filter_section padding-2">
-          <h2 class="filter__h2"><strong>FILTERS</strong></h2>
 
-          <ul class="filter__type">
-            <li>
-              <span>Type</span>
-            </li>
-            <li>
-              <div class="usa-checkbox float-left margin-right-2">
-                <input class="usa-checkbox__input" type="checkbox" id="filter__SORNS" name="SORN" value="SORN" checked>
-                <label class="usa-checkbox__label" id="filter__SORN_label" for="filter__SORNS">SORN</label>
-              </div>
-            </li>
-            <li>
-              <div class="usa-checkbox float-left">
-                <input class="usa-checkbox__input" type="checkbox" id="filter__PIA" name="PIA" value="PIA" checked>
-                <label class="usa-checkbox__label" id="filter__PIA_label" for="filter__PIA">PIA</label>
-              </div>
-            </li>
-          </ul>
-          <br>
-          <ul class="margin-top-1 margin-bottom-0">
-            <li>
-              <label class="" for="search-field">System</label>
-              <input class="usa-input" id="system-field" type="input" name="system">
-            </li>
-            <li>
-              <label class="" for="search-field">PII</label>
-              <input class="usa-input" id="pii-field" type="input" name="PII">
-            </li>
-          </ul>
 
-        </div>
 
-      </div> <!--filter_section-->
 
       <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs" id="main-content">
         <div class="grid-row margin-top-2 margin-right-0">
           <div class="grid-col-12">
+
             <form class="usa-search" role="search" onsubmit="return false">
               <input class="usa-input" id="general-search" type="search" name="search">
               <button id="general-search-button" class="usa-button" type="submit">
@@ -262,64 +258,37 @@ $(document).ready( function () {
           <div class="list">
 
           {% for row in rows %}
-            {% if row['Type'] == "SORN"%}
+
             <div class="card card--sorn padding-2 margin-top-2 margin-right-0">
               <div class="grid-row margin-bottom-105">
-                <h2 class="system card__h2 card__h2--sorn">{{ row['System Name'] }}
+                <h2 class="ystem card__h2 card__h2--sorn">{{ row['system'] }}
                 </h2>
-              </div>
-            {% else %}
-            <div class="card card--pia padding-2 margin-top-2 margin-right-0">
-              <div class="grid-row margin-bottom-105">
-                <h2 class="system card__h2 card__h2--pia">{{ row['System Name'] }}</h2>
-              </div>
-            {% endif %}
-            <!-- <ul class="padding-0"> -->
-              <div class="grid-row margin-bottom-105">
-                <div class="grid-col-2">
-                  <span class="card__label">Type:</span>
-                </div>
-                <div class="type grid-col-10">
-                  {{ row['Type'] }}
-                </div>
-              </div>
-              <div class="grid-row margin-bottom-105">
-                <div class="grid-col-2">
-                  <span class="card__label">SORN ID:</span>
-                </div>
-                <div class="sorn-id grid-col-10">
-                  {{ row['SORN ID']}}
-                </div>
               </div>
               <div class="grid-row margin-bottom-105">
                 <div class="tablet:grid-col-2">
                   <span class="card__label">Authority:</span>
                 </div>
                 <div class="authority tablet:grid-col-10">
-                  <span>{{ row['Authority']}}</span>
+                  <span>{{ row['authority']}}</span>
                 </div>
               </div>
 
               <div class="grid-row margin-bottom-105">
                 <div class="tablet:grid-col-2">
-                  {% if row['Type'] == "SORN"%}
+
                   <span class="card__label">Categories of&nbsp;Record:</span>
-                  {% else %}
-                  <span class="card__label"">PII:</span>
-                  {% endif %}
+
                 </div>
-                <div class="tablet:grid-col-10">
-                  <ul class="pii">
-                    {% assign pii = row['PII'] | split: "," | sort_natural %}
-                    {% for i in pii %}
-                      <li><span>{{i}}</span></li>
-                    {% endfor %}
-                  </ul>
+                <div class="pii tablet:grid-col-10">
+
+                    {{ row['pii'] }}
+
+
                 </div>
               </div>
 
 
-              <a href="{{ row['URL'] }}" target="_blank" class="usa-link usa-link--external">Source</a>
+              <a href="{{ row['url'] }}" target="_blank" class="usa-link usa-link--external">Source</a>
 
             </div>
           {% endfor %}

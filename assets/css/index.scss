@@ -236,7 +236,7 @@ $gold-5:       #EFEADF;
 }
 
 .pii {
-  columns: 2;
+  // columns: 2;
   margin-top: 0px;
   padding-left: 0;
   column-gap: 2em;
@@ -256,7 +256,7 @@ $gold-5:       #EFEADF;
   left: 0;
 }
 
-.highlight span{
+.highlight{
   background-color: $gold-10v;
   padding-left: units(.5);
   padding-right: units(.5);
