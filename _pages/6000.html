@@ -1,0 +1,118 @@
+---
+permalink: /6000/
+layout: wide
+title: 6000
+---
+
+{% include card_js.html %}
+
+<!-- Set up Jekyll Data -->
+
+{% if jekyll.environment == 'test' %}
+  <div id="jekyll-env">{{ jekyll.environment }}</div>
+  {% assign rows = site.data.test-inventory | sort: "System Name" %}
+{% else %}
+  {% assign rows = site.data.6000_sorns %}
+{% endif %}
+
+
+
+  <div class="explainer">
+    <div class="grid-container">
+      <div class="grid-row grid-gap">
+        <div class="tablet:grid-col-7">
+          <p class="explainer__text">This tool processes GSA’s collection of PIA and SORN documents and creates an organized and searchable list of systems and the Personally Identifiable Information (PII) they collect.</p>
+        </div>
+        <div class="tablet:grid-col-5">
+          <p class="explainer__text text-right">Have questions or feedback? Contact us at <br><a class="usa-link explainer__link" href="mailto:gsa.privacyact@gsa.gov"> gsa.privacyact@gsa.gov </a> </p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="grid-container">
+    <div class="grid-row grid-gap">
+
+
+
+
+      <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs" id="main-content">
+        <div class="grid-row margin-top-2 margin-right-0">
+          <div class="grid-col-12">
+
+            <form class="usa-search" role="search" onsubmit="return false">
+              <input class="usa-input" id="general-search" type="search" name="search">
+              <button id="general-search-button" class="usa-button" type="submit">
+                <span class="usa-search__submit-text">Search</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+        <div class="grid-row margin-top-2 margin-right-0 results-meta">
+          <div class="grid-col-12 margin-bottom-0 results-meta__count">
+             <div id="search-result-counter" class="font-body-xs">
+              Showing <span id="result-count" class="text-bold">{{ rows.size }}</span> of <span id="total-count" class="text-bold">{{ rows.size }}</span> <span id="search-term"></span>
+            </div>
+          </div>
+        </div>
+
+        <div id="loader" class="usa-alert usa-alert--warning" >
+          <div class="usa-alert__body">
+            <h3 class="usa-alert__heading">SORNs are loading!</h3>
+            <p class="usa-alert__text">Can take 30 seconds to load.</p>
+          </div>
+        </div>
+
+        <div id="cards">
+          <div class="list">
+
+            <ul class="pagination"></ul>
+
+          {% for row in rows %}
+
+            <div class="card card--sorn padding-2 margin-top-2 margin-right-0">
+              <div class="grid-row margin-bottom-105">
+                <h2 class="system_name card__h2 card__h2--sorn">{{ row['system_name'] }}
+                </h2>
+              </div>
+              <div class="grid-row margin-bottom-105">
+                <div class="tablet:grid-col-2">
+                  <span class="card__label">Agency:</span>
+                </div>
+                <div class="agency_name tablet:grid-col-10">
+                  <span>{{ row['agency_name']}}</span>
+                </div>
+              </div>
+
+              <div class="grid-row margin-bottom-105">
+                <div class="tablet:grid-col-2">
+                  <span class="card__label">Authority:</span>
+                </div>
+                <div class="authority tablet:grid-col-10">
+                  <span>{{ row['authority']}}</span>
+                </div>
+              </div>
+
+              <div class="grid-row margin-bottom-105">
+                <div class="tablet:grid-col-2">
+                  <span class="card__label">Categories of&nbsp;Record:</span>
+                </div>
+                <div class="categories_of_record tablet:grid-col-10">
+                    {{ row['categories_of_record'] }}
+                </div>
+              </div>
+
+
+              <a href="{{ row['xml_url'] }}" target="_blank" class="usa-link usa-link--external">Source</a>
+
+            </div>
+          {% endfor %}
+          </div>
+          <ul class="pagination"></ul>
+        </div>
+      </main>
+
+    </div> <!--grid-row-->
+  </div> <!--grid-container-->

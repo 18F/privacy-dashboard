@@ -1,200 +1,10 @@
 ---
 permalink: /
 layout: wide
-title: Home
+title: 2000
 ---
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-<script>
 
-
-
-$(function () {
-
-  console.log("READY!")
-  $("#loader").hide()
-  // JQuery plugin
-  // case insensitive jquery text search
-  jQuery.expr[':'].icontains = function(a, i, m) {
-    return jQuery(a).text().toUpperCase()
-      .indexOf(m[3].toUpperCase()) >= 0;
-  };
-
-  var jekyll_env = "{{jekyll.environment}}"
-  if (jekyll_env == "test") {
-    var page_number = 2
-  } else {
-    var page_number = 10
-  }
-
-  // Set up for list.js
-  var options = {
-    valueNames: [ 'agency', 'system', 'authority', 'pii', 'url' ],
-    page: page_number,
-    pagination: [{
-        innerWindow: 1,
-        outerWindow: 1
-    }]
-  };
-
-  var list = new List('cards', options);
-
-  // pointers to form elements
-  const systemFilterField = $("#system-field");
-  const piiFilterField = $("#pii-field");
-  const piaCheckbox = $("#filter__PIA")
-  const sornCheckbox = $("#filter__SORNS")
-
-  // Set up hash to hold search and filter data as needed
-  var SearchFilterData = {
-    system: null,
-    pii: null,
-    generalSearch: null
-  };
-
-  // run list.js filter
-  function filter() {
-    // get latest filter data
-    SearchFilterData.system = systemFilterField.val()//.toLowerCase()
-    SearchFilterData.pii = piiFilterField.val()//.toLowerCase()
-
-    list.filter( function(item) {
-      // for each card, get lower case values
-      // var systemName = item.values()["system"]//.toLowerCase()
-      // var piiValue = item.values()["pii"]//.toLowerCase()
-      // var type = item.values()["type"]
-
-      // Set filter value to true (include) if search text is contained in field
-      // OR if there is no value entered in the field
-      // var systemFilter = systemName.includes(SearchFilterData.system) || !SearchFilterData.system
-      // var piiFilter = piiValue.includes(SearchFilterData.pii) || !SearchFilterData.pii
-
-      // document type filters are true (include) by default
-      // var piaFilter = true
-      // var sornFilter = true
-
-      // if PIA document type checkbox is not checked, apply filter for that type
-      // if (!piaCheckbox.is(":checked")) {
-      //   piaFilter = !type.includes("PIA")
-      // }
-
-      // if SORN document type checkbox is not checked, apply filter for that type
-      // if (!sornCheckbox.is(":checked")) {
-      //   sornFilter = !type.includes("SORN")
-      // }
-
-      // // display item if all conditions are true, otherwise filter
-      // if (systemFilter && piiFilter && piaFilter && sornFilter) {
-      //   return true;
-      // } else {
-      //   return false;
-      // }
-    })
-  }
-
-  // function setTypedFilterTags() {
-  //   var typedFilterKeys = ['system', 'pii'] // Add any new typed filter keys here
-  //   for (key of typedFilterKeys) {
-  //     var tag = $(`#${key}-tag`);
-  //     var tagExists = tag.length;
-  //     var value = SearchFilterData[key];
-  //     if (value && !tagExists) {
-  //       tagHtml = `<li id="${key}-tag" class="usa-tag">${key}: ${value}</li>`
-  //       $("#active-filters").append(tagHtml)
-  //     } else if (value && tagExists) {
-  //       tag.text(`${key}: ${value}`)
-  //     } else if (!value && tagExists) {
-  //       tag.remove()
-  //     }
-  //   }
-  // }
-
-  function highlight() {
-    // highlight matching search results
-    $('.highlight').removeClass('highlight');
-
-    // if (SearchFilterData.pii) {
-    //   $(`div.pii:icontains(${SearchFilterData.pii})`).addClass('highlight')
-    // }
-
-    if (SearchFilterData.generalSearch) {
-      var allText = $('body').html()
-      var reg = new RegExp(SearchFilterData.generalSearch, 'gi');
-      var txt = allText.replace(reg, function(str) {
-          return "<span class='highlight'>" + str + "</span>"
-        });
-        $('body').html(txt)
-      // if ($(`div.authority:icontains(${SearchFilterData.generalSearch})`)) {
-      //   var textDiv = $('div.authority').text();
-      //   var reg = new RegExp(SearchFilterData.generalSearch, 'gi');
-      //   var txt = textDiv.replace(reg, function(str) {
-      //     return "<span class='highlight'>" + str + "</span>"
-      //   });
-      //   $('div.authority').html(txt)
-      // }
-      // if ($(`div.pii:icontains(${SearchFilterData.generalSearch})`)) {
-      //   var textDiv = $('div.pii').text();
-      //   var reg = new RegExp(SearchFilterData.generalSearch, 'gi');
-      //   var txt = textDiv.replace(reg, function(str) {
-      //     return "<span class='highlight'>" + str + "</span>"
-      //   });
-      //   $('div.pii').html(txt)
-      // }
-    }
-  }
-
-  // const checkboxes = [piaCheckbox, sornCheckbox]
-  // // bind checkbox click() action to trigger the filter() function
-  // checkboxes.forEach(
-  //   checkbox => checkbox.click( function() {
-  //     // filter()
-  //     setQuickFilterTags()
-  //   })
-  // )
-
-  // // Bind keypresses on each of the search boxes
-  // const filters = [systemFilterField, piiFilterField]
-  // filters.forEach(
-  //   search => search.keyup( function() {
-  //     // filter()
-  //     // setTypedFilterTags()
-  //   })
-  // )
-
-  $("#general-search-button").click(function(){
-    SearchFilterData.generalSearch = $("#general-search").val()
-    // list.filter()
-    list.search(SearchFilterData.generalSearch)
-    // filter()
-  })
-
-   // listener: after search, get the result count
-   list.on('searchComplete', function() {
-    $("#result-count").text(list.matchingItems.length)
-    $("#total-count").text(list.matchingItems.length)
-    if (SearchFilterData.generalSearch) {
-      var searchTermText = `results for "${SearchFilterData.generalSearch}"`
-      $("#search-term").text(searchTermText)
-    } else {
-      $("#search-term").text('');
-    }
-    // highlight()
-  })
-
-  // listener: after filter, get the result count
-  list.on('filterComplete', function() {
-    $("#result-count").text(list.matchingItems.length)
-  })
-
-  list.on('updated', function() {
-    highlight()
-  })
-})
-
-</script>
+{% include card_js.html %}
 
 <!-- Set up Jekyll Data -->
 
@@ -202,7 +12,7 @@ $(function () {
   <div id="jekyll-env">{{ jekyll.environment }}</div>
   {% assign rows = site.data.test-inventory | sort: "System Name" %}
 {% else %}
-  {% assign rows = site.data.sorns %}
+  {% assign rows = site.data.2000_sorns %}
 {% endif %}
 
 
@@ -241,19 +51,21 @@ $(function () {
 
         </div>
         <div class="grid-row margin-top-2 margin-right-0 results-meta">
-          <div class="grid-col-6 display-inline results-meta__filters">
-            <span class="results-meta__label ">Active filters: </span>
-            <ul id="active-filters" class="margin-top-05 margin-bottom-05 padding-0">
-            </ul>
-          </div>
 
-          <div class="grid-col-6 margin-bottom-0 text-right results-meta__count">
+          <div class="grid-col-12 margin-bottom-0 results-meta__count">
              <div id="search-result-counter" class="font-body-xs">
               Showing <span id="result-count" class="text-bold">{{ rows.size }}</span> of <span id="total-count" class="text-bold">{{ rows.size }}</span> <span id="search-term"></span>
             </div>
           </div>
         </div>
-        <!-- <hr class="margin-right-0"> -->
+
+        <div id="loader" class="usa-alert usa-alert--warning" >
+          <div class="usa-alert__body">
+            <h3 class="usa-alert__heading">SORNs are loading!</h3>
+            <p class="usa-alert__text">Can take 10 seconds to load.</p>
+          </div>
+        </div>
+
         <div id="cards">
           <div class="list">
 
@@ -261,9 +73,18 @@ $(function () {
 
             <div class="card card--sorn padding-2 margin-top-2 margin-right-0">
               <div class="grid-row margin-bottom-105">
-                <h2 class="ystem card__h2 card__h2--sorn">{{ row['system'] }}
+                <h2 class="system_name card__h2 card__h2--sorn">{{ row['system_name'] }}
                 </h2>
               </div>
+              <div class="grid-row margin-bottom-105">
+                <div class="tablet:grid-col-2">
+                  <span class="card__label">Agency:</span>
+                </div>
+                <div class="agency_name tablet:grid-col-10">
+                  <span>{{ row['agency_name']}}</span>
+                </div>
+              </div>
+
               <div class="grid-row margin-bottom-105">
                 <div class="tablet:grid-col-2">
                   <span class="card__label">Authority:</span>
@@ -275,20 +96,15 @@ $(function () {
 
               <div class="grid-row margin-bottom-105">
                 <div class="tablet:grid-col-2">
-
                   <span class="card__label">Categories of&nbsp;Record:</span>
-
                 </div>
-                <div class="pii tablet:grid-col-10">
-
-                    {{ row['pii'] }}
-
-
+                <div class="categories_of_record tablet:grid-col-10">
+                    {{ row['categories_of_record'] }}
                 </div>
               </div>
 
 
-              <a href="{{ row['url'] }}" target="_blank" class="usa-link usa-link--external">Source</a>
+              <a href="{{ row['xml_url'] }}" target="_blank" class="usa-link usa-link--external">Source</a>
 
             </div>
           {% endfor %}
