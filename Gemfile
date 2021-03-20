@@ -10,17 +10,17 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 3.8"
+gem "jekyll", "~> 3.9", ">= 3.9.0"
 
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem 'jekyll-sitemap'
-  gem 'jekyll-seo-tag'
+  gem 'jekyll-sitemap', '>= 1.2.0'
+  gem 'jekyll-seo-tag', '>= 2.6.0'
 end
 
 group :jekyll_plugins, :test do
-  gem "jekyll-assets", "~> 3.0"
+  gem "jekyll-assets", "~> 3.0", ">= 3.0.12"
 end
 
 group :development, :test do
@@ -28,7 +28,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem "capybara"
-  gem "rack-jekyll"
+  gem "rack-jekyll", ">= 0.3.5"
   gem 'pry'
 end
 
