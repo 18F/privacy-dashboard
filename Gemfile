@@ -10,25 +10,25 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 3.8"
+gem "jekyll", "~> 3.8", ">= 3.8.5"
 
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem 'jekyll-sitemap'
-  gem 'jekyll-seo-tag'
+  gem 'jekyll-sitemap', '>= 1.2.0'
+  gem 'jekyll-seo-tag', '>= 2.6.0'
 end
 
 group :jekyll_plugins, :test do
-  gem "jekyll-assets", "~> 3.0"
+  gem "jekyll-assets", "~> 3.0", ">= 3.0.12"
 end
 
 group :development, :test do
   gem "rspec"
   gem 'selenium-webdriver'
   gem 'webdrivers'
-  gem "capybara"
-  gem "rack-jekyll"
+  gem "capybara", ">= 3.31.0"
+  gem "rack-jekyll", ">= 0.3.5"
   gem 'pry'
 end
 
@@ -38,4 +38,4 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
-gem "html-proofer", "~> 3.10"
+gem "html-proofer", "~> 3.10", ">= 3.10.1"
