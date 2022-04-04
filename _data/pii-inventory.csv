@@ -46,7 +46,12 @@ and Executive Orders 9397, as amended by
 maintaining personnel information. Authorities
 for recording Social Security Numbers are E.O.
 9397, 26 CFR 31.6011(b)–2, and 26 CFR
-31.6109–1.",
+31.6109–1.","ARCS contains full names, full addresses,phone number and SSN - tax id numbers - not
+required for all.
+ARCS uses SSN (Tax ID) for historical reporting
+and reference to track debtors. SSN numbers
+are masked as Tax Identification Numbers.
+ARCS contains Tax Identification Numbers."
 PIA,GSA/PPFM-11,Perceptive Content (PC),https://www.gsa.gov/cdnstatic/Perceptive%20Content%20(PC)%20-%207-8-2021%20-%20PIA.pdf,48 CFR 1232.7002 Invoice and Voucher review
 and approval â€“ provides for the collection of
 invoices for contracts and the review of these by
