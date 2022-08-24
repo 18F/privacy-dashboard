@@ -18,10 +18,10 @@
   },
   "license": "CC0-1.0",
   "dependencies": {
-    "uswds": "^2.0.2"
+    "uswds": "^2.6.0"
   },
   "devDependencies": {
-    "a11y": "^0.5.1",
+    "a11y": "^0.1.1",
     "minimist": ">=1.2.6"
   }
 }
