@@ -119,7 +119,7 @@ GEM
       method_source (~> 0.9.0)
       spoon (~> 0.0)
     public_suffix (3.0.3)
-    rack (2.2.3)
+    rack (2.2.6.4)
     rack-jekyll (0.3.5)
       jekyll
       rack
