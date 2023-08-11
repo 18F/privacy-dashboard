@@ -20,14 +20,14 @@ group :jekyll_plugins do
 end
 
 group :jekyll_plugins, :test do
-  gem "jekyll-assets", "~> 3.0"
+  gem "jekyll-assets", "~> 3.0", ">= 3.0.12"
 end
 
 group :development, :test do
   gem "rspec"
   gem 'selenium-webdriver'
-  gem 'webdrivers'
-  gem "capybara"
+  gem 'webdrivers', '>= 4.3.0'
+  gem "capybara", ">= 3.31.0"
   gem "rack-jekyll"
   gem 'pry'
 end
@@ -38,4 +38,4 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
-gem "html-proofer", "~> 3.10"
+gem "html-proofer", "~> 3.10", ">= 3.10.1"
